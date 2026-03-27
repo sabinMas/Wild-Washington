@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { StatCard } from "@/components/ui/StatCard";
 import { getDashboardSummary, getSpeciesRecords } from "@/lib/data/species";
@@ -64,10 +65,21 @@ export default function HomePage() {
 
         <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {species.map((record) => (
-            <Link key={record.slug} href={`/species/${record.slug}`} className="panel rounded-[1.75rem] p-5 transition hover:-translate-y-1">
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-muted">{record.speciesGroup}</p>
-              <h3 className="display-type mt-3 text-2xl font-bold text-ocean">{record.commonName}</h3>
-              <p className="mt-3 text-sm leading-6 text-muted">{record.quickFact}</p>
+            <Link key={record.slug} href={`/species/${record.slug}`} className="panel overflow-hidden rounded-[1.75rem] transition hover:-translate-y-1">
+              <div className="relative aspect-[4/3] border-b border-border/60">
+                <Image
+                  src={record.media.src}
+                  alt={record.media.alt}
+                  fill
+                  sizes="(min-width: 1280px) 18rem, (min-width: 768px) 42vw, 90vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-5">
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-muted">{record.speciesGroup}</p>
+                <h3 className="display-type mt-3 text-2xl font-bold text-ocean">{record.commonName}</h3>
+                <p className="mt-3 text-sm leading-6 text-muted">{record.quickFact}</p>
+              </div>
             </Link>
           ))}
         </div>

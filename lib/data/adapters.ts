@@ -6,6 +6,7 @@ import {
   type SpeciesRecord,
   type TrendDirection,
 } from "@/types/species";
+import { speciesMediaBySlug } from "@/lib/data/species-media";
 import { formatNumber } from "@/lib/utils";
 
 function interpolateValue(
@@ -117,6 +118,11 @@ function createCurrentPopulation(
 
 export function adaptSpeciesRecord(record: RawSpeciesRecord): SpeciesRecord {
   const populationSeries = interpolateSeries(record);
+  const media = speciesMediaBySlug[record.slug];
+
+  if (!media) {
+    throw new Error(`Missing media definition for ${record.slug}.`);
+  }
 
   return {
     slug: record.slug,
@@ -128,6 +134,7 @@ export function adaptSpeciesRecord(record: RawSpeciesRecord): SpeciesRecord {
     heroSummary: record.heroSummary,
     quickFact: record.quickFact,
     primaryColor: record.primaryColor,
+    media,
     sourceSystem: record.sourceSystem,
     dataNotes: record.dataNotes,
     trend: deriveTrend(populationSeries),

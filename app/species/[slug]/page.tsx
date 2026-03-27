@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { LazySpeciesMap } from "@/components/species/LazySpeciesMap";
@@ -43,28 +44,74 @@ export default async function SpeciesPage({
   return (
     <div className="shell py-12">
       <section className="panel rounded-[2rem] px-6 py-8 md:px-10 md:py-10">
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+        <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
           <div className="max-w-3xl">
             <p className="section-kicker">{species.speciesGroup}</p>
             <h1 className="display-type mt-4 text-5xl font-bold text-ocean md:text-6xl">{species.commonName}</h1>
             <p className="mt-3 text-lg italic text-muted">{species.scientificName}</p>
             <p className="mt-6 text-lg leading-8 text-muted">{species.heroSummary}</p>
-          </div>
 
-          <div className="grid gap-4 rounded-[1.75rem] bg-white p-6 lg:min-w-[320px]">
-            <StatusBadge trend={species.trend} />
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-muted">Current status</p>
-              <p className="mt-2 text-3xl font-bold text-ink">
-                {formatNumber(species.currentPopulation.estimate)}{" "}
-                <span className="text-lg font-semibold text-muted">{species.currentPopulation.unit}</span>
+            <div className="mt-8 grid gap-4 rounded-[1.75rem] bg-white p-6 lg:max-w-[340px]">
+              <StatusBadge trend={species.trend} />
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-muted">Current status</p>
+                <p className="mt-2 text-3xl font-bold text-ink">
+                  {formatNumber(species.currentPopulation.estimate)}{" "}
+                  <span className="text-lg font-semibold text-muted">{species.currentPopulation.unit}</span>
+                </p>
+              </div>
+              <p className="text-sm leading-6 text-muted">{species.currentPopulation.summary}</p>
+              <p className="text-sm font-semibold text-ocean">
+                {species.currentPopulation.year} confidence: {species.currentPopulation.confidence}
               </p>
             </div>
-            <p className="text-sm leading-6 text-muted">{species.currentPopulation.summary}</p>
-            <p className="text-sm font-semibold text-ocean">
-              {species.currentPopulation.year} confidence: {species.currentPopulation.confidence}
-            </p>
           </div>
+
+          <figure className="overflow-hidden rounded-[1.75rem] border border-border/60 bg-white shadow-lg">
+            <div className="relative aspect-[4/3]">
+              <Image
+                src={species.media.src}
+                alt={species.media.alt}
+                fill
+                priority
+                sizes="(min-width: 1024px) 40rem, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <figcaption className="grid gap-2 p-4 text-sm leading-6 text-muted">
+              <span>{species.media.alt}</span>
+              <span>
+                Photo by{" "}
+                <a
+                  href={species.media.photographerHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-semibold text-ocean underline decoration-ocean/30 underline-offset-3"
+                >
+                  {species.media.photographer}
+                </a>
+                {" "}via{" "}
+                <a
+                  href={species.media.sourceHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-semibold text-ocean underline decoration-ocean/30 underline-offset-3"
+                >
+                  {species.media.sourceLabel}
+                </a>
+                . License:{" "}
+                <a
+                  href={species.media.licenseHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-semibold text-ocean underline decoration-ocean/30 underline-offset-3"
+                >
+                  {species.media.licenseLabel}
+                </a>
+                .
+              </span>
+            </figcaption>
+          </figure>
         </div>
       </section>
 

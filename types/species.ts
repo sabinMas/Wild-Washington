@@ -58,6 +58,17 @@ export interface DataSourceReference {
   note: string;
 }
 
+export interface SpeciesMedia {
+  src: string;
+  alt: string;
+  photographer: string;
+  photographerHref: string;
+  sourceLabel: string;
+  sourceHref: string;
+  licenseLabel: string;
+  licenseHref: string;
+}
+
 export interface CurrentPopulationSnapshot {
   year: number;
   estimate: number;
@@ -112,6 +123,7 @@ export interface SpeciesRecord {
   heroSummary: string;
   quickFact: string;
   primaryColor: string;
+  media: SpeciesMedia;
   sourceSystem: string;
   dataNotes: string[];
   trend: TrendDirection;
