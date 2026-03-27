@@ -1,0 +1,148 @@
+import { type RawSpeciesRecord } from "@/types/species";
+
+export const speciesPartThree: RawSpeciesRecord[] = [
+  {
+    slug: "northern-leopard-frog",
+    commonName: "Northern Leopard Frog",
+    scientificName: "Lithobates pipiens",
+    shortLabel: "Leopard Frog",
+    speciesGroup: "Amphibian",
+    listingStatus: "State endangered",
+    heroSummary: "Northern leopard frogs nearly disappeared from Washington and now persist through carefully managed wetland recovery work.",
+    quickFact: "Their spotted skin helps them blend into grasses around marshes and ponds.",
+    primaryColor: "#7a8f42",
+    sourceSystem: "WDFW species recovery monitoring",
+    dataNotes: [
+      "Population index estimates adult frogs counted in monitored recovery wetlands.",
+      "Recovery data are patchy, so the trend is best read as a directional signal.",
+    ],
+    range: {
+      center: [46.8, -119.4],
+      zoom: 7.1,
+      habitats: ["Pothole wetlands", "Managed marshes", "Floodplain ponds"],
+      regions: [
+        { name: "Crab Creek wetland complex", center: [47.02, -119.42], radiusKm: 35, note: "Reintroduction and monitoring wetlands in central Washington." },
+        { name: "Moses Lake basin wetlands", center: [47.12, -119.3], radiusKm: 28, note: "Shallow marsh habitat used for breeding and juvenile growth." },
+        { name: "Potholes Reservoir corridor", center: [46.98, -119.31], radiusKm: 30, note: "Connected wetland habitat important for dispersal." },
+      ],
+    },
+    population: {
+      unit: "adult frogs",
+      startYear: 2001,
+      endYear: 2024,
+      checkpoints: [
+        { year: 2001, estimate: 120, low: 80, high: 170 },
+        { year: 2005, estimate: 180, low: 130, high: 235 },
+        { year: 2010, estimate: 250, low: 190, high: 320 },
+        { year: 2015, estimate: 380, low: 300, high: 470 },
+        { year: 2020, estimate: 520, low: 430, high: 620 },
+        { year: 2024, estimate: 640, low: 530, high: 760 },
+      ],
+      confidence: "limited",
+      summary: "Monitored adult northern leopard frogs in Washington recovery wetlands.",
+    },
+    threats: [
+      { title: "Wetland loss", description: "Drained or altered wetlands remove breeding habitat and safe cover." },
+      { title: "Disease and predators", description: "Amphibian disease, bullfrogs, and fish predation can limit survival." },
+      { title: "Water management shifts", description: "If ponds dry too early, egg masses and tadpoles may not survive." },
+    ],
+    conservationEfforts: [
+      { title: "Captive rearing and reintroduction", description: "Zoo and agency partners raise frogs for release into selected wetlands.", partners: ["Oregon Zoo", "WDFW", "regional partners"] },
+      { title: "Wetland habitat management", description: "Managers control vegetation, hydrology, and invasive predators at recovery sites.", partners: ["US Fish and Wildlife Service", "state wildlife areas"] },
+      { title: "Long-term monitoring", description: "Repeated surveys show whether reintroduced populations persist.", partners: ["biologists", "volunteer monitors"] },
+    ],
+    timeline: [
+      { year: 1999, title: "State recovery work intensifies", description: "Managers begin rebuilding the species from a few remaining populations." },
+      { year: 2007, title: "Reintroduction expands", description: "More wetlands receive frogs as captive-rearing partnerships strengthen." },
+      { year: 2018, title: "Breeding evidence grows", description: "Monitoring shows stronger signs of reproduction in restored habitat." },
+      { year: 2024, title: "Recovery shows cautious gains", description: "Population indicators improve, though wetlands remain vulnerable." },
+    ],
+    learning: {
+      elementary: { title: "Life in the Marsh", focus: "Life cycle and camouflage", bullets: ["Leopard frogs start life as tadpoles.", "Their spots help them hide in grasses near ponds.", "Frogs need both clean water and safe land around wetlands."], extension: "Sketch a frog-friendly pond and label what it needs." },
+      middle: { title: "Wetlands as Super Habitats", focus: "Ecosystem role and recovery", bullets: ["Wetlands support insects, birds, amphibians, and flood storage.", "Reintroduction works best when habitat quality is high.", "Invasive bullfrogs can change wetland food webs."], extension: "Compare two wetlands and identify which features help frogs most." },
+      high: { title: "Reintroduction Biology", focus: "Monitoring uncertainty", bullets: ["Small wetland populations are vulnerable to drought and disease.", "Wide confidence intervals reflect how hard amphibians can be to detect.", "Recovery combines captive breeding, habitat management, and adaptive monitoring."], extension: "Propose a monitoring plan that would improve confidence in the trend line." },
+      educators: { title: "Wetland Inquiry Toolkit", focus: "Hands-on restoration themes", bullets: ["Pair the dashboard with a macroinvertebrate survey or habitat audit.", "Students can model how hydroperiod changes affect eggs and tadpoles.", "This species offers a hopeful example of recovery through reintroduction."], extension: "Field trip idea: visit a managed wetland and document shoreline cover." },
+    },
+    actions: [
+      { title: "Study wetlands at Nisqually Refuge", description: "Practice wetland observation skills even outside the frog's main range.", href: "https://www.fws.gov/refuge/billy-frank-jr-nisqually", type: "field-trip" },
+      { title: "Use the Washington herp atlas", description: "Community observations build awareness of amphibians and reptiles statewide.", href: "https://wdfw.wa.gov/species-habitats/living/maps/herp-atlas", type: "citizen-science" },
+      { title: "Volunteer for wetland restoration", description: "Native planting and invasive removal improve marsh habitat complexity.", href: "https://www.ducks.org/", type: "volunteer" },
+      { title: "Northern leopard frog recovery", description: "Washington recovery overview and habitat information.", href: "https://wdfw.wa.gov/species-habitats/at-risk/species-recovery/northern-leopard-frog", type: "organization" },
+    ],
+    sources: [
+      { label: "Leopard frog recovery", organization: "WDFW", href: "https://wdfw.wa.gov/species-habitats/at-risk/species-recovery/northern-leopard-frog", note: "State recovery background, habitat, and restoration approach." },
+    ],
+  },
+  {
+    slug: "columbia-basin-pygmy-rabbit",
+    commonName: "Columbia Basin Pygmy Rabbit",
+    scientificName: "Brachylagus idahoensis",
+    shortLabel: "Pygmy Rabbit",
+    speciesGroup: "Mammal",
+    listingStatus: "State endangered",
+    heroSummary: "The Columbia Basin pygmy rabbit is one of Washington's most localized endangered mammals and depends on deep-soil sagebrush habitat.",
+    quickFact: "Pygmy rabbits dig their own burrows, which is unusual among North American rabbits.",
+    primaryColor: "#8b6a44",
+    sourceSystem: "WDFW reintroduction monitoring",
+    dataNotes: [
+      "Population index reflects estimated rabbits associated with active recovery sites.",
+      "Numbers fluctuate with release survival, predation, and shrub-steppe habitat quality.",
+    ],
+    range: {
+      center: [47.1, -119.9],
+      zoom: 7,
+      habitats: ["Deep-soil sagebrush", "Shrub-steppe preserves", "Managed release sites"],
+      regions: [
+        { name: "Moses Coulee area", center: [47.13, -119.97], radiusKm: 22, note: "Historic range and focus area for recovery efforts." },
+        { name: "Beezley Hills region", center: [47.36, -119.78], radiusKm: 18, note: "Protected shrub-steppe important for restoration." },
+        { name: "Recovery release network", center: [46.92, -119.86], radiusKm: 20, note: "Sites where burrow density and shrub cover are monitored." },
+      ],
+    },
+    population: {
+      unit: "estimated rabbits",
+      startYear: 2001,
+      endYear: 2024,
+      checkpoints: [
+        { year: 2001, estimate: 16, low: 10, high: 25 },
+        { year: 2005, estimate: 42, low: 25, high: 63 },
+        { year: 2010, estimate: 78, low: 52, high: 110 },
+        { year: 2015, estimate: 115, low: 82, high: 154 },
+        { year: 2020, estimate: 152, low: 118, high: 196 },
+        { year: 2024, estimate: 181, low: 140, high: 232 },
+      ],
+      confidence: "limited",
+      summary: "Estimated pygmy rabbits present at Washington recovery and release sites.",
+    },
+    threats: [
+      { title: "Shrub-steppe habitat loss", description: "Agriculture, wildfire, and invasive plants reduce dense sagebrush cover." },
+      { title: "Small population size", description: "Very small populations are vulnerable to sudden losses and low diversity." },
+      { title: "Predation pressure", description: "Open or degraded habitat makes rabbits easier for predators to find." },
+    ],
+    conservationEfforts: [
+      { title: "Captive breeding and release", description: "Zoos and agencies breed rabbits for release into restored habitat.", partners: ["Washington State University", "Oregon Zoo", "WDFW"] },
+      { title: "Shrub-steppe restoration", description: "Managers protect sagebrush, seed native plants, and reduce invasive weeds.", partners: ["BLM", "state wildlife areas", "restoration crews"] },
+      { title: "Burrow monitoring", description: "Biologists track active burrows, scat, and vegetation structure.", partners: ["recovery biologists", "partner landowners"] },
+    ],
+    timeline: [
+      { year: 2001, title: "Emergency captive breeding begins", description: "The native Columbia Basin population drops low enough that captive breeding becomes essential." },
+      { year: 2007, title: "Releases resume", description: "Captive-bred rabbits are reintroduced into protected shrub-steppe habitat." },
+      { year: 2016, title: "Wild-born kits documented", description: "Recovery teams find evidence that released rabbits are reproducing." },
+      { year: 2024, title: "Recovery remains fragile but hopeful", description: "Indicators rise slowly as habitat stewardship continues." },
+    ],
+    learning: {
+      elementary: { title: "Tiny Rabbit, Big Home Needs", focus: "Burrows and camouflage", bullets: ["Pygmy rabbits hide under sagebrush and in tunnels.", "They need safe cover from hawks and coyotes.", "Healthy shrub-steppe habitat has places to hide and move."], extension: "Build a mini habitat model with shrubs, loose soil, and safe cover." },
+      middle: { title: "What Is Shrub-Steppe?", focus: "Habitats and species interactions", bullets: ["Shrub-steppe is a dry ecosystem with sagebrush and bunchgrasses.", "Wildfire and invasive grasses can quickly change how safe the habitat feels.", "Restoration in drylands looks different from forest or wetland restoration."], extension: "Sketch a food web for shrub-steppe species that share rabbit habitat." },
+      high: { title: "Recovery from Near-Extirpation", focus: "Genetics and reintroduction", bullets: ["Captive breeding can buy time when wild populations collapse.", "Habitat quality determines whether released animals establish.", "Students can debate what success should mean for a species with such a narrow range."], extension: "Design a release-site scorecard that weighs shrub cover and soil depth." },
+      educators: { title: "Dryland Conservation Case Study", focus: "Underrepresented Washington ecosystems", bullets: ["Use this species to broaden attention beyond forests and coastlines.", "Pair the profile with wildfire, invasive grass, and land-conversion lessons.", "Students can compare this recovery strategy with frog or wolf recovery."], extension: "Field trip idea: visit a shrub-steppe interpretive area and document plant structure." },
+    },
+    actions: [
+      { title: "Visit Columbia Basin shrub-steppe learning sites", description: "Dryland field trips help students understand why sagebrush structure matters.", href: "https://www.blm.gov/programs/national-conservation-lands/washington", type: "field-trip" },
+      { title: "Document shrub-steppe species on iNaturalist", description: "Students can observe associated plants and animals even if rabbits stay hidden.", href: "https://www.inaturalist.org/", type: "citizen-science" },
+      { title: "Volunteer for sagebrush restoration", description: "Native seeding and weed removal strengthen habitat for many dryland species.", href: "https://www.wnps.org/", type: "volunteer" },
+      { title: "WDFW pygmy rabbit profile", description: "Recovery overview and Washington-specific species context.", href: "https://wdfw.wa.gov/species-habitats/species/brachylagus-idahoensis", type: "organization" },
+    ],
+    sources: [
+      { label: "Pygmy rabbit profile", organization: "WDFW", href: "https://wdfw.wa.gov/species-habitats/species/brachylagus-idahoensis", note: "Washington species information and recovery background." },
+    ],
+  },
+];

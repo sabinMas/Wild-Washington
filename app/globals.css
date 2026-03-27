@@ -1,0 +1,94 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+:root {
+  --ocean: #0f5f62;
+  --forest: #2f6b50;
+  --terra: #b76642;
+  --sand: #f5f0e8;
+  --mist: #e3ece8;
+  --surface: #fffdfa;
+  --ink: #1d2a2d;
+  --muted: #56656a;
+  --border: #c7d6d1;
+  --success: #2f7d57;
+  --warning: #b78a2c;
+  --danger: #a24437;
+}
+
+@theme {
+  --color-ocean: var(--ocean);
+  --color-forest: var(--forest);
+  --color-terra: var(--terra);
+  --color-sand: var(--sand);
+  --color-mist: var(--mist);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(15, 95, 98, 0.15), transparent 28%),
+    radial-gradient(circle at top right, rgba(183, 102, 66, 0.12), transparent 22%),
+    linear-gradient(180deg, #f7f4ef 0%, #f5f0e8 40%, #fcfbf8 100%);
+  color: var(--ink);
+  font-family: var(--font-source-sans-3), ui-sans-serif, system-ui, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(15, 95, 98, 0.18);
+}
+
+.shell {
+  margin-inline: auto;
+  width: min(1120px, calc(100% - 2rem));
+}
+
+.panel {
+  border: 1px solid rgba(86, 101, 106, 0.18);
+  background: rgba(255, 253, 250, 0.92);
+  box-shadow: 0 20px 50px rgba(15, 49, 51, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.display-type {
+  font-family: var(--font-merriweather), Georgia, serif;
+}
+
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(15, 95, 98, 0.18);
+  background: rgba(255, 255, 255, 0.7);
+  padding: 0.35rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ocean);
+}
+
+.leaflet-container {
+  font: inherit;
+}
