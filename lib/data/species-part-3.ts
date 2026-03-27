@@ -11,10 +11,10 @@ export const speciesPartThree: RawSpeciesRecord[] = [
     heroSummary: "Northern leopard frogs nearly disappeared from Washington and now persist through carefully managed wetland recovery work.",
     quickFact: "Their spotted skin helps them blend into grasses around marshes and ponds.",
     primaryColor: "#7a8f42",
-    sourceSystem: "WDFW species recovery monitoring",
+    sourceSystem: "WDFW northern leopard frog translocation strategy",
     dataNotes: [
-      "Population index estimates adult frogs counted in monitored recovery wetlands.",
-      "Recovery data are patchy, so the trend is best read as a directional signal.",
+      "WDFW's 2026 northern leopard frog translocation strategy reports occupied management units rather than a statewide frog census.",
+      "The source documents seven occupied management units in the 1980s, four in 2003-2004, three in 2014, and six in recent years following recovery work.",
     ],
     range: {
       center: [46.8, -119.4],
@@ -27,19 +27,17 @@ export const speciesPartThree: RawSpeciesRecord[] = [
       ],
     },
     population: {
-      unit: "adult frogs",
-      startYear: 2001,
+      unit: "occupied management units",
+      startYear: 1980,
       endYear: 2024,
       checkpoints: [
-        { year: 2001, estimate: 120, low: 80, high: 170 },
-        { year: 2005, estimate: 180, low: 130, high: 235 },
-        { year: 2010, estimate: 250, low: 190, high: 320 },
-        { year: 2015, estimate: 380, low: 300, high: 470 },
-        { year: 2020, estimate: 520, low: 430, high: 620 },
-        { year: 2024, estimate: 640, low: 530, high: 760 },
+        { year: 1980, estimate: 7 },
+        { year: 2004, estimate: 4 },
+        { year: 2014, estimate: 3 },
+        { year: 2024, estimate: 6 },
       ],
-      confidence: "limited",
-      summary: "Monitored adult northern leopard frogs in Washington recovery wetlands.",
+      confidence: "moderate",
+      summary: "Occupied management units in Washington's remaining northern leopard frog population area around Potholes Reservoir.",
     },
     threats: [
       { title: "Wetland loss", description: "Drained or altered wetlands remove breeding habitat and safe cover." },
@@ -70,7 +68,8 @@ export const speciesPartThree: RawSpeciesRecord[] = [
       { title: "Northern leopard frog recovery", description: "Washington recovery overview and habitat information.", href: "https://wdfw.wa.gov/species-habitats/at-risk/species-recovery/northern-leopard-frog", type: "organization" },
     ],
     sources: [
-      { label: "Leopard frog recovery", organization: "WDFW", href: "https://wdfw.wa.gov/species-habitats/at-risk/species-recovery/northern-leopard-frog", note: "State recovery background, habitat, and restoration approach." },
+      { label: "Translocation strategy (2012-2024)", organization: "WDFW", href: "https://wdfw.wa.gov/publications/02686", note: "Primary source for occupied management-unit history and current recovery status." },
+      { label: "Northern leopard frog recovery page", organization: "WDFW", href: "https://wdfw.wa.gov/species-habitats/at-risk/species-recovery/northern-leopard-frog", note: "State recovery background, habitat, and restoration approach." },
     ],
   },
   {
@@ -83,10 +82,10 @@ export const speciesPartThree: RawSpeciesRecord[] = [
     heroSummary: "The Columbia Basin pygmy rabbit is one of Washington's most localized endangered mammals and depends on deep-soil sagebrush habitat.",
     quickFact: "Pygmy rabbits dig their own burrows, which is unusual among North American rabbits.",
     primaryColor: "#8b6a44",
-    sourceSystem: "WDFW reintroduction monitoring",
+    sourceSystem: "WDFW pygmy rabbit periodic review",
     dataNotes: [
-      "Population index reflects estimated rabbits associated with active recovery sites.",
-      "Numbers fluctuate with release survival, predation, and shrub-steppe habitat quality.",
+      "The 2024 WDFW periodic status review reports a minimum of 125 Columbia Basin pygmy rabbits in the wild during winter 2022-2023.",
+      "Earlier checkpoints use official milestones: fewer than 250 rabbits by 1995, only one remaining population by March 2001, and no known wild population during the reintroduction reset period.",
     ],
     range: {
       center: [47.1, -119.9],
@@ -100,18 +99,16 @@ export const speciesPartThree: RawSpeciesRecord[] = [
     },
     population: {
       unit: "estimated rabbits",
-      startYear: 2001,
-      endYear: 2024,
+      startYear: 1995,
+      endYear: 2023,
       checkpoints: [
-        { year: 2001, estimate: 16, low: 10, high: 25 },
-        { year: 2005, estimate: 42, low: 25, high: 63 },
-        { year: 2010, estimate: 78, low: 52, high: 110 },
-        { year: 2015, estimate: 115, low: 82, high: 154 },
-        { year: 2020, estimate: 152, low: 118, high: 196 },
-        { year: 2024, estimate: 181, low: 140, high: 232 },
+        { year: 1995, estimate: 250, low: 150, high: 250 },
+        { year: 2001, estimate: 16 },
+        { year: 2011, estimate: 0 },
+        { year: 2023, estimate: 125 },
       ],
       confidence: "limited",
-      summary: "Estimated pygmy rabbits present at Washington recovery and release sites.",
+      summary: "Minimum Columbia Basin pygmy rabbits in the wild based on WDFW burrow and fecal-genetics surveys, plus official historical milestones.",
     },
     threats: [
       { title: "Shrub-steppe habitat loss", description: "Agriculture, wildfire, and invasive plants reduce dense sagebrush cover." },
@@ -142,7 +139,8 @@ export const speciesPartThree: RawSpeciesRecord[] = [
       { title: "WDFW pygmy rabbit profile", description: "Recovery overview and Washington-specific species context.", href: "https://wdfw.wa.gov/species-habitats/species/brachylagus-idahoensis", type: "organization" },
     ],
     sources: [
-      { label: "Pygmy rabbit profile", organization: "WDFW", href: "https://wdfw.wa.gov/species-habitats/species/brachylagus-idahoensis", note: "Washington species information and recovery background." },
+      { label: "2024 periodic status review", organization: "WDFW", href: "https://wdfw.wa.gov/publications/02507", note: "Primary source for 2022-2023 minimum wild population estimate of 125 rabbits." },
+      { label: "Pygmy rabbit recovery plan", organization: "WDFW", href: "https://wdfw.wa.gov/publications/01723", note: "Recovery milestones and historical collapse of the Columbia Basin population." },
     ],
   },
 ];

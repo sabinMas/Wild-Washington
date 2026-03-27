@@ -11,10 +11,10 @@ export const speciesPartTwo: RawSpeciesRecord[] = [
     heroSummary: "Northern spotted owls depend on older forests and remain one of Washington's clearest indicators of old-growth ecosystem health.",
     quickFact: "Spotted owls often stay in the same territory for many years when suitable habitat remains.",
     primaryColor: "#5c4c3a",
-    sourceSystem: "WDFW periodic status reviews",
+    sourceSystem: "WDFW 2024 spotted owl periodic review summary",
     dataNotes: [
-      "Population index represents occupied owl territories in Washington monitoring areas.",
-      "Territory counts are useful but do not capture every individual owl each year.",
+      "WDFW states there has never been a full statewide census of northern spotted owls in Washington.",
+      "This series uses WDFW's summary of roughly 1,000 territories in the 1990s and a 75-80% decline over the last three decades, yielding an approximate 2024 remaining-territory range of 200-250.",
     ],
     range: {
       center: [47.27, -121.66],
@@ -27,19 +27,15 @@ export const speciesPartTwo: RawSpeciesRecord[] = [
       ],
     },
     population: {
-      unit: "occupied territories",
-      startYear: 2001,
+      unit: "territories",
+      startYear: 1995,
       endYear: 2024,
       checkpoints: [
-        { year: 2001, estimate: 560, low: 530, high: 590 },
-        { year: 2005, estimate: 500, low: 470, high: 530 },
-        { year: 2010, estimate: 430, low: 400, high: 460 },
-        { year: 2015, estimate: 365, low: 340, high: 390 },
-        { year: 2020, estimate: 300, low: 280, high: 323 },
-        { year: 2024, estimate: 261, low: 244, high: 278 },
+        { year: 1995, estimate: 1000 },
+        { year: 2024, estimate: 225, low: 200, high: 250 },
       ],
-      confidence: "moderate",
-      summary: "Estimated occupied territories in Washington spotted owl monitoring landscapes.",
+      confidence: "limited",
+      summary: "Approximate remaining Washington northern spotted owl territories based on WDFW's long-term decline summary rather than a statewide census.",
     },
     threats: [
       { title: "Loss of mature forest structure", description: "Owls need large trees, canopy layers, and habitat continuity for nesting and hunting." },
@@ -70,8 +66,8 @@ export const speciesPartTwo: RawSpeciesRecord[] = [
       { title: "WDFW spotted owl profile", description: "State status information and habitat context.", href: "https://wdfw.wa.gov/species-habitats/species/strix-occidentalis-caurina", type: "organization" },
     ],
     sources: [
-      { label: "Spotted owl profile", organization: "WDFW", href: "https://wdfw.wa.gov/species-habitats/species/strix-occidentalis-caurina", note: "Washington status, habitat, and monitoring context." },
-      { label: "Federal recovery overview", organization: "US Fish and Wildlife Service", href: "https://www.fws.gov/species/northern-spotted-owl-strix-occidentalis-caurina", note: "Recovery planning and management context." },
+      { label: "2024 periodic review presentation", organization: "WDFW", href: "https://wdfw.wa.gov/sites/default/files/2024-01/10-northern-spotted-owl-psr-presentation.pdf", note: "WDFW summary citing ~1,000 territories and 75-80% decline over the last three decades." },
+      { label: "Federal recovery overview", organization: "US Fish and Wildlife Service", href: "https://www.fws.gov/species/northern-spotted-owl-strix-occidentalis-caurina", note: "Federal status, habitat needs, and recovery context." },
     ],
   },
   {
@@ -86,8 +82,8 @@ export const speciesPartTwo: RawSpeciesRecord[] = [
     primaryColor: "#4d6155",
     sourceSystem: "WDFW annual wolf reports",
     dataNotes: [
-      "Population index tracks Washington's minimum year-end wolf count.",
-      "Minimum counts underestimate the true number of wolves on the landscape.",
+      "Population series uses WDFW minimum year-end wolf counts reported in annual wolf reports.",
+      "Values marked by WDFW with an asterisk in some years include tribal reservation counts, so they remain conservative minimums rather than full population estimates.",
     ],
     range: {
       center: [47.12, -119.85],
@@ -101,18 +97,20 @@ export const speciesPartTwo: RawSpeciesRecord[] = [
     },
     population: {
       unit: "minimum wolves",
-      startYear: 2001,
+      startYear: 2008,
       endYear: 2024,
       checkpoints: [
-        { year: 2001, estimate: 8, low: 8, high: 10 },
-        { year: 2005, estimate: 22, low: 20, high: 25 },
-        { year: 2010, estimate: 51, low: 48, high: 56 },
+        { year: 2008, estimate: 5 },
+        { year: 2010, estimate: 27 },
+        { year: 2012, estimate: 51 },
         { year: 2015, estimate: 90, low: 85, high: 98 },
-        { year: 2020, estimate: 132, low: 126, high: 141 },
-        { year: 2024, estimate: 230, low: 218, high: 243 },
+        { year: 2020, estimate: 178 },
+        { year: 2022, estimate: 216 },
+        { year: 2023, estimate: 254 },
+        { year: 2024, estimate: 230 },
       ],
       confidence: "moderate",
-      summary: "Washington's reported minimum year-end wolf count, used as a conservative recovery indicator.",
+      summary: "Washington's reported minimum year-end wolf count from official WDFW annual wolf reports.",
     },
     threats: [
       { title: "Conflict with livestock", description: "When wolves prey on domestic animals, pressure grows for lethal removal." },
@@ -143,7 +141,8 @@ export const speciesPartTwo: RawSpeciesRecord[] = [
       { title: "WDFW wolf conservation page", description: "Annual reports, pack updates, and coexistence resources.", href: "https://wdfw.wa.gov/species-habitats/at-risk/species-recovery/gray-wolf", type: "organization" },
     ],
     sources: [
-      { label: "Gray wolf conservation", organization: "WDFW", href: "https://wdfw.wa.gov/species-habitats/at-risk/species-recovery/gray-wolf", note: "State counts, pack mapping, and recovery context." },
+      { label: "Gray wolf conservation page", organization: "WDFW", href: "https://wdfw.wa.gov/species-habitats/at-risk/species-recovery/gray-wolf", note: "State counts, pack mapping, and recovery context." },
+      { label: "2024 annual wolf report briefing", organization: "WDFW", href: "https://wdfw.wa.gov/sites/default/files/2025-04/10-presentation-final-2024-wdfw-annual-wolf-report-web-1.pdf", note: "Official minimum-count series including 2015-2024 values." },
     ],
   },
 ];

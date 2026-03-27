@@ -15,6 +15,8 @@ export default function MethodologyPage() {
         <p className="mt-5 text-lg leading-8 text-muted">
           Source-specific records from NOAA, the Center for Whale Research, and WDFW-style
           reviews are mapped into one standard schema for charts, cards, maps, and learning modules.
+          The underlying metrics are real but not identical across species: some are census counts,
+          some are minimum counts, some are lek-based estimates, and some are occupied habitat units.
         </p>
       </div>
 
@@ -40,6 +42,7 @@ export default function MethodologyPage() {
           <li>Annual values between major checkpoints are interpolated to create continuous educational trend lines.</li>
           <li>Confidence levels are qualitative and reflect how direct, complete, and consistent the monitoring is.</li>
           <li>Range maps show important Washington regions, not exact occupied boundaries.</li>
+          <li>The salmon series now uses a verified Puget Sound Chinook indicator derived from WDFW SPI escapement data rather than a synthetic statewide salmon index.</li>
         </ul>
       </section>
 
