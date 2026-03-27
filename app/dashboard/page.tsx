@@ -14,8 +14,9 @@ export default function DashboardPage() {
         <p className="section-kicker">Species overview</p>
         <h1 className="hero-title mt-4 font-bold text-ocean">Endangered species at a glance</h1>
         <p className="lede mt-5">
-          Search across Washington&apos;s featured species, compare trend status, and open
-          any card for a cleaner dashboard that explains what each number actually measures.
+          Browse Washington&apos;s featured species, filter by trend, and open each profile
+          to see what the recovery metric measures, where the species is found, and what
+          conservation work is underway.
         </p>
       </div>
 
