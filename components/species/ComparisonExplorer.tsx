@@ -79,9 +79,9 @@ export function ComparisonExplorer({ species }: { species: SpeciesRecord[] }) {
     <div className="space-y-6 sm:space-y-8">
       <div className="panel rounded-[1.5rem] p-4 sm:rounded-[1.75rem] sm:p-5">
         <p className="text-sm leading-6 text-muted">
-          Select up to four species. This view now compares change relative to each
-          species&apos; first observed checkpoint so we do not pretend whales, territories,
-          occupied units, and minimum counts are the same kind of number.
+          Select up to four species. This view compares change relative to each
+          species&apos; first observed checkpoint so we do not treat whales, territories,
+          occupied units, and minimum counts as the same kind of number.
         </p>
 
         <div className="-mx-1 mt-5 flex gap-2 overflow-x-auto px-1 pb-1 md:mx-0 md:flex-wrap md:overflow-visible md:px-0">

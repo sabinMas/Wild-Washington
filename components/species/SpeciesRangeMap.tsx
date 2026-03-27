@@ -5,10 +5,10 @@ import { type SpeciesRecord } from "@/types/species";
 
 export function SpeciesRangeMap({ species }: { species: SpeciesRecord }) {
   return (
-    <div className="panel rounded-[1.75rem] p-5">
-      <div className="mb-6">
+    <div className="panel rounded-[1.5rem] p-4 sm:rounded-[1.75rem] sm:p-5">
+      <div className="mb-5 sm:mb-6">
         <p className="section-kicker">Range map</p>
-        <h2 className="display-type mt-3 text-3xl font-bold text-ocean">
+        <h2 className="section-title mt-3 font-bold text-ocean">
           Where this species is found in Washington
         </h2>
         <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
@@ -22,7 +22,7 @@ export function SpeciesRangeMap({ species }: { species: SpeciesRecord }) {
           center={species.range.center}
           zoom={species.range.zoom}
           scrollWheelZoom={false}
-          className="h-[380px] w-full"
+          className="h-[300px] w-full sm:h-[380px]"
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'

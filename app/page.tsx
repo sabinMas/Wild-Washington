@@ -8,41 +8,37 @@ export default function HomePage() {
   const species = getSpeciesRecords().slice(0, 4);
 
   return (
-    <div className="pb-16">
-      <section className="shell pt-12">
-        <div className="panel overflow-hidden rounded-[2rem] px-6 py-10 md:px-10 md:py-14">
-          <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+    <div className="pb-14 sm:pb-16">
+      <section className="shell pt-8 sm:pt-12">
+        <div className="panel overflow-hidden rounded-[1.75rem] px-5 py-8 sm:rounded-[2rem] sm:px-6 sm:py-10 md:px-10 md:py-14">
+          <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:gap-10">
             <div>
-              <p className="section-kicker">
-                Washington State endangered species dashboard
-              </p>
-              <h1 className="display-type mt-5 max-w-4xl text-5xl font-bold leading-tight text-ocean md:text-6xl">
+              <p className="section-kicker">Washington State endangered species dashboard</p>
+              <h1 className="hero-title mt-5 max-w-4xl font-bold text-ocean">
                 Follow the stories behind eight species shaping Washington&apos;s future.
               </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">
+              <p className="mt-5 max-w-2xl text-base leading-7 text-muted sm:mt-6 sm:text-lg sm:leading-8">
                 Wild Washington turns conservation data into a clearer, classroom-ready
                 experience with source-aware trend charts, range maps, and dedicated lesson pages.
               </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row">
                 <Link
                   href="/dashboard"
-                  className="rounded-full bg-ocean px-6 py-3 text-center font-semibold text-white transition hover:bg-forest"
+                  className="rounded-full bg-ocean px-6 py-3 text-center text-sm font-semibold text-white transition hover:bg-forest sm:text-base"
                 >
                   Explore the species dashboard
                 </Link>
                 <Link
                   href="/learn"
-                  className="rounded-full border border-border bg-white px-6 py-3 text-center font-semibold text-ocean transition hover:bg-mist"
+                  className="rounded-full border border-border bg-white px-6 py-3 text-center text-sm font-semibold text-ocean transition hover:bg-mist sm:text-base"
                 >
                   Open lesson walkthroughs
                 </Link>
               </div>
             </div>
 
-            <div className="grid gap-4 rounded-[1.75rem] bg-gradient-to-br from-ocean to-forest p-6 text-white">
-              <p className="text-sm uppercase tracking-[0.2em] text-white/80">
-                What this dashboard includes
-              </p>
+            <div className="grid gap-4 rounded-[1.5rem] bg-gradient-to-br from-ocean to-forest p-5 text-white sm:rounded-[1.75rem] sm:p-6">
+              <p className="text-sm uppercase tracking-[0.2em] text-white/80">What this dashboard includes</p>
               <ul className="grid gap-3 text-sm leading-6 text-white/92">
                 <li>Observed checkpoints that explain what each recovery indicator tracks</li>
                 <li>Interactive distribution maps focused on Washington habitats</li>
@@ -54,7 +50,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="shell mt-10 grid gap-5 md:grid-cols-4">
+      <section className="shell mt-8 grid gap-4 sm:mt-10 sm:gap-5 md:grid-cols-2 xl:grid-cols-4">
         <StatCard
           label="Species tracked"
           value={summary.totalSpecies}
@@ -81,20 +77,18 @@ export default function HomePage() {
         />
       </section>
 
-      <section className="shell mt-16">
+      <section className="shell mt-14 sm:mt-16">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="section-kicker">Featured species</p>
-            <h2 className="display-type mt-3 text-4xl font-bold text-ocean">
-              A quick look at the dashboard experience
-            </h2>
+            <h2 className="section-title mt-3 font-bold text-ocean">A quick look at the dashboard experience</h2>
           </div>
           <Link href="/dashboard" className="text-sm font-semibold text-ocean">
             See all species
           </Link>
         </div>
 
-        <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-7 grid gap-4 sm:mt-8 sm:gap-5 md:grid-cols-2 xl:grid-cols-4">
           {species.map((record) => (
             <Link
               key={record.slug}

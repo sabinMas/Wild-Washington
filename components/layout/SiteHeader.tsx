@@ -19,18 +19,18 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/45 bg-white/80 backdrop-blur-xl">
-      <div className="shell flex items-center justify-between gap-4 py-4">
-        <Link href="/" className="flex items-center gap-3">
-          <div className="flex size-11 items-center justify-center rounded-2xl bg-ocean text-lg font-bold text-white shadow-lg shadow-ocean/20">
+      <div className="shell flex items-center justify-between gap-3 py-3 sm:gap-4 sm:py-4">
+        <Link href="/" className="min-w-0 flex items-center gap-3">
+          <div className="flex size-10 shrink-0 items-center justify-center rounded-2xl bg-ocean text-base font-bold text-white shadow-lg shadow-ocean/20 sm:size-11 sm:text-lg">
             WW
           </div>
-          <div>
-            <p className="display-type text-lg font-bold text-ocean">Wild Washington</p>
-            <p className="text-sm text-muted">Endangered species dashboard</p>
+          <div className="min-w-0">
+            <p className="display-type truncate text-base font-bold text-ocean sm:text-lg">Wild Washington</p>
+            <p className="truncate text-xs text-muted sm:text-sm">Endangered species dashboard</p>
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex" aria-label="Primary navigation">
+        <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary navigation">
           {navItems.map((item) => {
             const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
 
@@ -54,35 +54,45 @@ export function SiteHeader() {
           onClick={() => setOpen((value) => !value)}
           aria-expanded={open}
           aria-controls="mobile-nav"
-          className="rounded-full border border-border px-4 py-2 text-sm font-semibold text-ocean md:hidden"
+          aria-label={open ? "Close menu" : "Open menu"}
+          className="inline-flex shrink-0 items-center gap-2 rounded-full border border-border bg-white px-3 py-2 text-sm font-semibold text-ocean shadow-sm lg:hidden"
         >
-          Menu
+          <span>{open ? "Close" : "Menu"}</span>
+          <span className="grid gap-[3px]" aria-hidden="true">
+            <span className={cn("block h-0.5 w-4 rounded-full bg-ocean transition", open && "translate-y-[5px] rotate-45")} />
+            <span className={cn("block h-0.5 w-4 rounded-full bg-ocean transition", open && "opacity-0")} />
+            <span className={cn("block h-0.5 w-4 rounded-full bg-ocean transition", open && "-translate-y-[5px] -rotate-45")} />
+          </span>
         </button>
       </div>
 
       {open ? (
         <nav
           id="mobile-nav"
-          className="shell grid gap-2 border-t border-border/80 py-4 md:hidden"
+          className="border-t border-border/80 lg:hidden"
           aria-label="Mobile navigation"
         >
-          {navItems.map((item) => {
-            const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
+          <div className="shell py-4">
+            <div className="grid gap-2 rounded-[1.5rem] bg-white/90 p-2 shadow-lg shadow-ocean/5">
+              {navItems.map((item) => {
+                const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
 
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className={cn(
-                  "rounded-2xl px-4 py-3 text-sm font-semibold",
-                  active ? "bg-ocean text-white" : "bg-white text-ink",
-                )}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    className={cn(
+                      "rounded-2xl px-4 py-3 text-sm font-semibold",
+                      active ? "bg-ocean text-white" : "bg-sand/70 text-ink",
+                    )}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
         </nav>
       ) : null}
     </header>

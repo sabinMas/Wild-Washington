@@ -79,7 +79,7 @@ export default async function SpeciesPage({
                 {species.currentPopulation.summary}
               </p>
               <p className="text-sm font-semibold text-ocean">
-                {species.populationMetric.label} • {species.currentPopulation.year}
+                {species.populationMetric.label} | {species.currentPopulation.year}
               </p>
             </div>
           </div>
