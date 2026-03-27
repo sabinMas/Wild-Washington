@@ -27,6 +27,13 @@ export const speciesPartThree: RawSpeciesRecord[] = [
       ],
     },
     population: {
+      metric: {
+        label: "Occupied management units",
+        kind: "proxy",
+        whatItTracks: "The number of Washington recovery management units with northern leopard frog occupancy.",
+        whyItMatters: "For this species, occupied wetland units are a clearer recovery measure than pretending we know the exact number of individual frogs.",
+        precisionNote: "Values like 7, 4, 3, and 6 refer to occupied management units, not individual frogs or habitat acres.",
+      },
       unit: "occupied management units",
       startYear: 1980,
       endYear: 2024,
@@ -84,7 +91,7 @@ export const speciesPartThree: RawSpeciesRecord[] = [
     primaryColor: "#8b6a44",
     sourceSystem: "WDFW pygmy rabbit periodic review",
     dataNotes: [
-      "The 2024 WDFW periodic status review reports a minimum of 125 Columbia Basin pygmy rabbits in the wild during winter 2022-2023.",
+      "The 2024 WDFW periodic status review describes a minimum of 61 wild Columbia Basin pygmy rabbits during winter 2022-2023.",
       "Earlier checkpoints use official milestones: fewer than 250 rabbits by 1995, only one remaining population by March 2001, and no known wild population during the reintroduction reset period.",
     ],
     range: {
@@ -98,6 +105,13 @@ export const speciesPartThree: RawSpeciesRecord[] = [
       ],
     },
     population: {
+      metric: {
+        label: "Minimum wild population estimate",
+        kind: "estimate",
+        whatItTracks: "The estimated number of Columbia Basin pygmy rabbits remaining in the wild.",
+        whyItMatters: "This metric captures whether captive breeding and shrub-steppe restoration are translating into a self-sustaining wild population.",
+        precisionNote: "Recent WDFW reviews describe this as a minimum wild estimate derived from burrow surveys and genetics, not a full count of every rabbit.",
+      },
       unit: "estimated rabbits",
       startYear: 1995,
       endYear: 2023,
@@ -105,10 +119,10 @@ export const speciesPartThree: RawSpeciesRecord[] = [
         { year: 1995, estimate: 250, low: 150, high: 250 },
         { year: 2001, estimate: 16 },
         { year: 2011, estimate: 0 },
-        { year: 2023, estimate: 125 },
+        { year: 2023, estimate: 61, low: 61, high: 125, note: "WDFW's 2024 periodic review describes a minimum of 61 wild rabbits in winter 2022-2023." },
       ],
       confidence: "limited",
-      summary: "Minimum Columbia Basin pygmy rabbits in the wild based on WDFW burrow and fecal-genetics surveys, plus official historical milestones.",
+      summary: "Minimum wild Columbia Basin pygmy rabbit estimate based on WDFW burrow surveys, fecal genetics, and recovery-review milestones.",
     },
     threats: [
       { title: "Shrub-steppe habitat loss", description: "Agriculture, wildfire, and invasive plants reduce dense sagebrush cover." },
@@ -139,7 +153,7 @@ export const speciesPartThree: RawSpeciesRecord[] = [
       { title: "WDFW pygmy rabbit profile", description: "Recovery overview and Washington-specific species context.", href: "https://wdfw.wa.gov/species-habitats/species/brachylagus-idahoensis", type: "organization" },
     ],
     sources: [
-      { label: "2024 periodic status review", organization: "WDFW", href: "https://wdfw.wa.gov/publications/02507", note: "Primary source for 2022-2023 minimum wild population estimate of 125 rabbits." },
+      { label: "2024 periodic status review", organization: "WDFW", href: "https://wdfw.wa.gov/publications/02507", note: "Primary source for the minimum wild population estimate during winter 2022-2023." },
       { label: "Pygmy rabbit recovery plan", organization: "WDFW", href: "https://wdfw.wa.gov/publications/01723", note: "Recovery milestones and historical collapse of the Columbia Basin population." },
     ],
   },

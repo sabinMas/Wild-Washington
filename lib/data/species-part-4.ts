@@ -27,6 +27,13 @@ export const speciesPartFour: RawSpeciesRecord[] = [
       ],
     },
     population: {
+      metric: {
+        label: "Modeled abundance estimate",
+        kind: "estimate",
+        whatItTracks: "Estimated marbled murrelet abundance in Washington based on marine survey and status-review modeling.",
+        whyItMatters: "Murrelets are hard to count directly, so modeled abundance is the clearest statewide signal available.",
+        precisionNote: "The line represents reported abundance checkpoints from WDFW's status review, not a complete annual census.",
+      },
       unit: "estimated birds",
       startYear: 2015,
       endYear: 2023,
@@ -96,6 +103,13 @@ export const speciesPartFour: RawSpeciesRecord[] = [
       ],
     },
     population: {
+      metric: {
+        label: "Lek-based population estimate",
+        kind: "estimate",
+        whatItTracks: "Washington sage-grouse population estimates derived from lek counts and related status reporting.",
+        whyItMatters: "Repeated lek counts are one of the most consistent ways to track a small, highly localized sage-grouse population.",
+        precisionNote: "These are lek-based estimates, not a full count of every bird across Washington.",
+      },
       unit: "estimated birds",
       startYear: 1999,
       endYear: 2023,

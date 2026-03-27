@@ -27,6 +27,13 @@ export const speciesPartOne: RawSpeciesRecord[] = [
       ],
     },
     population: {
+      metric: {
+        label: "Natural spawner count",
+        kind: "estimate",
+        whatItTracks: "Annual Puget Sound Chinook natural spawners counted across monitored watersheds.",
+        whyItMatters: "Spawner counts show how many adult fish returned to reproduce in the wild.",
+        precisionNote: "This is a Chinook indicator series, not a statewide count for every salmon species in Washington.",
+      },
       unit: "natural spawners",
       startYear: 2010,
       endYear: 2024,
@@ -109,6 +116,13 @@ export const speciesPartOne: RawSpeciesRecord[] = [
       ],
     },
     population: {
+      metric: {
+        label: "Direct census count",
+        kind: "census",
+        whatItTracks: "The documented number of Southern Resident killer whales alive in J, K, and L pods.",
+        whyItMatters: "Because the population is small, every birth and death changes the recovery outlook.",
+        precisionNote: "These are direct census milestones from NOAA and the Center for Whale Research, not modeled abundance estimates.",
+      },
       unit: "whales",
       startYear: 1995,
       endYear: 2024,

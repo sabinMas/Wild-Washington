@@ -49,11 +49,14 @@ export function SpeciesCard({ species }: { species: SpeciesRecord }) {
         <div className="mt-6 grid gap-3 rounded-2xl bg-sand/70 p-4">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
-              Population snapshot
+              Current indicator
             </p>
             <p className="mt-1 text-2xl font-bold text-ink">
               {formatNumber(species.currentPopulation.estimate)}{" "}
               <span className="text-base font-semibold text-muted">{species.currentPopulation.unit}</span>
+            </p>
+            <p className="mt-2 text-sm leading-6 text-muted">
+              {species.populationMetric.label}
             </p>
           </div>
           <div className="flex items-center justify-between text-sm text-muted">

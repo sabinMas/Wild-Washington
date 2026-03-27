@@ -1,6 +1,5 @@
 import {
   type CurrentPopulationSnapshot,
-  type PopulationCheckpoint,
   type PopulationDatum,
   type RawSpeciesRecord,
   type SpeciesRecord,
@@ -9,69 +8,13 @@ import {
 import { speciesMediaBySlug } from "@/lib/data/species-media";
 import { formatNumber } from "@/lib/utils";
 
-function interpolateValue(
-  year: number,
-  left: PopulationCheckpoint,
-  right: PopulationCheckpoint,
-  key: "estimate" | "low" | "high",
-) {
-  const leftValue = left[key];
-  const rightValue = right[key];
-
-  if (leftValue === undefined && rightValue === undefined) {
-    return undefined;
-  }
-
-  if (leftValue === undefined) {
-    return rightValue;
-  }
-
-  if (rightValue === undefined) {
-    return leftValue;
-  }
-
-  if (left.year === right.year) {
-    return leftValue;
-  }
-
-  const progress = (year - left.year) / (right.year - left.year);
-  return leftValue + (rightValue - leftValue) * progress;
-}
-
 function interpolateSeries(record: RawSpeciesRecord): PopulationDatum[] {
-  const { startYear, endYear, checkpoints } = record.population;
-  const ordered = [...checkpoints].sort((a, b) => a.year - b.year);
-
-  return Array.from({ length: endYear - startYear + 1 }, (_, index) => {
-    const year = startYear + index;
-    const exact = ordered.find((point) => point.year === year);
-
-    if (exact) {
-      return {
-        ...exact,
-        displayValue: formatNumber(exact.estimate),
-      };
-    }
-
-    const previous = [...ordered].reverse().find((point) => point.year < year);
-    const next = ordered.find((point) => point.year > year);
-
-    if (!previous || !next) {
-      throw new Error(`Unable to interpolate ${record.slug} for ${year}.`);
-    }
-
-    const estimate = Math.round(
-      interpolateValue(year, previous, next, "estimate") ?? 0,
-    );
-
-    return {
-      year,
-      estimate,
-      low: Math.round(interpolateValue(year, previous, next, "low") ?? 0),
-      high: Math.round(interpolateValue(year, previous, next, "high") ?? 0),
-      displayValue: formatNumber(estimate),
-    };
-  });
+  return [...record.population.checkpoints]
+    .sort((a, b) => a.year - b.year)
+    .map((point) => ({
+      ...point,
+      displayValue: formatNumber(point.estimate),
+    }));
 }
 
 function deriveTrend(series: PopulationDatum[]): TrendDirection {
@@ -140,6 +83,7 @@ export function adaptSpeciesRecord(record: RawSpeciesRecord): SpeciesRecord {
     trend: deriveTrend(populationSeries),
     populationSeries,
     currentPopulation: createCurrentPopulation(record, populationSeries),
+    populationMetric: record.population.metric,
     range: record.range,
     threats: record.threats,
     conservationEfforts: record.conservationEfforts,
