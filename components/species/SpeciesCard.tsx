@@ -10,7 +10,7 @@ export function SpeciesCard({ species }: { species: SpeciesRecord }) {
   return (
     <Link
       href={`/species/${species.slug}`}
-      className="panel group flex h-full flex-col overflow-hidden rounded-[1.75rem] transition duration-200 hover:-translate-y-1 hover:[box-shadow:var(--shadow-lift)]"
+      className="panel group flex h-full flex-col overflow-hidden rounded-[1.9rem] transition duration-200 hover:-translate-y-1 hover:[box-shadow:var(--shadow-lift)]"
     >
       <div className="relative aspect-[4/3] overflow-hidden border-b border-border/60">
         <Image
@@ -20,8 +20,9 @@ export function SpeciesCard({ species }: { species: SpeciesRecord }) {
           sizes="(min-width: 1280px) 28rem, (min-width: 768px) 44vw, 92vw"
           className="object-cover transition duration-300 group-hover:scale-[1.03]"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(16,23,21,0.72)] via-transparent to-transparent" />
         <div className="absolute inset-x-0 top-0 flex items-start justify-between gap-3 p-5">
-          <p className="rounded-full bg-white/88 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-ocean shadow-sm">
+          <p className="rounded-full border border-white/18 bg-[rgba(255,251,245,0.9)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-ocean shadow-sm">
             {species.speciesGroup}
           </p>
           <span
@@ -30,35 +31,35 @@ export function SpeciesCard({ species }: { species: SpeciesRecord }) {
             aria-hidden="true"
           />
         </div>
+        <div className="absolute inset-x-0 bottom-0 p-5 text-white">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/72">
+            {species.listingStatus}
+          </p>
+          <h3 className="display-type mt-2 text-3xl font-semibold leading-tight text-white">
+            {species.commonName}
+          </h3>
+          <p className="mt-1 text-sm italic text-[rgba(255,255,255,0.78)]">{species.scientificName}</p>
+        </div>
       </div>
 
       <div className="flex flex-1 flex-col p-6">
-        <div className="mb-4 flex items-start justify-between gap-3">
-          <div>
-            <h3 className="display-type text-2xl font-bold text-ocean">
-              {species.commonName}
-            </h3>
-            <p className="mt-1 text-sm italic text-muted">{species.scientificName}</p>
-          </div>
-        </div>
-
         <div className="mb-4 flex flex-wrap items-center gap-2">
           <StatusBadge trend={species.trend} />
-          <span className="rounded-full bg-sand/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-muted">
-            {species.listingStatus}
+          <span className="rounded-full border border-border/60 bg-white/45 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-muted">
+            {species.populationMetric.label}
           </span>
         </div>
 
         <p className="text-sm leading-6 text-muted">{species.heroSummary}</p>
 
-        <div className="panel-soft mt-5 grid gap-3 rounded-2xl p-4">
+        <div className="panel-soft mt-5 grid gap-3 rounded-[1.35rem] p-4">
           <div>
-            <p className="eyebrow">
-              Current indicator
-            </p>
+            <p className="eyebrow">Current indicator</p>
             <p className="mt-1 text-2xl font-bold text-ink">
               {formatNumber(species.currentPopulation.estimate)}{" "}
-              <span className="text-base font-semibold text-muted">{species.currentPopulation.unit}</span>
+              <span className="text-base font-semibold text-muted">
+                {species.currentPopulation.unit}
+              </span>
             </p>
             <p className="mt-2 text-sm leading-6 text-muted">
               {species.populationMetric.label}
@@ -81,8 +82,8 @@ export function SpeciesCard({ species }: { species: SpeciesRecord }) {
         </div>
 
         <div className="mt-5 flex items-center justify-between text-sm font-semibold text-ocean">
-          <span>Open species profile</span>
-          <span aria-hidden="true">→</span>
+          <span>Explore species profile</span>
+          <span aria-hidden="true">View</span>
         </div>
       </div>
     </Link>

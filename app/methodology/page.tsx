@@ -9,34 +9,44 @@ export default function MethodologyPage() {
 
   return (
     <div className="shell py-8 sm:py-12">
-      <div className="max-w-3xl">
-        <p className="section-kicker">Data sources and methodology</p>
-        <h1 className="hero-title mt-4 font-bold text-ocean">Transparent about where the numbers come from</h1>
-        <p className="mt-5 text-base leading-7 text-muted sm:text-lg sm:leading-8">
-          Source-specific records from NOAA, the Center for Whale Research, and WDFW-style
-          reviews are mapped into one standard schema for charts, cards, maps, and learning modules.
-          The underlying metrics are real but not identical across species: some are census counts,
-          some are minimum counts, some are lek-based estimates, and some are occupied habitat units.
-        </p>
+      <div className="grid gap-5 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)] lg:items-end">
+        <div className="max-w-3xl">
+          <p className="section-kicker">Data sources and methodology</p>
+          <h1 className="hero-title mt-4 font-semibold text-ocean">Transparent about where the numbers come from</h1>
+          <p className="mt-5 text-base leading-7 text-muted sm:text-lg sm:leading-8">
+            Source-specific records from NOAA, the Center for Whale Research, and WDFW-style
+            reviews are mapped into one standard schema for charts, cards, maps, and learning modules.
+            The underlying metrics are real but not identical across species: some are census counts,
+            some are minimum counts, some are lek-based estimates, and some are occupied habitat units.
+          </p>
+        </div>
+
+        <div className="panel-accent rounded-[1.7rem] p-5">
+          <p className="eyebrow">Reading rule</p>
+          <p className="mt-3 text-sm leading-6 text-muted">
+            Wild Washington standardizes presentation, not meaning. Each species keeps its own
+            evidence type, assumptions, and data caveats.
+          </p>
+        </div>
       </div>
 
       <section className="mt-8 grid gap-4 sm:mt-10 sm:gap-5 lg:grid-cols-3">
-        <div className="panel rounded-[1.5rem] p-5 sm:rounded-[1.75rem] sm:p-6">
+        <div className="panel rounded-[1.75rem] p-5 sm:p-6">
           <h2 className="text-xl font-bold text-ink">1. Raw source format</h2>
           <p className="mt-3 text-sm leading-6 text-muted">Each record starts with source-aware metadata, checkpoints, geography, educational content, and action links.</p>
         </div>
-        <div className="panel rounded-[1.5rem] p-5 sm:rounded-[1.75rem] sm:p-6">
+        <div className="panel rounded-[1.75rem] p-5 sm:p-6">
           <h2 className="text-xl font-bold text-ink">2. Adapter layer</h2>
           <p className="mt-3 text-sm leading-6 text-muted">The adapter preserves observed checkpoints, derives current population snapshots, and labels overall trend direction without inventing annual values between sparse source years.</p>
         </div>
-        <div className="panel rounded-[1.5rem] p-5 sm:rounded-[1.75rem] sm:p-6">
+        <div className="panel rounded-[1.75rem] p-5 sm:p-6">
           <h2 className="text-xl font-bold text-ink">3. Shared UI schema</h2>
           <p className="mt-3 text-sm leading-6 text-muted">Once adapted, every species can use the same card, chart, map, comparison, and learning components.</p>
         </div>
       </section>
 
-      <section className="mt-8 panel rounded-[1.5rem] p-5 sm:mt-10 sm:rounded-[1.75rem] sm:p-6">
-        <h2 className="section-title font-bold text-ocean">Data limitations to keep in mind</h2>
+      <section className="mt-8 panel rounded-[1.75rem] p-5 sm:mt-10 sm:p-6">
+        <h2 className="section-title font-semibold text-ocean">Data limitations to keep in mind</h2>
         <ul className="mt-5 grid gap-3 text-sm leading-6 text-muted">
           <li>Some series represent modeled abundance, occupied territories, or minimum counts rather than full censuses.</li>
           <li>Only observed checkpoints are now plotted so the charts do not imply false year-by-year precision.</li>
@@ -48,11 +58,11 @@ export default function MethodologyPage() {
 
       <section className="mt-8 grid gap-5 sm:mt-10 sm:gap-6">
         {species.map((record) => (
-          <article key={record.slug} className="panel rounded-[1.5rem] p-5 sm:rounded-[1.75rem] sm:p-6">
+          <article key={record.slug} className="panel rounded-[1.75rem] p-5 sm:p-6">
             <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.16em] text-muted">{record.sourceSystem}</p>
-                <h2 className="section-title mt-2 font-bold text-ocean">{record.commonName}</h2>
+                <h2 className="section-title mt-2 font-semibold text-ocean">{record.commonName}</h2>
               </div>
               <p className="text-sm text-muted">{record.currentPopulation.year} current snapshot</p>
             </div>
@@ -72,7 +82,7 @@ export default function MethodologyPage() {
                 <h3 className="text-lg font-bold text-ink">Source links</h3>
                 <div className="mt-3 grid gap-3">
                   {record.sources.map((source) => (
-                    <a key={source.href} href={source.href} target="_blank" rel="noreferrer" className="rounded-2xl bg-white p-4">
+                    <a key={source.href} href={source.href} target="_blank" rel="noreferrer" className="panel-soft rounded-2xl p-4">
                       <p className="font-semibold text-ink">{source.label}</p>
                       <p className="text-sm text-muted">{source.organization}</p>
                       <p className="mt-2 text-sm leading-6 text-muted">{source.note}</p>

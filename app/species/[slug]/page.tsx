@@ -53,7 +53,7 @@ export default async function SpeciesPage({
 
   return (
     <div className="shell py-8 sm:py-12">
-      <section className="panel rounded-[1.75rem] px-5 py-6 sm:rounded-[2rem] sm:px-6 sm:py-8 md:px-10 md:py-10">
+      <section className="panel rounded-[1.9rem] px-5 py-6 sm:px-6 sm:py-8 md:px-10 md:py-10">
         <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <div className="max-w-3xl">
             <p className="section-kicker">{species.speciesGroup}</p>
@@ -63,7 +63,7 @@ export default async function SpeciesPage({
                 {species.listingStatus}
               </span>
             </div>
-            <h1 className="hero-title mt-4 font-bold text-ocean">
+            <h1 className="hero-title mt-4 font-semibold text-ocean">
               {species.commonName}
             </h1>
             <p className="mt-3 text-base italic text-muted sm:text-lg">
@@ -74,7 +74,7 @@ export default async function SpeciesPage({
             </p>
 
             <div className="mt-7 grid gap-4 sm:mt-8 sm:grid-cols-3">
-              <article className="panel-soft rounded-[1.4rem] p-5 sm:col-span-2">
+              <article className="panel-soft rounded-[1.5rem] p-5 sm:col-span-2">
                 <p className="eyebrow">Current observed indicator</p>
                 <p className="mt-2 text-2xl font-bold text-ink sm:text-3xl">
                   {formatNumber(species.currentPopulation.estimate)}{" "}
@@ -99,7 +99,7 @@ export default async function SpeciesPage({
                   </div>
                 </div>
               </article>
-              <article className="panel-soft rounded-[1.4rem] p-5">
+              <article className="panel-soft rounded-[1.5rem] p-5">
                 <p className="eyebrow">Key habitat</p>
                 <p className="mt-2 text-lg font-bold text-ink">{habitatPreview}</p>
                 <p className="mt-3 text-sm leading-6 text-muted">
@@ -109,7 +109,7 @@ export default async function SpeciesPage({
             </div>
 
             <div className="mt-5 grid gap-4 lg:max-w-[48rem] lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
-              <div className="panel-accent rounded-[1.35rem] p-4">
+              <div className="panel-accent rounded-[1.45rem] p-4">
                 <p className="eyebrow">What to do next</p>
                 <p className="mt-2 text-sm leading-6 text-muted">
                   Start with the trend chart and range map to understand the evidence, then move into threats, recovery work, and lesson paths.
@@ -126,7 +126,7 @@ export default async function SpeciesPage({
             </div>
           </div>
 
-          <figure className="overflow-hidden rounded-[1.5rem] border border-border/60 bg-white shadow-lg sm:rounded-[1.75rem]">
+          <figure className="media-frame bg-white/40">
             <div className="relative aspect-[4/3]">
               <Image
                 src={species.media.src}
@@ -137,7 +137,7 @@ export default async function SpeciesPage({
                 className="object-cover"
               />
             </div>
-            <figcaption className="grid gap-2 p-4 text-sm leading-6 text-muted">
+            <figcaption className="grid gap-2 bg-[rgba(255,251,245,0.88)] p-4 text-sm leading-6 text-muted">
               <span>{species.media.alt}</span>
               <span>
                 Photo by{" "}
@@ -178,7 +178,7 @@ export default async function SpeciesPage({
         <div className="mb-5 flex flex-col gap-3 sm:mb-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
             <p className="section-kicker">Read the evidence</p>
-            <h2 className="section-title mt-4 font-bold text-ocean">
+            <h2 className="section-title mt-4 font-semibold text-ocean">
               Start with the observed trend and the places that still matter most
             </h2>
           </div>
@@ -190,7 +190,7 @@ export default async function SpeciesPage({
         <div className="grid gap-6 xl:grid-cols-[minmax(0,1.2fr)_minmax(20rem,0.8fr)]">
           <PopulationTrendChart species={species} />
           <div className="grid gap-6">
-            <div className="panel rounded-[1.5rem] p-5 sm:rounded-[1.75rem] sm:p-6">
+            <div className="panel rounded-[1.75rem] p-5 sm:p-6">
               <p className="section-kicker">Metric guide</p>
               <div className="mt-5 grid gap-4">
                 <article className="panel-soft rounded-[1.35rem] p-4">
@@ -219,10 +219,10 @@ export default async function SpeciesPage({
         </div>
       </section>
 
-      <section className="mt-6 panel rounded-[1.5rem] p-5 sm:mt-8 sm:rounded-[1.75rem] sm:p-6">
+      <section className="mt-6 panel rounded-[1.75rem] p-5 sm:mt-8 sm:p-6">
         <div className="max-w-2xl">
           <p className="section-kicker">What is shaping the story</p>
-          <h2 className="section-title mt-4 font-bold text-ocean">
+          <h2 className="section-title mt-4 font-semibold text-ocean">
             Put the pressure points next to the recovery work
           </h2>
           <p className="mt-4 text-sm leading-6 text-muted">
@@ -265,10 +265,10 @@ export default async function SpeciesPage({
       </section>
 
       <section className="mt-6 grid gap-6 sm:mt-8 xl:grid-cols-[minmax(0,1.15fr)_minmax(20rem,0.85fr)]">
-        <div className="panel rounded-[1.5rem] p-5 sm:rounded-[1.75rem] sm:p-6">
+        <div className="panel rounded-[1.75rem] p-5 sm:p-6">
           <div className="max-w-2xl">
             <p className="section-kicker">Context over time</p>
-            <h2 className="section-title mt-4 font-bold text-ocean">
+            <h2 className="section-title mt-4 font-semibold text-ocean">
               Key recovery moments and data notes that shape this page
             </h2>
             <p className="mt-4 text-sm leading-6 text-muted">
@@ -307,9 +307,9 @@ export default async function SpeciesPage({
           </div>
         </div>
 
-        <div className="panel rounded-[1.5rem] p-5 sm:rounded-[1.75rem] sm:p-6">
+        <div className="panel rounded-[1.75rem] p-5 sm:p-6">
           <p className="section-kicker">Sources</p>
-          <h2 className="section-title mt-4 font-bold text-ocean">
+          <h2 className="section-title mt-4 font-semibold text-ocean">
             Where to verify the data story
           </h2>
           <p className="mt-4 text-sm leading-6 text-muted">
@@ -334,11 +334,11 @@ export default async function SpeciesPage({
       </section>
 
       <section id="species-lessons" className="mt-6 grid gap-6 sm:mt-8 xl:grid-cols-[minmax(0,1.15fr)_minmax(20rem,0.85fr)]">
-        <div className="panel rounded-[1.5rem] p-5 sm:rounded-[1.75rem] sm:p-6">
+        <div className="panel rounded-[1.75rem] p-5 sm:p-6">
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="section-kicker">Lesson paths</p>
-              <h2 className="section-title mt-4 font-bold text-ocean">
+              <h2 className="section-title mt-4 font-semibold text-ocean">
                 Walkthrough lessons for each audience
               </h2>
             </div>
@@ -372,9 +372,9 @@ export default async function SpeciesPage({
         </div>
 
         <div className="grid gap-6">
-          <div className="panel rounded-[1.5rem] p-5 sm:rounded-[1.75rem] sm:p-6">
+          <div className="panel rounded-[1.75rem] p-5 sm:p-6">
             <p className="section-kicker">Take action</p>
-            <h2 className="section-title mt-4 font-bold text-ocean">
+            <h2 className="section-title mt-4 font-semibold text-ocean">
               Field trips, citizen science, and volunteer options
             </h2>
             <p className="mt-4 text-sm leading-6 text-muted">

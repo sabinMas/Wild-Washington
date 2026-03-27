@@ -1,134 +1,215 @@
 import Image from "next/image";
 import Link from "next/link";
 import { StatCard } from "@/components/ui/StatCard";
-import { getDashboardSummary, getSpeciesRecords } from "@/lib/data/species";
 import { StatusBadge } from "@/components/ui/StatusBadge";
+import { getDashboardSummary, getSpeciesRecords } from "@/lib/data/species";
 import { formatNumber } from "@/lib/utils";
 
 export default function HomePage() {
   const summary = getDashboardSummary();
   const species = getSpeciesRecords().slice(0, 4);
+  const heroMedia = species.slice(0, 3);
 
   return (
-    <div className="pb-14 sm:pb-16">
-      <section className="shell pt-8 sm:pt-12">
-        <div className="panel overflow-hidden rounded-[1.75rem] px-5 py-8 sm:rounded-[2rem] sm:px-6 sm:py-10 md:px-10 md:py-14">
-          <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-start lg:gap-10">
-            <div>
-              <p className="section-kicker">Washington State endangered species dashboard</p>
-              <h1 className="hero-title mt-5 max-w-3xl font-bold text-ocean">
-                See how Washington&apos;s endangered wildlife is changing.
-              </h1>
-              <p className="lede mt-5 sm:mt-6">
-                Wild Washington helps learners, educators, and curious residents understand
-                how each species is doing, what recovery actually looks like, what its recovery metric actually measures,
-                and where conservation work is happening across the state.
-              </p>
-              <div className="mt-6 grid gap-3 text-sm leading-6 text-muted sm:grid-cols-3">
-                <div className="panel-soft rounded-[1.15rem] px-4 py-3">
-                  Source-aware charts that explain what each number means
-                </div>
-                <div className="panel-soft rounded-[1.15rem] px-4 py-3">
-                  Washington habitat maps grounded in place, not abstraction
-                </div>
-                <div className="panel-soft rounded-[1.15rem] px-4 py-3">
-                  Lesson-ready pathways for classrooms and independent learning
-                </div>
-              </div>
-              <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row">
-                <Link
-                  href="/dashboard"
-                  className="button-primary text-center"
-                >
-                  Explore the species dashboard
-                </Link>
-                <Link
-                  href="/learn"
-                  className="button-secondary text-center"
-                >
-                  Open lesson walkthroughs
-                </Link>
-              </div>
-              <p className="mt-4 text-sm leading-6 text-muted">
-                Start with the full species dashboard, or jump into lessons if you want a guided way to explore the data.
-              </p>
+    <div className="pb-16 sm:pb-20">
+      <section className="relative isolate overflow-hidden border-b border-white/8 bg-[linear-gradient(180deg,#14201d_0%,#1b2925_42%,#21312b_100%)] text-sand">
+        <div className="absolute inset-0">
+          {heroMedia.map((record, index) => (
+            <div
+              key={record.slug}
+              className="media-cycle-layer"
+              style={{ animationDelay: `${index * 6}s` }}
+            >
+              <Image
+                src={record.media.src}
+                alt=""
+                fill
+                priority={index === 0}
+                sizes="100vw"
+                className="object-cover opacity-58"
+              />
             </div>
+          ))}
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(16,23,21,0.24)_0%,rgba(16,23,21,0.68)_42%,rgba(16,23,21,0.92)_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(232,222,206,0.1),transparent_18%),radial-gradient(circle_at_bottom_right,rgba(175,111,68,0.14),transparent_22%)]" />
+        </div>
 
-            <div className="grid gap-4">
-              <div className="rounded-[1.5rem] bg-gradient-to-br from-ocean to-forest p-5 text-white shadow-[0_24px_56px_rgba(15,95,98,0.26)] sm:rounded-[1.75rem] sm:p-6">
-                <p className="text-sm uppercase tracking-[0.2em] text-white/80">Why this exists</p>
-                <h2 className="display-type mt-3 text-2xl font-bold leading-tight text-white sm:text-[2rem]">
-                  Conservation data is easier to care about when it is tied to real species, real places, and clear explanations.
-                </h2>
-                <p className="mt-4 text-sm leading-6 text-white/88">
-                  This project brings together status trends, habitat context, and classroom-ready storytelling so the numbers do not feel detached from the species they represent.
-                </p>
+        <div className="shell relative grid min-h-[calc(100vh-4rem)] gap-8 py-10 sm:py-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(19rem,0.85fr)] lg:items-end lg:gap-10 lg:py-16">
+          <div className="max-w-4xl pb-2 sm:pb-8">
+            <p className="section-kicker border-white/12 bg-white/10 text-sand">
+              Washington State endangered species dashboard
+            </p>
+            <h1 className="hero-title mt-6 max-w-4xl font-semibold text-white">
+              See how Washington&apos;s endangered wildlife is changing, and why the story behind each metric matters.
+            </h1>
+            <p className="lede mt-6 max-w-3xl text-[rgba(232,222,206,0.82)]">
+              Wild Washington brings together trend evidence, habitat context, and
+              classroom-ready storytelling so learners, educators, and curious residents can
+              move from raw numbers to a clearer understanding of recovery.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link href="/dashboard" className="button-primary text-center">
+                Explore the species dashboard
+              </Link>
+              <Link href="/learn" className="button-secondary text-center">
+                Start with guided lessons
+              </Link>
+            </div>
+            <div className="mt-8 grid gap-3 text-sm leading-6 text-[rgba(232,222,206,0.76)] sm:grid-cols-3">
+              <div className="rounded-[1.2rem] border border-white/10 bg-white/10 px-4 py-4">
+                Source-aware charts that explain what each number does and does not mean.
               </div>
+              <div className="rounded-[1.2rem] border border-white/10 bg-white/10 px-4 py-4">
+                Range maps and habitat framing grounded in real Washington places.
+              </div>
+              <div className="rounded-[1.2rem] border border-white/10 bg-white/10 px-4 py-4">
+                Lesson pathways built for classrooms, self-guided learning, and public understanding.
+              </div>
+            </div>
+          </div>
 
-              <div className="grid gap-3 sm:grid-cols-2">
-                <div className="panel-accent rounded-[1.35rem] p-4">
-                  <p className="eyebrow">Inside the experience</p>
-                  <p className="mt-2 text-sm leading-6 text-muted">
-                    Trend charts, range maps, recovery pressures, learning tools, and source links all live in one shared product flow.
+          <div className="surface-dark rounded-[1.9rem] p-5 sm:p-6">
+            <p className="eyebrow text-[rgba(232,222,206,0.56)]">Why this exists</p>
+            <h2 className="display-type mt-3 text-3xl font-semibold leading-tight text-white">
+              Conservation data becomes easier to care about when it feels connected to real species, real places, and real tradeoffs.
+            </h2>
+            <p className="mt-4 text-sm leading-6 text-[rgba(232,222,206,0.78)]">
+              Wild Washington is designed to make evidence more approachable without flattening
+              it into generic dashboard language.
+            </p>
+            <div className="story-divider mt-5" />
+            <div className="mt-5 grid gap-3">
+              {species.slice(0, 3).map((record) => (
+                <div key={record.slug} className="rounded-[1.3rem] border border-white/10 bg-white/10 p-4">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[rgba(232,222,206,0.58)]">
+                        {record.speciesGroup}
+                      </p>
+                      <p className="display-type mt-2 text-2xl font-semibold text-white">
+                        {record.commonName}
+                      </p>
+                    </div>
+                    <StatusBadge trend={record.trend} />
+                  </div>
+                  <p className="mt-3 text-sm leading-6 text-[rgba(232,222,206,0.74)]">
+                    {formatNumber(record.currentPopulation.estimate)} {record.currentPopulation.unit} in{" "}
+                    {record.currentPopulation.year}
                   </p>
                 </div>
-                <div className="panel-accent rounded-[1.35rem] p-4">
-                  <p className="eyebrow">Built for</p>
-                  <p className="mt-2 text-sm leading-6 text-muted">
-                    Learners, teachers, and anyone who wants a clearer way to understand how Washington&apos;s species are faring.
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      <section className="shell mt-8 sm:mt-10">
-        <div className="mb-5 flex flex-col gap-3 sm:mb-6 md:flex-row md:items-end md:justify-between">
+      <section className="shell section-space">
+        <div className="mb-6 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
             <p className="section-kicker">At a glance</p>
-            <h2 className="section-title mt-3 font-bold text-ocean">A fast read on the current dashboard mix</h2>
+            <h2 className="section-title mt-3 font-semibold text-ocean">
+              A faster read on what this dashboard covers
+            </h2>
           </div>
           <p className="max-w-xl text-sm leading-6 text-muted">
-            These headline numbers help orient first-time visitors before they dive into individual species profiles.
+            The product is built to orient visitors quickly, then invite deeper reading through
+            the species profiles, comparison tools, and learning hub.
           </p>
         </div>
         <div className="grid gap-4 sm:gap-5 md:grid-cols-2 xl:grid-cols-4">
-        <StatCard
-          label="Species tracked"
-          value={summary.totalSpecies}
-          detail="Eight Washington species presented through one consistent, source-aware structure."
-          icon="WW"
-        />
-        <StatCard
-          label="Improving"
-          value={summary.improving}
-          detail="Species with a clearly upward long-term trend in the current indicator series."
-          icon="Up"
-        />
-        <StatCard
-          label="Declining"
-          value={summary.declining}
-          detail="Species whose current indicators still point to pressure, loss, or incomplete recovery."
-          icon="Dn"
-        />
-        <StatCard
-          label="Learning tiers"
-          value="4"
-          detail="Elementary, middle school, high school, and educator pathways built into the product."
-          icon="Ed"
-        />
+          <StatCard
+            label="Species tracked"
+            value={summary.totalSpecies}
+            detail="Washington species presented through one consistent, source-aware story structure."
+            icon="WW"
+          />
+          <StatCard
+            label="Improving"
+            value={summary.improving}
+            detail="Profiles whose current indicators point to stronger long-term recovery movement."
+            icon="Up"
+          />
+          <StatCard
+            label="Declining"
+            value={summary.declining}
+            detail="Species still under clear pressure, loss, or incomplete recovery."
+            icon="Dn"
+          />
+          <StatCard
+            label="Learning tiers"
+            value="4"
+            detail="Elementary, middle school, high school, and educator pathways built into the experience."
+            icon="Ed"
+          />
         </div>
       </section>
 
-      <section className="shell mt-14 sm:mt-16">
+      <section className="shell section-space">
+        <div className="grid gap-5 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start">
+          <div className="panel rounded-[1.9rem] p-6 sm:p-7">
+            <p className="section-kicker">How to use Wild Washington</p>
+            <h2 className="section-title mt-4 font-semibold text-ocean">
+              Start with the question you have, not just the page title
+            </h2>
+            <div className="mt-6 grid gap-4">
+              <div className="panel-soft rounded-[1.35rem] p-4">
+                <p className="eyebrow">If you want the big picture</p>
+                <p className="mt-2 text-sm leading-6 text-muted">
+                  Open the dashboard to browse by trend, species group, or listing status and
+                  scan the current indicator for each profile.
+                </p>
+              </div>
+              <div className="panel-soft rounded-[1.35rem] p-4">
+                <p className="eyebrow">If you want deeper context</p>
+                <p className="mt-2 text-sm leading-6 text-muted">
+                  Open a species profile to read the trend chart, habitat map, pressure points,
+                  recovery work, and source notes together.
+                </p>
+              </div>
+              <div className="panel-soft rounded-[1.35rem] p-4">
+                <p className="eyebrow">If you want a guided path</p>
+                <p className="mt-2 text-sm leading-6 text-muted">
+                  Use the learning hub to choose an audience first, then step into a lesson path that fits.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <article className="panel-accent rounded-[1.8rem] p-5 sm:col-span-2 sm:p-6">
+              <p className="eyebrow">Designed for clarity</p>
+              <h3 className="display-type mt-3 text-3xl font-semibold text-ink">
+                Accessible typography, quieter interfaces, and stronger hierarchy make the science easier to approach.
+              </h3>
+            </article>
+            <article className="panel rounded-[1.7rem] p-5">
+              <p className="eyebrow">Inside the experience</p>
+              <p className="mt-3 text-sm leading-6 text-muted">
+                Trend charts, range maps, recovery pressures, source links, and learning tools
+                are all connected instead of scattered across separate flows.
+              </p>
+            </article>
+            <article className="panel rounded-[1.7rem] p-5">
+              <p className="eyebrow">Built for public understanding</p>
+              <p className="mt-3 text-sm leading-6 text-muted">
+                The product is educational, but it aims to feel like a public-facing product, not
+                just a classroom worksheet or utility dashboard.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="shell section-space">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
             <p className="section-kicker">Featured species</p>
-            <h2 className="section-title mt-3 font-bold text-ocean">Four places to start if you want to see how the dashboard works</h2>
+            <h2 className="section-title mt-3 font-semibold text-ocean">
+              Four strong entry points into the dashboard
+            </h2>
             <p className="mt-3 text-sm leading-6 text-muted sm:text-base">
-              Each featured profile pairs a recovery indicator with habitat context, pressure points, and a clearer explanation of what the metric can and cannot tell you.
+              Each featured profile pairs a recovery indicator with habitat context, pressure
+              points, and a clearer explanation of what the metric can and cannot tell you.
             </p>
           </div>
           <Link href="/dashboard" className="link-inline text-sm">
@@ -141,8 +222,8 @@ export default function HomePage() {
             <Link
               key={record.slug}
               href={`/species/${record.slug}`}
-              className="panel overflow-hidden rounded-[1.75rem] transition hover:-translate-y-1 hover:[box-shadow:var(--shadow-lift)]"
-              >
+              className="panel overflow-hidden rounded-[1.85rem] transition hover:-translate-y-1 hover:[box-shadow:var(--shadow-lift)]"
+            >
               <div className="relative aspect-[4/3] border-b border-border/60">
                 <Image
                   src={record.media.src}
@@ -151,25 +232,33 @@ export default function HomePage() {
                   sizes="(min-width: 1280px) 18rem, (min-width: 768px) 42vw, 90vw"
                   className="object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-[rgba(16,23,21,0.72)] via-transparent to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-5 text-white">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/72">
+                    {record.speciesGroup}
+                  </p>
+                  <h3 className="display-type mt-2 text-3xl font-semibold text-white">
+                    {record.commonName}
+                  </h3>
+                </div>
               </div>
               <div className="p-5">
                 <div className="flex items-start justify-between gap-3">
-                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-muted">
-                    {record.speciesGroup}
-                  </p>
                   <StatusBadge trend={record.trend} />
+                  <p className="rounded-full border border-border/60 bg-white/45 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-muted">
+                    {record.currentPopulation.year}
+                  </p>
                 </div>
-                <h3 className="display-type mt-3 text-2xl font-bold text-ocean">
-                  {record.commonName}
-                </h3>
                 <p className="mt-3 text-sm leading-6 text-muted">
                   {record.heroSummary}
                 </p>
-                <div className="panel-soft mt-4 rounded-[1.15rem] p-4">
+                <div className="panel-soft mt-4 rounded-[1.25rem] p-4">
                   <p className="eyebrow">Current indicator</p>
                   <p className="mt-2 text-xl font-bold text-ink">
                     {formatNumber(record.currentPopulation.estimate)}{" "}
-                    <span className="text-sm font-semibold text-muted">{record.currentPopulation.unit}</span>
+                    <span className="text-sm font-semibold text-muted">
+                      {record.currentPopulation.unit}
+                    </span>
                   </p>
                   <p className="mt-2 text-sm leading-6 text-muted">
                     {record.populationMetric.label} in {record.currentPopulation.year}

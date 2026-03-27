@@ -3,7 +3,11 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PopulationTrendChart } from "@/components/species/PopulationTrendChart";
-import { buildLessonPage, learningAudiences } from "@/lib/data/learning";
+import {
+  buildLessonPage,
+  learningAudienceLabels,
+  learningAudiences,
+} from "@/lib/data/learning";
 import { getSpeciesBySlug, getSpeciesSlugs } from "@/lib/data/species";
 import { type LearningAudience } from "@/types/species";
 
@@ -56,6 +60,15 @@ export default async function LessonPage({
       <section className="panel rounded-[1.75rem] px-5 py-6 sm:rounded-[2rem] sm:px-6 sm:py-8 md:px-10 md:py-10">
         <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div className="max-w-3xl">
+            <div className="flex flex-wrap items-center gap-3 text-sm font-semibold text-ocean">
+              <Link href="/learn" className="link-inline">
+                Learning hub
+              </Link>
+              <span className="text-muted">/</span>
+              <Link href={`/species/${species.slug}`} className="link-inline">
+                {species.commonName}
+              </Link>
+            </div>
             <p className="section-kicker">{lesson.audienceLabel}</p>
             <h1 className="hero-title mt-4 font-bold text-ocean">
               {species.commonName}: {lesson.title}
@@ -63,6 +76,22 @@ export default async function LessonPage({
             <p className="mt-5 text-base leading-7 text-muted sm:text-lg sm:leading-8">
               {lesson.summary}
             </p>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {learningAudiences.map((audienceOption) => {
+                const active = audienceOption === audience;
+
+                return (
+                  <Link
+                    key={audienceOption}
+                    href={`/learn/${species.slug}/${audienceOption}`}
+                    className={`filter-chip ${active ? "pointer-events-none" : ""}`}
+                    data-active={active}
+                  >
+                    {learningAudienceLabels[audienceOption]}
+                  </Link>
+                );
+              })}
+            </div>
             <div className="mt-7 grid gap-4 rounded-[1.5rem] bg-white p-5 sm:rounded-[1.75rem] sm:p-6">
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-muted">
                 Essential question

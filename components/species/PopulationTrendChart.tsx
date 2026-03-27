@@ -54,7 +54,7 @@ export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
   }, []);
 
   return (
-    <div className="panel min-w-0 rounded-[1.5rem] p-4 sm:rounded-[1.75rem] sm:p-5">
+    <div className="panel min-w-0 rounded-[1.75rem] p-4 sm:p-5">
       <div className="mb-5 grid gap-4 sm:mb-6 lg:grid-cols-[1.1fr_0.9fr]">
         <div>
           <p className="section-kicker">Trend chart</p>
@@ -66,7 +66,7 @@ export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
             {species.populationMetric.whatItTracks}
           </p>
         </div>
-        <div className="grid gap-3 rounded-[1.25rem] bg-white p-4">
+        <div className="panel-soft grid gap-3 rounded-[1.35rem] p-4">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
             Metric type
           </p>
@@ -114,12 +114,13 @@ export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
                     : [String(value ?? ""), label];
                 }}
                 labelFormatter={(value) => `Observed year: ${value}`}
-                contentStyle={{
-                  borderRadius: 18,
-                  borderColor: "rgba(86,101,106,0.18)",
-                  boxShadow: "0 12px 28px rgba(0,0,0,0.12)",
-                }}
-              />
+                  contentStyle={{
+                    borderRadius: 22,
+                    borderColor: "rgba(89,100,95,0.18)",
+                    backgroundColor: "rgba(255,251,245,0.96)",
+                    boxShadow: "0 18px 38px rgba(24,33,30,0.14)",
+                  }}
+                />
               {hasInterval ? (
                 <>
                   <Area type="monotone" dataKey="high" stroke="transparent" fill={`${species.primaryColor}20`} activeDot={false} />
@@ -143,7 +144,7 @@ export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
       </div>
 
       <div className="mt-5 grid gap-4 md:grid-cols-3">
-        <article className="rounded-[1.25rem] bg-white p-4">
+        <article className="panel-soft rounded-[1.25rem] p-4">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
             Latest observed value
           </p>
@@ -154,7 +155,7 @@ export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
             Reported for {species.currentPopulation.year}.
           </p>
         </article>
-        <article className="rounded-[1.25rem] bg-white p-4">
+        <article className="panel-soft rounded-[1.25rem] p-4">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
             Change from baseline
           </p>
@@ -166,7 +167,7 @@ export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
             Compared with {firstPoint?.year ?? "the first observed year"}.
           </p>
         </article>
-        <article className="rounded-[1.25rem] bg-white p-4">
+        <article className="panel-soft rounded-[1.25rem] p-4">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
             Why this matters
           </p>
@@ -174,7 +175,7 @@ export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
             {species.populationMetric.whyItMatters}
           </p>
         </article>
-        <article className="rounded-[1.25rem] bg-white p-4 md:col-span-3">
+        <article className="panel-soft rounded-[1.25rem] p-4 md:col-span-3">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
             Read with care
           </p>

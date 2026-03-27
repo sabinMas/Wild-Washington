@@ -79,7 +79,7 @@ export function ComparisonExplorer({ species }: { species: SpeciesRecord[] }) {
 
   return (
     <div className="space-y-6 sm:space-y-8">
-      <div className="panel min-w-0 rounded-[1.5rem] p-4 sm:rounded-[1.75rem] sm:p-5">
+      <div className="panel min-w-0 rounded-[1.75rem] p-4 sm:p-5">
         <div className="grid gap-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(20rem,0.85fr)]">
           <div>
             <p className="section-kicker">Choose species</p>
@@ -137,7 +137,7 @@ export function ComparisonExplorer({ species }: { species: SpeciesRecord[] }) {
         </div>
       </div>
 
-      <div className="panel rounded-[1.5rem] p-4 sm:rounded-[1.75rem] sm:p-5">
+      <div className="panel rounded-[1.75rem] p-4 sm:p-5">
         <div className="mb-4 grid gap-3 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <p className="section-kicker">Normalized comparison</p>
@@ -197,9 +197,10 @@ export function ComparisonExplorer({ species }: { species: SpeciesRecord[] }) {
                   }
                   labelFormatter={(value) => `Observed year: ${value}`}
                   contentStyle={{
-                    borderRadius: 18,
-                    borderColor: "rgba(86,101,106,0.18)",
-                    boxShadow: "0 12px 28px rgba(0,0,0,0.12)",
+                    borderRadius: 22,
+                    borderColor: "rgba(89,100,95,0.18)",
+                    backgroundColor: "rgba(255,251,245,0.96)",
+                    boxShadow: "0 18px 38px rgba(24,33,30,0.14)",
                   }}
                 />
                 {visibleSpecies.map((record) => (

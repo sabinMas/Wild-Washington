@@ -12,6 +12,13 @@ export const learningAudienceLabels: Record<LearningAudience, string> = {
   educators: "Educators",
 };
 
+export const learningAudienceDescriptions: Record<LearningAudience, string> = {
+  elementary: "Shorter, picture-forward lessons built around noticing, habitat, and simple evidence.",
+  middle: "Structured walkthroughs that connect evidence, species trends, and recovery decisions.",
+  high: "More analytical lessons that ask students to interpret metrics, tradeoffs, and conservation strategy.",
+  educators: "Planning support, discussion framing, and lesson-ready materials for classroom use.",
+};
+
 export const learningAudiences = Object.keys(
   learningAudienceLabels,
 ) as LearningAudience[];

@@ -106,7 +106,7 @@ export function SpeciesExplorer({ species }: { species: SpeciesRecord[] }) {
 
   return (
     <div className="space-y-6 sm:space-y-8">
-      <div className="panel rounded-[1.5rem] p-4 sm:rounded-[1.75rem] sm:p-5 lg:p-6">
+      <div className="panel rounded-[1.75rem] p-4 sm:p-5 lg:p-6">
         <div className="grid gap-4 lg:grid-cols-[minmax(0,1.35fr)_minmax(18rem,0.95fr)]">
           <div className="grid gap-4">
             <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_14rem]">
@@ -173,7 +173,7 @@ export function SpeciesExplorer({ species }: { species: SpeciesRecord[] }) {
                 type="button"
                 onClick={() => setTrend(option.value)}
                 className={cn(
-                  "panel-soft rounded-[1.2rem] p-4 text-left transition",
+                  "panel-soft rounded-[1.35rem] p-4 text-left transition hover:-translate-y-0.5",
                   trend === option.value && "ring-2 ring-[var(--ring-strong)]",
                 )}
               >
