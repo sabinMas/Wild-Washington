@@ -5,6 +5,8 @@ import { formatNumber } from "@/lib/utils";
 import { type SpeciesRecord } from "@/types/species";
 
 export function SpeciesCard({ species }: { species: SpeciesRecord }) {
+  const habitatPreview = species.range.habitats.slice(0, 2).join(", ");
+
   return (
     <Link
       href={`/species/${species.slug}`}
@@ -31,7 +33,7 @@ export function SpeciesCard({ species }: { species: SpeciesRecord }) {
       </div>
 
       <div className="flex flex-1 flex-col p-6">
-        <div className="mb-5 flex items-start justify-between gap-3">
+        <div className="mb-4 flex items-start justify-between gap-3">
           <div>
             <h3 className="display-type text-2xl font-bold text-ocean">
               {species.commonName}
@@ -40,13 +42,16 @@ export function SpeciesCard({ species }: { species: SpeciesRecord }) {
           </div>
         </div>
 
-        <div className="mb-4">
+        <div className="mb-4 flex flex-wrap items-center gap-2">
           <StatusBadge trend={species.trend} />
+          <span className="rounded-full bg-sand/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-muted">
+            {species.listingStatus}
+          </span>
         </div>
 
         <p className="text-sm leading-6 text-muted">{species.heroSummary}</p>
 
-        <div className="panel-soft mt-6 grid gap-3 rounded-2xl p-4">
+        <div className="panel-soft mt-5 grid gap-3 rounded-2xl p-4">
           <div>
             <p className="eyebrow">
               Current indicator
@@ -59,13 +64,26 @@ export function SpeciesCard({ species }: { species: SpeciesRecord }) {
               {species.populationMetric.label}
             </p>
           </div>
-          <div className="flex items-center justify-between text-sm text-muted">
-            <span>{species.currentPopulation.year}</span>
-            <span>{species.listingStatus}</span>
+          <div className="grid gap-3 border-t border-border/60 pt-3 sm:grid-cols-2">
+            <div>
+              <p className="eyebrow">Latest year</p>
+              <p className="mt-1 text-sm font-semibold text-ink">{species.currentPopulation.year}</p>
+            </div>
+            <div>
+              <p className="eyebrow">Key habitat</p>
+              <p className="mt-1 text-sm font-semibold text-ink">{habitatPreview}</p>
+            </div>
           </div>
         </div>
 
-        <p className="mt-5 text-sm font-semibold text-ocean">{species.quickFact}</p>
+        <div className="mt-5 rounded-[1.15rem] bg-ocean/[0.07] px-4 py-3">
+          <p className="text-sm font-semibold text-ocean">{species.quickFact}</p>
+        </div>
+
+        <div className="mt-5 flex items-center justify-between text-sm font-semibold text-ocean">
+          <span>Open species profile</span>
+          <span aria-hidden="true">→</span>
+        </div>
       </div>
     </Link>
   );

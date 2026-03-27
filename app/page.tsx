@@ -16,12 +16,12 @@ export default function HomePage() {
           <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-start lg:gap-10">
             <div>
               <p className="section-kicker">Washington State endangered species dashboard</p>
-              <h1 className="hero-title mt-5 max-w-4xl font-bold text-ocean">
-                See how Washington&apos;s endangered wildlife is changing, and what recovery actually looks like.
+              <h1 className="hero-title mt-5 max-w-3xl font-bold text-ocean">
+                See how Washington&apos;s endangered wildlife is changing.
               </h1>
               <p className="lede mt-5 sm:mt-6">
                 Wild Washington helps learners, educators, and curious residents understand
-                how each species is doing, what its recovery metric actually measures,
+                how each species is doing, what recovery actually looks like, what its recovery metric actually measures,
                 and where conservation work is happening across the state.
               </p>
               <div className="mt-6 grid gap-3 text-sm leading-6 text-muted sm:grid-cols-3">
