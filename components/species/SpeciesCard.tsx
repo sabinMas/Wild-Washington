@@ -8,7 +8,7 @@ export function SpeciesCard({ species }: { species: SpeciesRecord }) {
   return (
     <Link
       href={`/species/${species.slug}`}
-      className="panel group flex h-full flex-col overflow-hidden rounded-[1.75rem] transition duration-200 hover:-translate-y-1 hover:shadow-2xl"
+      className="panel group flex h-full flex-col overflow-hidden rounded-[1.75rem] transition duration-200 hover:-translate-y-1 hover:[box-shadow:var(--shadow-lift)]"
     >
       <div className="relative aspect-[4/3] overflow-hidden border-b border-border/60">
         <Image
@@ -46,9 +46,9 @@ export function SpeciesCard({ species }: { species: SpeciesRecord }) {
 
         <p className="text-sm leading-6 text-muted">{species.heroSummary}</p>
 
-        <div className="mt-6 grid gap-3 rounded-2xl bg-sand/70 p-4">
+        <div className="panel-soft mt-6 grid gap-3 rounded-2xl p-4">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
+            <p className="eyebrow">
               Current indicator
             </p>
             <p className="mt-1 text-2xl font-bold text-ink">

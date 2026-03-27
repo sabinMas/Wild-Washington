@@ -13,7 +13,7 @@ export default function ComparePage() {
       <div className="max-w-3xl">
         <p className="section-kicker">Comparison view</p>
         <h1 className="hero-title mt-4 font-bold text-ocean">Overlay species trajectories and look for patterns</h1>
-        <p className="mt-5 text-base leading-7 text-muted sm:text-lg sm:leading-8">
+        <p className="lede mt-5">
           Compare how different species respond to habitat loss, prey shifts,
           wetland restoration, or dryland disturbance using normalized change,
           not misleading raw values from incompatible metrics.

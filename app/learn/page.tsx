@@ -19,7 +19,7 @@ export default function LearnPage() {
         <h1 className="hero-title mt-4 font-bold text-ocean">
           Dedicated lesson paths for every species and audience
         </h1>
-        <p className="mt-5 text-base leading-7 text-muted sm:text-lg sm:leading-8">
+        <p className="lede mt-5">
           Each lesson now has its own page with materials, vocabulary, a visual-analysis
           plan, a walkthrough, discussion prompts, and an assessment tied to the species metric.
         </p>
@@ -43,7 +43,7 @@ export default function LearnPage() {
                   Metric used: {record.populationMetric.label}. {record.populationMetric.precisionNote}
                 </p>
               </div>
-              <Link href={`/species/${record.slug}`} className="text-sm font-semibold text-ocean">
+              <Link href={`/species/${record.slug}`} className="link-inline text-sm">
                 Open species dashboard
               </Link>
             </div>
@@ -56,7 +56,7 @@ export default function LearnPage() {
                   <Link
                     key={audience}
                     href={`/learn/${record.slug}/${audience}`}
-                    className="rounded-[1.5rem] bg-white p-5 transition hover:bg-mist"
+                    className="panel-accent rounded-[1.5rem] p-5 transition hover:-translate-y-1"
                   >
                     <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
                       {learningAudienceLabels[audience]}

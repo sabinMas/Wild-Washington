@@ -17,27 +17,27 @@ export default function HomePage() {
               <h1 className="hero-title mt-5 max-w-4xl font-bold text-ocean">
                 Follow the stories behind eight species shaping Washington&apos;s future.
               </h1>
-              <p className="mt-5 max-w-2xl text-base leading-7 text-muted sm:mt-6 sm:text-lg sm:leading-8">
+              <p className="lede mt-5 sm:mt-6">
                 Wild Washington turns conservation data into a clearer, classroom-ready
                 experience with source-aware trend charts, range maps, and dedicated lesson pages.
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row">
                 <Link
                   href="/dashboard"
-                  className="rounded-full bg-ocean px-6 py-3 text-center text-sm font-semibold text-white transition hover:bg-forest sm:text-base"
+                  className="button-primary text-center"
                 >
                   Explore the species dashboard
                 </Link>
                 <Link
                   href="/learn"
-                  className="rounded-full border border-border bg-white px-6 py-3 text-center text-sm font-semibold text-ocean transition hover:bg-mist sm:text-base"
+                  className="button-secondary text-center"
                 >
                   Open lesson walkthroughs
                 </Link>
               </div>
             </div>
 
-            <div className="grid gap-4 rounded-[1.5rem] bg-gradient-to-br from-ocean to-forest p-5 text-white sm:rounded-[1.75rem] sm:p-6">
+            <div className="grid gap-4 rounded-[1.5rem] bg-gradient-to-br from-ocean to-forest p-5 text-white shadow-[0_24px_56px_rgba(15,95,98,0.26)] sm:rounded-[1.75rem] sm:p-6">
               <p className="text-sm uppercase tracking-[0.2em] text-white/80">What this dashboard includes</p>
               <ul className="grid gap-3 text-sm leading-6 text-white/92">
                 <li>Observed checkpoints that explain what each recovery indicator tracks</li>
@@ -83,7 +83,7 @@ export default function HomePage() {
             <p className="section-kicker">Featured species</p>
             <h2 className="section-title mt-3 font-bold text-ocean">A quick look at the dashboard experience</h2>
           </div>
-          <Link href="/dashboard" className="text-sm font-semibold text-ocean">
+          <Link href="/dashboard" className="link-inline text-sm">
             See all species
           </Link>
         </div>
@@ -93,7 +93,7 @@ export default function HomePage() {
             <Link
               key={record.slug}
               href={`/species/${record.slug}`}
-              className="panel overflow-hidden rounded-[1.75rem] transition hover:-translate-y-1"
+              className="panel overflow-hidden rounded-[1.75rem] transition hover:-translate-y-1 hover:[box-shadow:var(--shadow-lift)]"
             >
               <div className="relative aspect-[4/3] border-b border-border/60">
                 <Image

@@ -35,7 +35,7 @@ export function SpeciesExplorer({ species }: { species: SpeciesRecord[] }) {
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               placeholder="Try orca, bird, rabbit..."
-              className="rounded-2xl border border-border bg-white px-4 py-3 outline-none transition focus:border-ocean"
+              className="input-field"
             />
           </label>
 
@@ -47,9 +47,8 @@ export function SpeciesExplorer({ species }: { species: SpeciesRecord[] }) {
                   key={option}
                   type="button"
                   onClick={() => setTrend(option)}
-                  className={`shrink-0 rounded-full px-4 py-2 text-sm font-semibold capitalize transition ${
-                    active ? "bg-ocean text-white" : "bg-white text-muted hover:bg-mist hover:text-ocean"
-                  }`}
+                  data-active={active}
+                  className="filter-chip shrink-0 capitalize"
                 >
                   {option}
                 </button>

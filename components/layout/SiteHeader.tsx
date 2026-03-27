@@ -18,7 +18,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/45 bg-white/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-white/45 bg-white/78 backdrop-blur-xl">
       <div className="shell flex items-center justify-between gap-3 py-3 sm:gap-4 sm:py-4">
         <Link href="/" className="min-w-0 flex items-center gap-3">
           <div className="flex size-10 shrink-0 items-center justify-center rounded-2xl bg-ocean text-base font-bold text-white shadow-lg shadow-ocean/20 sm:size-11 sm:text-lg">
@@ -40,7 +40,9 @@ export function SiteHeader() {
                 href={item.href}
                 className={cn(
                   "rounded-full px-4 py-2 text-sm font-semibold transition-colors",
-                  active ? "bg-ocean text-white" : "text-ink hover:bg-mist hover:text-ocean",
+                  active
+                    ? "bg-ocean text-white shadow-lg shadow-ocean/15"
+                    : "text-ink hover:bg-white hover:text-ocean",
                 )}
               >
                 {item.label}
@@ -55,7 +57,7 @@ export function SiteHeader() {
           aria-expanded={open}
           aria-controls="mobile-nav"
           aria-label={open ? "Close menu" : "Open menu"}
-          className="inline-flex shrink-0 items-center gap-2 rounded-full border border-border bg-white px-3 py-2 text-sm font-semibold text-ocean shadow-sm lg:hidden"
+          className="inline-flex shrink-0 items-center gap-2 rounded-full border border-border bg-white/88 px-3 py-2 text-sm font-semibold text-ocean shadow-sm lg:hidden"
         >
           <span>{open ? "Close" : "Menu"}</span>
           <span className="grid gap-[3px]" aria-hidden="true">
@@ -84,7 +86,7 @@ export function SiteHeader() {
                     onClick={() => setOpen(false)}
                     className={cn(
                       "rounded-2xl px-4 py-3 text-sm font-semibold",
-                      active ? "bg-ocean text-white" : "bg-sand/70 text-ink",
+                      active ? "bg-ocean text-white" : "bg-sand/80 text-ink",
                     )}
                   >
                     {item.label}

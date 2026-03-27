@@ -93,9 +93,8 @@ export function ComparisonExplorer({ species }: { species: SpeciesRecord[] }) {
                 key={record.slug}
                 type="button"
                 onClick={() => toggleSpecies(record.slug)}
-                className={`shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition ${
-                  active ? "border-transparent text-white" : "border-border bg-white text-muted"
-                }`}
+                data-active={active}
+                className="filter-chip shrink-0"
                 style={active ? { backgroundColor: record.primaryColor } : undefined}
               >
                 {record.commonName}
@@ -177,7 +176,7 @@ export function ComparisonExplorer({ species }: { species: SpeciesRecord[] }) {
 
         <div className="mt-4 grid gap-3 md:grid-cols-2">
           {visibleSpecies.map((record) => (
-            <article key={record.slug} className="rounded-[1.25rem] bg-white p-4">
+            <article key={record.slug} className="metric-card">
               <div className="flex items-center gap-3">
                 <span
                   className="size-3 rounded-full"
