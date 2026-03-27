@@ -15,7 +15,7 @@ export default function DashboardPage() {
         <h1 className="hero-title mt-4 font-bold text-ocean">Endangered species at a glance</h1>
         <p className="mt-5 text-base leading-7 text-muted sm:text-lg sm:leading-8">
           Search across Washington&apos;s featured species, compare trend status, and open
-          any card for detailed profiles with maps, learning modules, and action steps.
+          any card for a cleaner dashboard that explains what each number actually measures.
         </p>
       </div>
 

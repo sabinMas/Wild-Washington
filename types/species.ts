@@ -1,16 +1,30 @@
 export type TrendDirection = "improving" | "declining" | "stable";
 export type ConfidenceLevel = "high" | "moderate" | "limited";
 export type LearningAudience = "elementary" | "middle" | "high" | "educators";
+export type PopulationMetricKind =
+  | "census"
+  | "minimum-count"
+  | "estimate"
+  | "proxy";
 
 export interface PopulationCheckpoint {
   year: number;
   estimate: number;
   low?: number;
   high?: number;
+  note?: string;
 }
 
 export interface PopulationDatum extends PopulationCheckpoint {
   displayValue: string;
+}
+
+export interface PopulationMetricMeta {
+  label: string;
+  kind: PopulationMetricKind;
+  whatItTracks: string;
+  whyItMatters: string;
+  precisionNote: string;
 }
 
 export interface DistributionRegion {
@@ -42,6 +56,29 @@ export interface LearningModule {
   focus: string;
   bullets: string[];
   extension: string;
+}
+
+export interface LessonStep {
+  title: string;
+  detail: string;
+}
+
+export interface LessonPage {
+  audience: LearningAudience;
+  audienceLabel: string;
+  title: string;
+  focus: string;
+  summary: string;
+  essentialQuestion: string;
+  objectives: string[];
+  materials: string[];
+  vocabulary: string[];
+  visualStudy: string[];
+  walkthrough: LessonStep[];
+  discussionPrompts: string[];
+  assessment: string;
+  extension: string;
+  visualCaption: string;
 }
 
 export interface ActionLink {
@@ -98,6 +135,7 @@ export interface RawSpeciesRecord {
     regions: DistributionRegion[];
   };
   population: {
+    metric: PopulationMetricMeta;
     unit: string;
     startYear: number;
     endYear: number;
@@ -129,6 +167,7 @@ export interface SpeciesRecord {
   trend: TrendDirection;
   populationSeries: PopulationDatum[];
   currentPopulation: CurrentPopulationSnapshot;
+  populationMetric: PopulationMetricMeta;
   range: RawSpeciesRecord["range"];
   threats: ThreatItem[];
   conservationEfforts: ConservationEffort[];

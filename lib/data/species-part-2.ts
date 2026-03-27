@@ -27,6 +27,13 @@ export const speciesPartTwo: RawSpeciesRecord[] = [
       ],
     },
     population: {
+      metric: {
+        label: "Occupied territory estimate",
+        kind: "proxy",
+        whatItTracks: "Approximate remaining northern spotted owl territories in Washington.",
+        whyItMatters: "Territory occupancy is the best long-term statewide indicator available for this species, even though it is not a direct census of individual owls.",
+        precisionNote: "WDFW reports there has never been a full statewide census, so this trend is a habitat-linked proxy rather than a precise headcount.",
+      },
       unit: "territories",
       startYear: 1995,
       endYear: 2024,
@@ -96,6 +103,13 @@ export const speciesPartTwo: RawSpeciesRecord[] = [
       ],
     },
     population: {
+      metric: {
+        label: "Minimum year-end wolf count",
+        kind: "minimum-count",
+        whatItTracks: "The minimum number of wolves documented in Washington at the end of each monitoring year.",
+        whyItMatters: "Minimum counts show confirmed recovery progress while acknowledging that the true population is likely higher.",
+        precisionNote: "WDFW labels these as conservative minimums, not full population totals.",
+      },
       unit: "minimum wolves",
       startYear: 2008,
       endYear: 2024,

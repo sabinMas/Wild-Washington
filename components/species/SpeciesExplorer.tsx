@@ -60,8 +60,8 @@ export function SpeciesExplorer({ species }: { species: SpeciesRecord[] }) {
       </div>
 
       <p className="text-sm text-muted">
-        Showing <strong>{filtered.length}</strong> species. Each card links to trend data,
-        range maps, learning modules, and action steps.
+        Showing <strong>{filtered.length}</strong> species. Each card links to a clearer
+        species dashboard with source-aware trend data, lesson pages, and action steps.
       </p>
 
       <div className="grid gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">

@@ -17,6 +17,9 @@ import { type SpeciesRecord } from "@/types/species";
 export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
   const [mounted, setMounted] = useState(false);
   const [compact, setCompact] = useState(false);
+  const hasInterval = species.populationSeries.some(
+    (point) => point.low !== undefined && point.high !== undefined,
+  );
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
@@ -39,17 +42,25 @@ export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
 
   return (
     <div className="panel rounded-[1.5rem] p-4 sm:rounded-[1.75rem] sm:p-5">
-      <div className="mb-5 flex flex-col gap-3 sm:mb-6 md:flex-row md:items-end md:justify-between">
+      <div className="mb-5 grid gap-4 sm:mb-6 lg:grid-cols-[1.1fr_0.9fr]">
         <div>
-          <p className="section-kicker">Population trend</p>
+          <p className="section-kicker">Trend chart</p>
           <h2 className="section-title mt-3 font-bold text-ocean">
-            {species.commonName} through time
+            What the line measures for {species.commonName}
           </h2>
+          <p className="mt-3 text-sm leading-6 text-muted">
+            {species.populationMetric.whatItTracks}
+          </p>
         </div>
-        <p className="max-w-xl text-sm leading-6 text-muted">
-          The shaded band represents the estimated confidence range where source data
-          provided lower and upper bounds.
-        </p>
+        <div className="grid gap-3 rounded-[1.25rem] bg-white p-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
+            Metric type
+          </p>
+          <p className="text-lg font-bold text-ink">{species.populationMetric.label}</p>
+          <p className="text-sm leading-6 text-muted">
+            {species.populationMetric.precisionNote}
+          </p>
+        </div>
       </div>
 
       <div className="h-[320px] sm:h-[340px]">
@@ -76,23 +87,77 @@ export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
                 tickFormatter={(value) => formatNumber(value)}
               />
               <Tooltip
-                formatter={(value) =>
-                  typeof value === "number" ? formatNumber(value) : String(value ?? "")
-                }
+                formatter={(value, name) => {
+                  const label =
+                    name === "estimate"
+                      ? species.populationMetric.label
+                      : name === "low"
+                        ? "Lower bound"
+                        : "Upper bound";
+
+                  return typeof value === "number"
+                    ? [`${formatNumber(value)} ${species.currentPopulation.unit}`, label]
+                    : [String(value ?? ""), label];
+                }}
+                labelFormatter={(value) => `Observed year: ${value}`}
                 contentStyle={{
                   borderRadius: 18,
                   borderColor: "rgba(86,101,106,0.18)",
                   boxShadow: "0 12px 28px rgba(0,0,0,0.12)",
                 }}
               />
-              <Area type="monotone" dataKey="high" stroke="transparent" fill={`${species.primaryColor}20`} activeDot={false} />
-              <Area type="monotone" dataKey="low" stroke="transparent" fill="#fffdfa" activeDot={false} />
-              <Line type="monotone" dataKey="estimate" stroke={species.primaryColor} strokeWidth={3} dot={false} />
+              {hasInterval ? (
+                <>
+                  <Area type="monotone" dataKey="high" stroke="transparent" fill={`${species.primaryColor}20`} activeDot={false} />
+                  <Area type="monotone" dataKey="low" stroke="transparent" fill="#fffdfa" activeDot={false} />
+                </>
+              ) : null}
+              <Line
+                type="monotone"
+                dataKey="estimate"
+                name={species.populationMetric.label}
+                stroke={species.primaryColor}
+                strokeWidth={3}
+                dot={{ r: 4, fill: species.primaryColor, strokeWidth: 0 }}
+                activeDot={{ r: 5 }}
+              />
             </ComposedChart>
           </ResponsiveContainer>
         ) : (
           <div className="h-full animate-pulse rounded-[1.5rem] bg-mist" />
         )}
+      </div>
+
+      <div className="mt-5 grid gap-4 md:grid-cols-3">
+        <article className="rounded-[1.25rem] bg-white p-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
+            Latest observed value
+          </p>
+          <p className="mt-2 text-xl font-bold text-ink">
+            {formatNumber(species.currentPopulation.estimate)} {species.currentPopulation.unit}
+          </p>
+          <p className="mt-2 text-sm leading-6 text-muted">
+            Reported for {species.currentPopulation.year}.
+          </p>
+        </article>
+        <article className="rounded-[1.25rem] bg-white p-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
+            Why this matters
+          </p>
+          <p className="mt-2 text-sm leading-6 text-muted">
+            {species.populationMetric.whyItMatters}
+          </p>
+        </article>
+        <article className="rounded-[1.25rem] bg-white p-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
+            Read with care
+          </p>
+          <p className="mt-2 text-sm leading-6 text-muted">
+            {hasInterval
+              ? "Only observed checkpoints are plotted. Shaded bands appear only where the source reported lower and upper bounds."
+              : "Only observed checkpoints are plotted. No interval band is shown because the source did not provide lower and upper bounds."}
+          </p>
+        </article>
       </div>
     </div>
   );

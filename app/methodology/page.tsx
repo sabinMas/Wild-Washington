@@ -27,7 +27,7 @@ export default function MethodologyPage() {
         </div>
         <div className="panel rounded-[1.5rem] p-5 sm:rounded-[1.75rem] sm:p-6">
           <h2 className="text-xl font-bold text-ink">2. Adapter layer</h2>
-          <p className="mt-3 text-sm leading-6 text-muted">The adapter interpolates annual values, derives current population snapshots, and labels overall trend direction.</p>
+          <p className="mt-3 text-sm leading-6 text-muted">The adapter preserves observed checkpoints, derives current population snapshots, and labels overall trend direction without inventing annual values between sparse source years.</p>
         </div>
         <div className="panel rounded-[1.5rem] p-5 sm:rounded-[1.75rem] sm:p-6">
           <h2 className="text-xl font-bold text-ink">3. Shared UI schema</h2>
@@ -39,7 +39,7 @@ export default function MethodologyPage() {
         <h2 className="section-title font-bold text-ocean">Data limitations to keep in mind</h2>
         <ul className="mt-5 grid gap-3 text-sm leading-6 text-muted">
           <li>Some series represent modeled abundance, occupied territories, or minimum counts rather than full censuses.</li>
-          <li>Annual values between major checkpoints are interpolated to create continuous educational trend lines.</li>
+          <li>Only observed checkpoints are now plotted so the charts do not imply false year-by-year precision.</li>
           <li>Confidence levels are qualitative and reflect how direct, complete, and consistent the monitoring is.</li>
           <li>Range maps show important Washington regions, not exact occupied boundaries.</li>
           <li>The salmon series uses a verified Puget Sound Chinook indicator derived from WDFW SPI escapement data rather than a synthetic statewide salmon index.</li>
@@ -61,6 +61,8 @@ export default function MethodologyPage() {
               <div>
                 <h3 className="text-lg font-bold text-ink">Dataset notes</h3>
                 <ul className="mt-3 grid gap-2 text-sm leading-6 text-muted">
+                  <li>{record.populationMetric.label}: {record.populationMetric.whatItTracks}</li>
+                  <li>{record.populationMetric.precisionNote}</li>
                   {record.dataNotes.map((note) => (
                     <li key={note}>{note}</li>
                   ))}

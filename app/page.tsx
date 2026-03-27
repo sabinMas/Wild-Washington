@@ -18,9 +18,8 @@ export default function HomePage() {
                 Follow the stories behind eight species shaping Washington&apos;s future.
               </h1>
               <p className="mt-5 max-w-2xl text-base leading-7 text-muted sm:mt-6 sm:text-lg sm:leading-8">
-                Wild Washington turns conservation data into an approachable,
-                classroom-ready experience with trend graphs, geographic range maps,
-                learning modules, and action pathways.
+                Wild Washington turns conservation data into a clearer, classroom-ready
+                experience with source-aware trend charts, range maps, and dedicated lesson pages.
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row">
                 <Link
@@ -30,10 +29,10 @@ export default function HomePage() {
                   Explore the species dashboard
                 </Link>
                 <Link
-                  href="/compare"
+                  href="/learn"
                   className="rounded-full border border-border bg-white px-6 py-3 text-center text-sm font-semibold text-ocean transition hover:bg-mist sm:text-base"
                 >
-                  Compare population trends
+                  Open lesson walkthroughs
                 </Link>
               </div>
             </div>
@@ -41,9 +40,9 @@ export default function HomePage() {
             <div className="grid gap-4 rounded-[1.5rem] bg-gradient-to-br from-ocean to-forest p-5 text-white sm:rounded-[1.75rem] sm:p-6">
               <p className="text-sm uppercase tracking-[0.2em] text-white/80">What this dashboard includes</p>
               <ul className="grid gap-3 text-sm leading-6 text-white/92">
-                <li>20+ years of population trend data where available</li>
+                <li>Observed checkpoints that explain what each recovery indicator tracks</li>
                 <li>Interactive distribution maps focused on Washington habitats</li>
-                <li>Tiered learning supports for elementary through educators</li>
+                <li>Dedicated lesson pages for elementary, middle school, high school, and educators</li>
                 <li>Transparent methodology and action-oriented conservation links</li>
               </ul>
             </div>
@@ -56,25 +55,25 @@ export default function HomePage() {
           label="Species tracked"
           value={summary.totalSpecies}
           detail="Eight endangered or at-risk Pacific Northwest species with one shared schema."
-          icon="🧭"
+          icon="WW"
         />
         <StatCard
           label="Improving"
           value={summary.improving}
           detail="Species showing a clear upward trend in the current indicator series."
-          icon="↗"
+          icon="Up"
         />
         <StatCard
           label="Declining"
           value={summary.declining}
           detail="Species whose indicators are still moving downward overall."
-          icon="↘"
+          icon="Dn"
         />
         <StatCard
           label="Learning tiers"
           value="4"
-          detail="Elementary, middle school, high school, and educator-ready content."
-          icon="📚"
+          detail="Elementary, middle school, high school, and educator-ready lesson paths."
+          icon="Ed"
         />
       </section>
 
@@ -85,7 +84,7 @@ export default function HomePage() {
             <h2 className="section-title mt-3 font-bold text-ocean">A quick look at the dashboard experience</h2>
           </div>
           <Link href="/dashboard" className="text-sm font-semibold text-ocean">
-            See all species →
+            See all species
           </Link>
         </div>
 
@@ -106,9 +105,15 @@ export default function HomePage() {
                 />
               </div>
               <div className="p-5">
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-muted">{record.speciesGroup}</p>
-                <h3 className="display-type mt-3 text-2xl font-bold text-ocean">{record.commonName}</h3>
-                <p className="mt-3 text-sm leading-6 text-muted">{record.quickFact}</p>
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-muted">
+                  {record.speciesGroup}
+                </p>
+                <h3 className="display-type mt-3 text-2xl font-bold text-ocean">
+                  {record.commonName}
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-muted">
+                  Metric: {record.populationMetric.label}
+                </p>
               </div>
             </Link>
           ))}
