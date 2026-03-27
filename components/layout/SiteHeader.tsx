@@ -48,7 +48,7 @@ export function SiteHeader() {
                 className={cn(
                   "rounded-full px-4 py-2 text-sm font-semibold transition-colors",
                   active
-                    ? "bg-sand text-ink shadow-[0_10px_24px_rgba(0,0,0,0.16)]"
+                    ? "bg-ocean text-white shadow-[0_10px_24px_rgba(0,0,0,0.22)]"
                     : "text-[rgba(232,222,206,0.78)] hover:bg-white/10 hover:text-white",
                 )}
               >
@@ -104,7 +104,7 @@ export function SiteHeader() {
                     onClick={() => setOpen(false)}
                     className={cn(
                       "rounded-2xl px-4 py-3 text-sm font-semibold",
-                      active ? "bg-sand text-ink" : "bg-white/5 text-[rgba(232,222,206,0.84)]",
+                      active ? "bg-ocean text-white" : "bg-white/5 text-[rgba(232,222,206,0.84)]",
                     )}
                   >
                     {item.label}
