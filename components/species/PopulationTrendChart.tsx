@@ -16,6 +16,7 @@ import { type SpeciesRecord } from "@/types/species";
 
 export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
   const [mounted, setMounted] = useState(false);
+  const [compact, setCompact] = useState(false);
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
@@ -25,12 +26,23 @@ export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
     return () => window.cancelAnimationFrame(frame);
   }, []);
 
+  useEffect(() => {
+    function syncViewport() {
+      setCompact(window.innerWidth < 640);
+    }
+
+    syncViewport();
+    window.addEventListener("resize", syncViewport);
+
+    return () => window.removeEventListener("resize", syncViewport);
+  }, []);
+
   return (
-    <div className="panel rounded-[1.75rem] p-5">
-      <div className="mb-6 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+    <div className="panel rounded-[1.5rem] p-4 sm:rounded-[1.75rem] sm:p-5">
+      <div className="mb-5 flex flex-col gap-3 sm:mb-6 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="section-kicker">Population trend</p>
-          <h2 className="display-type mt-3 text-3xl font-bold text-ocean">
+          <h2 className="section-title mt-3 font-bold text-ocean">
             {species.commonName} through time
           </h2>
         </div>
@@ -40,13 +52,29 @@ export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
         </p>
       </div>
 
-      <div className="h-[340px]">
+      <div className="h-[320px] sm:h-[340px]">
         {mounted ? (
           <ResponsiveContainer width="100%" height="100%">
-            <ComposedChart data={species.populationSeries}>
+            <ComposedChart
+              data={species.populationSeries}
+              margin={{ top: 8, right: compact ? 4 : 12, left: compact ? -24 : 0, bottom: 0 }}
+            >
               <CartesianGrid stroke="rgba(86,101,106,0.18)" vertical={false} />
-              <XAxis dataKey="year" tickLine={false} axisLine={false} />
-              <YAxis tickLine={false} axisLine={false} tickFormatter={(value) => formatNumber(value)} />
+              <XAxis
+                dataKey="year"
+                tickLine={false}
+                axisLine={false}
+                tick={{ fontSize: compact ? 11 : 12 }}
+                interval={compact ? "preserveStartEnd" : 0}
+                minTickGap={compact ? 28 : 14}
+              />
+              <YAxis
+                tickLine={false}
+                axisLine={false}
+                width={compact ? 42 : 56}
+                tick={{ fontSize: compact ? 11 : 12 }}
+                tickFormatter={(value) => formatNumber(value)}
+              />
               <Tooltip
                 formatter={(value) =>
                   typeof value === "number" ? formatNumber(value) : String(value ?? "")
