@@ -12,11 +12,13 @@ export default function ComparePage() {
     <div className="shell py-8 sm:py-12">
       <div className="max-w-3xl">
         <p className="section-kicker">Comparison view</p>
-        <h1 className="hero-title mt-4 font-bold text-ocean">Overlay species trajectories and look for patterns</h1>
+        <h1 className="hero-title mt-4 max-w-3xl font-bold text-ocean">
+          Compare recovery trajectories without flattening different kinds of evidence
+        </h1>
         <p className="lede mt-5">
-          Compare how different species respond to habitat loss, prey shifts,
-          wetland restoration, or dryland disturbance using normalized change,
-          not misleading raw values from incompatible metrics.
+          Use normalized change to compare how species respond to habitat loss, prey shifts,
+          wetland restoration, or dryland disturbance, even when the underlying metrics are
+          counts, territories, occupied units, or other different indicators.
         </p>
       </div>
 

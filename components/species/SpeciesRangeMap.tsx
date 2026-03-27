@@ -50,6 +50,25 @@ export function SpeciesRangeMap({ species }: { species: SpeciesRecord }) {
           ))}
         </MapContainer>
       </div>
+
+      <div className="mt-5 grid gap-4">
+        <div>
+          <p className="eyebrow">Habitats in focus</p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {species.range.habitats.map((habitat) => (
+              <span
+                key={habitat}
+                className="rounded-full bg-white px-3 py-1 text-sm font-semibold text-ink"
+              >
+                {habitat}
+              </span>
+            ))}
+          </div>
+        </div>
+        <p className="text-sm leading-6 text-muted">
+          Regional circles are simplified teaching aids, not exact habitat boundaries or occupied range outlines.
+        </p>
+      </div>
     </div>
   );
 }

@@ -20,13 +20,26 @@ export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
   const hasInterval = species.populationSeries.some(
     (point) => point.low !== undefined && point.high !== undefined,
   );
+  const firstPoint = species.populationSeries[0];
+  const lastPoint = species.populationSeries.at(-1);
+  const changeRatio =
+    firstPoint && lastPoint && firstPoint.estimate > 0
+      ? ((lastPoint.estimate - firstPoint.estimate) / firstPoint.estimate) * 100
+      : 0;
+  const roundedChange = Math.round(Math.abs(changeRatio));
+  const takeaway =
+    changeRatio > 3
+      ? `${species.commonName} is above its first observed checkpoint by about ${roundedChange}%.`
+      : changeRatio < -3
+        ? `${species.commonName} is below its first observed checkpoint by about ${roundedChange}%.`
+        : `${species.commonName} is staying relatively close to its first observed checkpoint.`;
 
   useEffect(() => {
-    const frame = window.requestAnimationFrame(() => {
+    const timeout = window.setTimeout(() => {
       setMounted(true);
-    });
+    }, 0);
 
-    return () => window.cancelAnimationFrame(frame);
+    return () => window.clearTimeout(timeout);
   }, []);
 
   useEffect(() => {
@@ -41,13 +54,14 @@ export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
   }, []);
 
   return (
-    <div className="panel rounded-[1.5rem] p-4 sm:rounded-[1.75rem] sm:p-5">
+    <div className="panel min-w-0 rounded-[1.5rem] p-4 sm:rounded-[1.75rem] sm:p-5">
       <div className="mb-5 grid gap-4 sm:mb-6 lg:grid-cols-[1.1fr_0.9fr]">
         <div>
           <p className="section-kicker">Trend chart</p>
           <h2 className="section-title mt-3 font-bold text-ocean">
             What the line measures for {species.commonName}
           </h2>
+          <p className="mt-3 text-sm font-semibold text-ocean">{takeaway}</p>
           <p className="mt-3 text-sm leading-6 text-muted">
             {species.populationMetric.whatItTracks}
           </p>
@@ -142,13 +156,25 @@ export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
         </article>
         <article className="rounded-[1.25rem] bg-white p-4">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
+            Change from baseline
+          </p>
+          <p className="mt-2 text-xl font-bold text-ink">
+            {changeRatio >= 0 ? "+" : "-"}
+            {roundedChange}%
+          </p>
+          <p className="mt-2 text-sm leading-6 text-muted">
+            Compared with {firstPoint?.year ?? "the first observed year"}.
+          </p>
+        </article>
+        <article className="rounded-[1.25rem] bg-white p-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
             Why this matters
           </p>
           <p className="mt-2 text-sm leading-6 text-muted">
             {species.populationMetric.whyItMatters}
           </p>
         </article>
-        <article className="rounded-[1.25rem] bg-white p-4">
+        <article className="rounded-[1.25rem] bg-white p-4 md:col-span-3">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
             Read with care
           </p>
