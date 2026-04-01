@@ -13,10 +13,49 @@ export const learningAudienceLabels: Record<LearningAudience, string> = {
 };
 
 export const learningAudienceDescriptions: Record<LearningAudience, string> = {
-  elementary: "Shorter, picture-forward lessons built around noticing, habitat, and simple evidence.",
-  middle: "Structured walkthroughs that connect evidence, species trends, and recovery decisions.",
-  high: "More analytical lessons that ask students to interpret metrics, tradeoffs, and conservation strategy.",
-  educators: "Planning support, discussion framing, and lesson-ready materials for classroom use.",
+  elementary:
+    "Shorter, picture-forward lessons built around noticing, habitat, and simple evidence.",
+  middle:
+    "Structured walkthroughs that connect evidence, species trends, and recovery decisions.",
+  high:
+    "More analytical lessons that ask students to interpret metrics, tradeoffs, and conservation strategy.",
+  educators:
+    "Planning support, discussion framing, and lesson-ready materials for classroom use.",
+};
+
+export const learningAudiencePlanner: Record<
+  LearningAudience,
+  {
+    bestFor: string;
+    pacing: string;
+    deliverable: string;
+    teachingMove: string;
+  }
+> = {
+  elementary: {
+    bestFor: "Observation practice, habitat introductions, and short evidence-based writing.",
+    pacing: "Best in one short class period, stations, or a science warm-up.",
+    deliverable: "A labeled sketch, notice-and-wonder chart, or short explanation using one piece of evidence.",
+    teachingMove: "Lead with the photo first, then use the chart as a simple visual story about change over time.",
+  },
+  middle: {
+    bestFor: "Guided analysis, CER writing, and discussions about tradeoffs in conservation.",
+    pacing: "Works well across one to two class periods with time for chart and map discussion.",
+    deliverable: "A claim with evidence from the chart, map, and threat/recovery sections.",
+    teachingMove: "Pause after the chart and ask students what else they need before deciding whether recovery is working.",
+  },
+  high: {
+    bestFor: "Interpreting methods, comparing indicators, and debating recovery strategy.",
+    pacing: "Strong for one extended block or a short multi-day inquiry sequence.",
+    deliverable: "A comparative analysis, discussion protocol, or short policy-style recommendation.",
+    teachingMove: "Use the methodology notes to push students beyond the headline number and into measurement limits.",
+  },
+  educators: {
+    bestFor: "Lesson planning, discussion framing, and adapting the species story to local curriculum goals.",
+    pacing: "Designed for quick scan-and-go prep before class, advisory, or independent work.",
+    deliverable: "A ready-to-run lesson outline with questions, evidence moves, and extension options.",
+    teachingMove: "Choose the audience-specific page first, then link students back to the species profile for independent evidence gathering.",
+  },
 };
 
 export const learningAudiences = Object.keys(

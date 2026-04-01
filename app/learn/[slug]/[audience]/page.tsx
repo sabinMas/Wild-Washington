@@ -6,8 +6,10 @@ import { PopulationTrendChart } from "@/components/species/PopulationTrendChart"
 import {
   buildLessonPage,
   learningAudienceLabels,
+  learningAudiencePlanner,
   learningAudiences,
 } from "@/lib/data/learning";
+import { getStoryAngle } from "@/lib/data/site-content";
 import { getSpeciesBySlug, getSpeciesSlugs } from "@/lib/data/species";
 import { type LearningAudience } from "@/types/species";
 
@@ -54,11 +56,13 @@ export default async function LessonPage({
   }
 
   const lesson = buildLessonPage(species, audience);
+  const planner = learningAudiencePlanner[audience];
+  const storyAngle = getStoryAngle(species);
 
   return (
     <div className="shell py-8 sm:py-12">
       <section className="panel rounded-[1.75rem] px-5 py-6 sm:rounded-[2rem] sm:px-6 sm:py-8 md:px-10 md:py-10">
-        <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+        <div className="grid gap-8 xl:grid-cols-[1.05fr_0.95fr] xl:items-center">
           <div className="max-w-3xl">
             <div className="flex flex-wrap items-center gap-3 text-sm font-semibold text-ocean">
               <Link href="/learn" className="link-inline">
@@ -69,7 +73,11 @@ export default async function LessonPage({
                 {species.commonName}
               </Link>
             </div>
-            <p className="section-kicker">{lesson.audienceLabel}</p>
+            <p className="section-kicker mt-4">{lesson.audienceLabel}</p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              <span className="info-pill">{storyAngle.label}</span>
+              <span className="info-pill">{species.populationMetric.label}</span>
+            </div>
             <h1 className="hero-title mt-4 font-bold text-ocean">
               {species.commonName}: {lesson.title}
             </h1>
@@ -92,32 +100,48 @@ export default async function LessonPage({
                 );
               })}
             </div>
-            <div className="mt-7 grid gap-4 rounded-[1.5rem] bg-white p-5 sm:rounded-[1.75rem] sm:p-6">
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-muted">
-                Essential question
-              </p>
-              <p className="text-xl font-bold text-ink">{lesson.essentialQuestion}</p>
-              <p className="text-sm leading-6 text-muted">
+          </div>
+
+          <div className="grid gap-4">
+            <figure className="overflow-hidden rounded-[1.5rem] border border-border/60 bg-white shadow-lg sm:rounded-[1.75rem]">
+              <div className="relative aspect-[4/3]">
+                <Image
+                  src={species.media.src}
+                  alt={species.media.alt}
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 40rem, 100vw"
+                  className="object-cover"
+                />
+              </div>
+              <figcaption className="p-4 text-sm leading-6 text-muted">
+                {species.media.alt}
+              </figcaption>
+            </figure>
+
+            <div className="story-card p-5">
+              <p className="eyebrow">Essential question</p>
+              <p className="mt-3 text-lg font-bold text-ink">{lesson.essentialQuestion}</p>
+              <p className="mt-3 text-sm leading-6 text-muted">
                 Visual focus: {lesson.visualCaption}
               </p>
             </div>
           </div>
+        </div>
+      </section>
 
-          <figure className="overflow-hidden rounded-[1.5rem] border border-border/60 bg-white shadow-lg sm:rounded-[1.75rem]">
-            <div className="relative aspect-[4/3]">
-              <Image
-                src={species.media.src}
-                alt={species.media.alt}
-                fill
-                priority
-                sizes="(min-width: 1024px) 40rem, 100vw"
-                className="object-cover"
-              />
-            </div>
-            <figcaption className="p-4 text-sm leading-6 text-muted">
-              {species.media.alt}
-            </figcaption>
-          </figure>
+      <section className="mt-6 grid gap-4 md:grid-cols-3">
+        <div className="mini-stat">
+          <p className="eyebrow">Best for</p>
+          <p className="mt-2 text-sm leading-6 text-muted">{planner.bestFor}</p>
+        </div>
+        <div className="mini-stat">
+          <p className="eyebrow">Pacing</p>
+          <p className="mt-2 text-sm leading-6 text-muted">{planner.pacing}</p>
+        </div>
+        <div className="mini-stat">
+          <p className="eyebrow">Likely output</p>
+          <p className="mt-2 text-sm leading-6 text-muted">{planner.deliverable}</p>
         </div>
       </section>
 
@@ -129,7 +153,7 @@ export default async function LessonPage({
           </h2>
           <ul className="mt-5 grid gap-3 text-sm leading-6 text-muted sm:mt-6">
             {lesson.objectives.map((objective) => (
-              <li key={objective} className="rounded-[1.25rem] bg-white px-4 py-3">
+              <li key={objective} className="story-card p-4">
                 {objective}
               </li>
             ))}
@@ -142,7 +166,7 @@ export default async function LessonPage({
             What to prepare before the walkthrough
           </h2>
           <div className="mt-5 grid gap-4 sm:mt-6">
-            <article className="rounded-[1.25rem] bg-white p-5">
+            <article className="story-card p-5">
               <h3 className="text-lg font-bold text-ink">Materials</h3>
               <ul className="mt-3 grid gap-2 text-sm leading-6 text-muted">
                 {lesson.materials.map((item) => (
@@ -150,14 +174,11 @@ export default async function LessonPage({
                 ))}
               </ul>
             </article>
-            <article className="rounded-[1.25rem] bg-white p-5">
+            <article className="story-card p-5">
               <h3 className="text-lg font-bold text-ink">Vocabulary</h3>
               <div className="mt-3 flex flex-wrap gap-2">
                 {lesson.vocabulary.map((term) => (
-                  <span
-                    key={term}
-                    className="rounded-full bg-mist px-3 py-2 text-sm font-semibold text-ocean"
-                  >
+                  <span key={term} className="info-pill">
                     {term}
                   </span>
                 ))}
@@ -178,7 +199,7 @@ export default async function LessonPage({
         </h2>
         <div className="mt-5 grid gap-4 sm:mt-6 lg:grid-cols-2">
           {lesson.walkthrough.map((step) => (
-            <article key={step.title} className="rounded-[1.25rem] bg-white p-5">
+            <article key={step.title} className="story-card p-5">
               <h3 className="text-lg font-bold text-ink">{step.title}</h3>
               <p className="mt-2 text-sm leading-6 text-muted">{step.detail}</p>
             </article>
@@ -194,7 +215,7 @@ export default async function LessonPage({
           </h2>
           <ul className="mt-5 grid gap-3 text-sm leading-6 text-muted sm:mt-6">
             {lesson.visualStudy.map((prompt) => (
-              <li key={prompt} className="rounded-[1.25rem] bg-white px-4 py-3">
+              <li key={prompt} className="story-card p-4">
                 {prompt}
               </li>
             ))}
@@ -207,11 +228,11 @@ export default async function LessonPage({
             What learners should produce
           </h2>
           <div className="mt-5 grid gap-4 sm:mt-6">
-            <article className="rounded-[1.25rem] bg-white p-5">
+            <article className="story-card p-5">
               <h3 className="text-lg font-bold text-ink">Assessment task</h3>
               <p className="mt-2 text-sm leading-6 text-muted">{lesson.assessment}</p>
             </article>
-            <article className="rounded-[1.25rem] bg-white p-5">
+            <article className="story-card p-5">
               <h3 className="text-lg font-bold text-ink">Suggested extension</h3>
               <p className="mt-2 text-sm leading-6 text-muted">{lesson.extension}</p>
             </article>
@@ -227,7 +248,7 @@ export default async function LessonPage({
           </h2>
           <ul className="mt-5 grid gap-3 text-sm leading-6 text-muted sm:mt-6">
             {lesson.discussionPrompts.map((prompt) => (
-              <li key={prompt} className="rounded-[1.25rem] bg-white px-4 py-3">
+              <li key={prompt} className="story-card p-4">
                 {prompt}
               </li>
             ))}
@@ -235,31 +256,35 @@ export default async function LessonPage({
         </div>
 
         <div className="panel rounded-[1.5rem] p-5 sm:rounded-[1.75rem] sm:p-6">
-          <p className="section-kicker">Next step</p>
+          <p className="section-kicker">Carry it forward</p>
           <h2 className="section-title mt-4 font-bold text-ocean">
-            Move from lesson to action
+            Move from lesson to species context and action
           </h2>
-          <article className="rounded-[1.25rem] bg-white p-5">
-            <h3 className="text-lg font-bold text-ink">Where to go next</h3>
+          <div className="mt-5 grid gap-4 sm:mt-6">
+            <article className="story-card p-5">
+              <h3 className="text-lg font-bold text-ink">Teacher move</h3>
+              <p className="mt-2 text-sm leading-6 text-muted">{planner.teachingMove}</p>
+            </article>
+            <article className="story-card p-5">
+              <h3 className="text-lg font-bold text-ink">Where to go next</h3>
               <p className="mt-2 text-sm leading-6 text-muted">
-                Move from the lesson to the full dashboard or conservation page to
-                connect classroom evidence with Washington organizations and field experiences.
+                Move from the lesson to the full species page, the conservation route, or the
+                methodology page to connect classroom evidence with Washington organizations,
+                stewardship options, and measurement limits.
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
-                <Link
-                  href={`/species/${species.slug}`}
-                  className="rounded-full bg-ocean px-4 py-2 text-sm font-semibold text-white"
-                >
-                  Open species dashboard
+                <Link href={`/species/${species.slug}`} className="button-primary">
+                  Open species page
                 </Link>
-                <Link
-                  href="/conservation"
-                  className="rounded-full border border-border bg-white px-4 py-2 text-sm font-semibold text-ocean"
-                >
+                <Link href="/conservation" className="button-secondary">
                   Open conservation links
                 </Link>
+                <Link href="/methodology" className="button-secondary">
+                  Review methodology
+                </Link>
               </div>
-          </article>
+            </article>
+          </div>
         </div>
       </section>
     </div>

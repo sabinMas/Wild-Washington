@@ -25,19 +25,31 @@ export const metadata: Metadata = {
     template: "%s | Wild Washington",
   },
   description:
-    "An educational endangered species dashboard for Washington State with population trends, maps, learning modules, and conservation actions.",
+    "A Washington wildlife field guide that helps learners, educators, and curious public users explore endangered species through trustworthy trends, maps, comparison tools, and classroom-ready learning paths.",
+  keywords: [
+    "Washington wildlife",
+    "endangered species",
+    "education",
+    "classroom resources",
+    "conservation data",
+    "species comparison",
+  ],
   openGraph: {
     title: "Wild Washington",
     description:
-      "Explore endangered species across Washington State through population data, classroom-ready learning tools, and conservation pathways.",
+      "Explore Washington wildlife through trend stories, comparison tools, classroom-ready lesson paths, and transparent methodology.",
     type: "website",
     siteName: "Wild Washington",
+    url: "https://wild-washington.vercel.app",
   },
   twitter: {
     card: "summary_large_image",
     title: "Wild Washington",
     description:
-      "Washington State endangered species dashboard built for learners, educators, and conservation-minded communities.",
+      "A Washington wildlife field guide built for learners, educators, and curious public users who want more than a generic species website.",
+  },
+  alternates: {
+    canonical: "/",
   },
 };
 

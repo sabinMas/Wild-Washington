@@ -6,6 +6,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
+  { href: "/", label: "Home" },
   { href: "/dashboard", label: "Dashboard" },
   { href: "/compare", label: "Compare" },
   { href: "/learn", label: "Learn" },
@@ -29,7 +30,7 @@ export function SiteHeader() {
               Wild Washington
             </p>
             <p className="truncate text-xs text-[rgba(232,222,206,0.7)] sm:text-sm">
-              Endangered species dashboard
+              Wildlife field guide for classrooms and curious public users
             </p>
           </div>
         </Link>
@@ -102,12 +103,12 @@ export function SiteHeader() {
                     key={item.href}
                     href={item.href}
                     onClick={() => setOpen(false)}
-                    className={cn(
-                      "rounded-2xl px-4 py-3 text-sm font-semibold",
-                      active ? "bg-ocean text-white" : "bg-white/5 text-[rgba(232,222,206,0.84)]",
-                    )}
-                  >
-                    {item.label}
+                  className={cn(
+                    "rounded-2xl px-4 py-3 text-sm font-semibold",
+                    active ? "bg-ocean text-white" : "bg-white/5 text-[rgba(232,222,206,0.84)]",
+                  )}
+                >
+                  {item.label}
                   </Link>
                 );
               })}

@@ -1,11 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { StatusBadge } from "@/components/ui/StatusBadge";
+import { getStoryAngle, getTrendSummary } from "@/lib/data/site-content";
 import { formatNumber } from "@/lib/utils";
 import { type SpeciesRecord } from "@/types/species";
 
 export function SpeciesCard({ species }: { species: SpeciesRecord }) {
   const habitatPreview = species.range.habitats.slice(0, 2).join(", ");
+  const storyAngle = getStoryAngle(species);
 
   return (
     <Link
@@ -38,19 +40,24 @@ export function SpeciesCard({ species }: { species: SpeciesRecord }) {
           <h3 className="display-type mt-2 text-3xl font-semibold leading-tight text-white">
             {species.commonName}
           </h3>
-          <p className="mt-1 text-sm italic text-[rgba(255,255,255,0.78)]">{species.scientificName}</p>
+          <p className="mt-1 text-sm italic text-[rgba(255,255,255,0.78)]">
+            {species.scientificName}
+          </p>
         </div>
       </div>
 
       <div className="flex flex-1 flex-col p-6">
         <div className="mb-4 flex flex-wrap items-center gap-2">
           <StatusBadge trend={species.trend} />
-          <span className="rounded-full border border-border/60 bg-white/45 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-muted">
-            {species.populationMetric.label}
-          </span>
+          <span className="info-pill">{storyAngle.label}</span>
         </div>
 
         <p className="text-sm leading-6 text-muted">{species.heroSummary}</p>
+
+        <div className="story-card mt-5 p-4">
+          <p className="eyebrow">Why this profile is useful</p>
+          <p className="mt-2 text-sm leading-6 text-muted">{getTrendSummary(species)}</p>
+        </div>
 
         <div className="panel-soft mt-5 grid gap-3 rounded-[1.35rem] p-4">
           <div>
@@ -62,27 +69,30 @@ export function SpeciesCard({ species }: { species: SpeciesRecord }) {
               </span>
             </p>
             <p className="mt-2 text-sm leading-6 text-muted">
-              {species.populationMetric.label}
+              {species.populationMetric.label} in {species.currentPopulation.year}
             </p>
           </div>
           <div className="grid gap-3 border-t border-border/60 pt-3 sm:grid-cols-2">
             <div>
-              <p className="eyebrow">Latest year</p>
-              <p className="mt-1 text-sm font-semibold text-ink">{species.currentPopulation.year}</p>
-            </div>
-            <div>
               <p className="eyebrow">Key habitat</p>
               <p className="mt-1 text-sm font-semibold text-ink">{habitatPreview}</p>
+            </div>
+            <div>
+              <p className="eyebrow">Metric type</p>
+              <p className="mt-1 text-sm font-semibold text-ink">
+                {species.populationMetric.label}
+              </p>
             </div>
           </div>
         </div>
 
         <div className="mt-5 rounded-[1.15rem] bg-ocean/[0.07] px-4 py-3">
-          <p className="text-sm font-semibold text-ocean">{species.quickFact}</p>
+          <p className="eyebrow">Classroom hook</p>
+          <p className="mt-2 text-sm font-semibold text-ocean">{species.quickFact}</p>
         </div>
 
         <div className="mt-5 flex items-center justify-between text-sm font-semibold text-ocean">
-          <span>Explore species profile</span>
+          <span>Open species story</span>
           <span aria-hidden="true">View</span>
         </div>
       </div>

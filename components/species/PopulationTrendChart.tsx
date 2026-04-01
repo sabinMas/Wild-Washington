@@ -11,6 +11,11 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import {
+  getConfidenceLabel,
+  getTrendDelta,
+  getTrendSummary,
+} from "@/lib/data/site-content";
 import { formatNumber } from "@/lib/utils";
 import { type SpeciesRecord } from "@/types/species";
 
@@ -22,17 +27,10 @@ export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
   );
   const firstPoint = species.populationSeries[0];
   const lastPoint = species.populationSeries.at(-1);
-  const changeRatio =
-    firstPoint && lastPoint && firstPoint.estimate > 0
-      ? ((lastPoint.estimate - firstPoint.estimate) / firstPoint.estimate) * 100
-      : 0;
+  const changeRatio = getTrendDelta(species);
   const roundedChange = Math.round(Math.abs(changeRatio));
-  const takeaway =
-    changeRatio > 3
-      ? `${species.commonName} is above its first observed checkpoint by about ${roundedChange}%.`
-      : changeRatio < -3
-        ? `${species.commonName} is below its first observed checkpoint by about ${roundedChange}%.`
-        : `${species.commonName} is staying relatively close to its first observed checkpoint.`;
+  const observedWindow =
+    firstPoint && lastPoint ? `${firstPoint.year}-${lastPoint.year}` : "Observed window";
 
   useEffect(() => {
     const timeout = window.setTimeout(() => {
@@ -55,25 +53,37 @@ export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
 
   return (
     <div className="panel min-w-0 rounded-[1.75rem] p-4 sm:p-5">
-      <div className="mb-5 grid gap-4 sm:mb-6 lg:grid-cols-[1.1fr_0.9fr]">
+      <div className="mb-5 grid gap-4 sm:mb-6 xl:grid-cols-[1.1fr_0.9fr]">
         <div>
           <p className="section-kicker">Trend chart</p>
           <h2 className="section-title mt-3 font-bold text-ocean">
-            What the line measures for {species.commonName}
+            What the indicator suggests over time
           </h2>
-          <p className="mt-3 text-sm font-semibold text-ocean">{takeaway}</p>
+          <p className="mt-3 text-sm font-semibold text-ocean">{getTrendSummary(species)}</p>
           <p className="mt-3 text-sm leading-6 text-muted">
             {species.populationMetric.whatItTracks}
           </p>
         </div>
-        <div className="panel-soft grid gap-3 rounded-[1.35rem] p-4">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
-            Metric type
-          </p>
-          <p className="text-lg font-bold text-ink">{species.populationMetric.label}</p>
-          <p className="text-sm leading-6 text-muted">
-            {species.populationMetric.precisionNote}
-          </p>
+
+        <div className="story-grid sm:grid-cols-2">
+          <article className="mini-stat">
+            <p className="eyebrow">Metric type</p>
+            <p className="mt-2 text-lg font-bold text-ink">{species.populationMetric.label}</p>
+            <p className="mt-2 text-sm leading-6 text-muted">
+              {species.populationMetric.precisionNote}
+            </p>
+          </article>
+
+          <article className="mini-stat">
+            <p className="eyebrow">Confidence</p>
+            <p className="mt-2 text-lg font-bold text-ink">
+              {getConfidenceLabel(species.currentPopulation.confidence)}
+            </p>
+            <p className="mt-2 text-sm leading-6 text-muted">
+              Use the methodology notes and source links when you need to understand what the
+              number captures and where it stays approximate.
+            </p>
+          </article>
         </div>
       </div>
 
@@ -114,17 +124,29 @@ export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
                     : [String(value ?? ""), label];
                 }}
                 labelFormatter={(value) => `Observed year: ${value}`}
-                  contentStyle={{
-                    borderRadius: 22,
-                    borderColor: "rgba(89,100,95,0.18)",
-                    backgroundColor: "rgba(255,251,245,0.96)",
-                    boxShadow: "0 18px 38px rgba(24,33,30,0.14)",
-                  }}
-                />
+                contentStyle={{
+                  borderRadius: 22,
+                  borderColor: "rgba(89,100,95,0.18)",
+                  backgroundColor: "rgba(255,251,245,0.96)",
+                  boxShadow: "0 18px 38px rgba(24,33,30,0.14)",
+                }}
+              />
               {hasInterval ? (
                 <>
-                  <Area type="monotone" dataKey="high" stroke="transparent" fill={`${species.primaryColor}20`} activeDot={false} />
-                  <Area type="monotone" dataKey="low" stroke="transparent" fill="#fffdfa" activeDot={false} />
+                  <Area
+                    type="monotone"
+                    dataKey="high"
+                    stroke="transparent"
+                    fill={`${species.primaryColor}20`}
+                    activeDot={false}
+                  />
+                  <Area
+                    type="monotone"
+                    dataKey="low"
+                    stroke="transparent"
+                    fill="#fffdfa"
+                    activeDot={false}
+                  />
                 </>
               ) : null}
               <Line
@@ -143,7 +165,7 @@ export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
         )}
       </div>
 
-      <div className="mt-5 grid gap-4 md:grid-cols-3">
+      <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         <article className="panel-soft rounded-[1.25rem] p-4">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
             Latest observed value
@@ -155,6 +177,7 @@ export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
             Reported for {species.currentPopulation.year}.
           </p>
         </article>
+
         <article className="panel-soft rounded-[1.25rem] p-4">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
             Change from baseline
@@ -164,25 +187,28 @@ export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
             {roundedChange}%
           </p>
           <p className="mt-2 text-sm leading-6 text-muted">
-            Compared with {firstPoint?.year ?? "the first observed year"}.
+            Compared with the first observed checkpoint in {firstPoint?.year ?? "the baseline year"}.
           </p>
         </article>
+
         <article className="panel-soft rounded-[1.25rem] p-4">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
-            Why this matters
+            Observed window
           </p>
+          <p className="mt-2 text-xl font-bold text-ink">{observedWindow}</p>
           <p className="mt-2 text-sm leading-6 text-muted">
-            {species.populationMetric.whyItMatters}
+            Only observed checkpoints are shown so the chart does not imply false year-by-year precision.
           </p>
         </article>
-        <article className="panel-soft rounded-[1.25rem] p-4 md:col-span-3">
+
+        <article className="panel-soft rounded-[1.25rem] p-4">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
             Read with care
           </p>
           <p className="mt-2 text-sm leading-6 text-muted">
             {hasInterval
-              ? "Only observed checkpoints are plotted. Shaded bands appear only where the source reported lower and upper bounds."
-              : "Only observed checkpoints are plotted. No interval band is shown because the source did not provide lower and upper bounds."}
+              ? "Shaded bounds appear only where the source reported lower and upper estimates."
+              : "No shaded uncertainty band appears because the source did not publish lower and upper bounds."}
           </p>
         </article>
       </div>
