@@ -52,6 +52,7 @@ export function LearningHubExplorer({ species }: { species: SpeciesRecord[] }) {
                 Search species inside the selected audience
               </span>
               <input
+                type="search"
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="Try salmon, owl, frog..."
@@ -68,6 +69,7 @@ export function LearningHubExplorer({ species }: { species: SpeciesRecord[] }) {
                     key={audience}
                     type="button"
                     onClick={() => setSelectedAudience(audience)}
+                    aria-pressed={active}
                     className={`rounded-[1.5rem] p-5 text-left transition ${
                       active ? "panel bg-ocean text-white" : "panel-soft"
                     }`}
@@ -133,10 +135,10 @@ export function LearningHubExplorer({ species }: { species: SpeciesRecord[] }) {
           </div>
 
           <div className="flex flex-wrap gap-3">
-            <Link href="/dashboard" className="button-secondary">
-              Browse all species
+            <Link href="/explore" className="button-secondary">
+              Browse wildlife
             </Link>
-            <Link href="/conservation" className="button-secondary">
+            <Link href="/conservation-action" className="button-secondary">
               Connect lessons to action
             </Link>
           </div>

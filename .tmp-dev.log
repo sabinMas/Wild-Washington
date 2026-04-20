@@ -1,0 +1,739 @@
+
+> wild-washington@0.1.0 dev
+> next dev --turbopack
+
+⚠ Port 3000 is in use by process 118624, using available port 3001 instead.
+▲ Next.js 16.2.1 (Turbopack)
+- Local:         http://localhost:3001
+- Network:       http://10.0.0.16:3001
+✓ Ready in 424ms
+⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of C:\Users\mason\package-lock.json as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * C:\Users\mason\Documents\GitHub\Wild-Washington\package-lock.json
+
+
+Error: Can't resolve 'tailwindcss' in 'C:\Users\mason\Documents\GitHub'
+    [2m[at finishWithoutResolve (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\mason\\Documents\\GitHub'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\mason\\Documents\\GitHub or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\mason\\Documents\\GitHub\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\mason\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\mason\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tailwindcss' in 'C:\Users\mason\Documents\GitHub'
+    [2m[at finishWithoutResolve (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\mason\\Documents\\GitHub'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\mason\\Documents\\GitHub or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\mason\\Documents\\GitHub\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\mason\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\mason\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+○ Compiling / ...
+Error: Can't resolve 'tailwindcss' in 'C:\Users\mason\Documents\GitHub'
+    [2m[at finishWithoutResolve (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\mason\\Documents\\GitHub'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\mason\\Documents\\GitHub or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\mason\\Documents\\GitHub\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\mason\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\mason\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tailwindcss' in 'C:\Users\mason\Documents\GitHub'
+    [2m[at finishWithoutResolve (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\mason\\Documents\\GitHub'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\mason\\Documents\\GitHub or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\mason\\Documents\\GitHub\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\mason\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\mason\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+
+<--- Last few GCs --->
+
+
+
+
+
+
+
+
+
+<--- Last few GCs --->
+<--- Last few GCs --->
+<--- Last few GCs --->
+<--- Last few GCs --->
+
+
+<--- Last few GCs --->
+<--- JS stacktrace --->
+
+
+
+
+#
+#
+
+
+[280324:0000021E08961000]    16770 ms: Scavenge 8.8 (10.3) -> 8.4 (9.8) MB, pooled: 1 MB, 22.70 / 0.00 ms  (average mu = 1.000, current mu = 1.000) allocation failure; 
+
+
+
+# Fatal JavaScript out of memory: MemoryChunk allocation failed during deserialization.
+
+# Fatal JavaScript out of memory: MemoryChunk allocation failed during deserialization.
+
+[280324:0000021E08961000]    27926 ms: Scavenge 9.1 (9.8) -> 8.7 (11.3) MB, pooled: 0 MB, 38.38 / 0.00 ms  (average mu = 1.000, current mu = 1.000) allocation failure; 
+<--- JS stacktrace --->
+<--- JS stacktrace --->
+<--- JS stacktrace --->
+#
+<--- JS stacktrace --->
+#
+[280324:0000021E08961000]    28693 ms: Scavenge 9.5 (11.5) -> 9.1 (10.5) MB, pooled: 1 MB, 0.33 / 0.00 ms  (average mu = 1.000, current mu = 1.000) allocation failure; 
+
+
+
+
+----- Native stack trace -----
+----- Native stack trace -----
+
+#
+
+FATAL ERROR: Committing semi space failed. Allocation failed - JavaScript heap out of memory
+
+
+
+
+
+# Fatal JavaScript out of memory: MemoryChunk allocation failed during deserialization.
+
+
+----- Native stack trace -----
+
+ 1: 00007FF71C5520AD node::SetCppgcReference+17245
+ 1: 00007FF71C5520AD 
+
+#
+<--- JS stacktrace --->
+#
+
+#
+ 2: 00007FF71C4362CF node::TriggerNodeReport+75631
+ 2: 00007FF71C4362CF 
+#
+----- Native stack trace -----
+
+# Fatal JavaScript out of memory: MemoryChunk allocation failed during deserialization.
+ 3: 00007FF71D6016E6 v8::base::FatalOOM+54
+ 1: 00007FF71C5520AD 
+ 3: 00007FF71D6016E6 
+# Fatal JavaScript out of memory: MemoryChunk allocation failed during deserialization.
+# Fatal JavaScript out of memory: MemoryChunk allocation failed during deserialization.
+
+FATAL ERROR: Committing semi space failed. Allocation failed - JavaScript heap out of memory
+#
+ 2: 00007FF71C4BA4D8 
+#
+----- Native stack trace -----
+----- Native stack trace -----
+ 3: 00007FF71D03A1B1 
+----- Native stack trace -----
+ 4: 00007FF71D03A203 
+#
+ 1: 00007FF71C5520AD 
+ 4: 00007FF71D03A203 v8::Isolate::ReportExternalAllocationLimitReached+147
+ 5: 00007FF71D027096 v8::Function::Experimental_IsNopFunction+2790
+ 5: 00007FF71D027096 
+
+
+ 2: 00007FF71C4362CF 
+
+----- Native stack trace -----
+ 4: 00007FF71D027096 
+ 6: 00007FF71CE76920 v8::internal::StrongRootAllocatorBase::StrongRootAllocatorBase+31392
+ 6: 00007FF71CE76920 
+
+ 7: 00007FF71CE3EADA v8::CpuProfileNode::GetScriptResourceNameStr+3210
+ 1: 00007FF71C5520AD 
+ 1: 00007FF71C5520AD 
+ 5: 00007FF71CE76920 
+ 1: 00007FF71C5520AD 
+ 3: 00007FF71D6016E6 
+ 7: 00007FF71CE3EADA 
+ 1: 00007FF71C5520AD 
+ 4: 00007FF71D03A203 
+ 2: 00007FF71C4BA4D8 
+ 2: 00007FF71C4362CF 
+ 6: 00007FF71CE2F6C3 
+ 2: 00007FF71C4362CF 
+ 8: 00007FF71CE3F0F0 v8::CpuProfileNode::GetScriptResourceNameStr+4768
+ 8: 00007FF71CE3F0F0 
+ 2: 00007FF71C4362CF 
+ 5: 00007FF71D027096 
+ 3: 00007FF71D03A1B1 
+ 3: 00007FF71D6016E6 
+ 7: 00007FF71CE7FA1C 
+ 3: 00007FF71D6016E6 
+ 9: 00007FF71CE3EDF5 v8::CpuProfileNode::GetScriptResourceNameStr+4005
+ 9: 00007FF71CE3EDF5 
+ 3: 00007FF71D6016E6 
+ 6: 00007FF71CE76920 
+ 4: 00007FF71D027096 
+ 4: 00007FF71D03A203 
+ 8: 00007FF71CE702E9 
+ 4: 00007FF71D03A203 
+10: 00007FF71CE2E86B v8::PrimitiveArray::Length+126779
+10: 00007FF71CE2E86B 
+ 5: 00007FF71D027096 
+ 9: 00007FF71CE6BCF5 
+ 5: 00007FF71D027096 
+ 7: 00007FF71CE3EADA 
+11: 00007FF71CE2DE2A 
+ 4: 00007FF71D03A203 
+11: 00007FF71CE2DE2A v8::PrimitiveArray::Length+124154
+ 5: 00007FF71CE76920 
+ 5: 00007FF71D027096 
+ 8: 00007FF71CE3F0F0 
+ 6: 00007FF71CE2F6C3 
+ 6: 00007FF71CE76920 
+10: 00007FF71C7F13BD 
+ 6: 00007FF71CE76920 
+12: 00007FF71CE846E2 v8::internal::StrongRootAllocatorBase::StrongRootAllocatorBase+88162
+12: 00007FF71CE846E2 
+ 6: 00007FF71CE76920 
+ 9: 00007FF71CE3EDF5 
+ 7: 00007FF71CE7FA1C 
+ 7: 00007FF71CE3EADA 
+13: 00007FF71CEE82C7 
+ 7: 00007FF71CE3EADA 
+10: 00007FF71CE24933 
+ 7: 00007FF71CE3EADA 
+ 8: 00007FF71CE3F0F0 
+ 8: 00007FF71CE3F0F0 
+13: 00007FF71CEE82C7 v8::base::CPU::has_sse41+74151
+ 8: 00007FF71CE702E9 
+14: 00007FF71CB17F5E v8::internal::Version::GetString+126270
+14: 00007FF71CB17F5E 
+ 8: 00007FF71CE3F0F0 
+11: 00007FF71CE64C66 
+ 9: 00007FF71CE6BCF5 
+ 9: 00007FF71CE3EDF5 
+ 9: 00007FF71CE3EDF5 
+15: 00007FF71D02FEA1 
+ 9: 00007FF71CE3EDF5 
+12: 00007FF71CE648ED 
+10: 00007FF71CE24933 
+10: 00007FF71C7F13BD 
+16: 00007FF71C5917ED 
+11: 7FF8000000000000 
+10: 00007FF71CE24933 
+10: 00007FF71CE24933 
+13: 00007FF71CE64038 
+11: 00007FF71CE64C66 
+11: 00007FF71CE64C66 
+17: 00007FF71C37B566 
+11: 00007FF71CE64C66 
+14: 00007FF71CE63791 
+12: 00007FF71CE648ED 
+15: 00007FF71D02FEA1 v8::Isolate::Initialize+433
+12: 00007FF71CE648ED 
+18: 00007FF71C380155 
+12: 00007FF71CE648ED 
+15: 00007FF71CE8918D 
+13: 00007FF71CE64038 
+16: 00007FF71C5917ED node::NewContext+413
+13: 00007FF71CE64038 
+19: 00007FF71C375A25 
+13: 00007FF71CE64038 
+14: 00007FF71CE63791 
+17: 00007FF71C37B566 RSA_meth_get_flags+184694
+14: 00007FF71CE63791 
+14: 00007FF71CE63791 
+16: 00007FF71CE89ACA 
+20: 00007FF71C5B2323 
+17: 00007FF71CB32DDB 
+15: 00007FF71CE8918D 
+18: 00007FF71C380155 RSA_meth_get_flags+204133
+15: 00007FF71CE8918D 
+18: 00007FF71CB346E3 
+19: 00007FF71C375A25 RSA_meth_get_flags+161333
+16: 00007FF71CE89ACA 
+15: 00007FF71CE8918D 
+16: 00007FF71CE89ACA 
+21: 00007FF71DD1066E 
+22: 00007FFBAE63E8D7 BaseThreadInitThunk+23
+16: 00007FF71CE89ACA 
+19: 00007FF71CB2FFE7 
+17: 00007FF71CB32DDB 
+20: 00007FF71C5B2323 uv_poll_stop+291
+17: 00007FF71CB32DDB 
+23: 00007FFBAF56C3FC RtlUserThreadStart+44
+17: 00007FF71CB32DDB 
+20: 00007FF71CB34DDF 
+18: 00007FF71CB346E3 
+18: 00007FF71CB346E3 
+21: 00007FF71CB0FB64 
+19: 00007FF71CB2F0E5 
+18: 00007FF71CB346E3 
+21: 00007FF71DD1066E inflateValidate+153502
+22: 00007FFBAE63E8D7 BaseThreadInitThunk+23
+19: 00007FF71CB2FFE7 
+19: 00007FF71CB2F0E5 
+22: 00007FF71CE7C8C9 
+20: 00007FF71CB33F8C 
+20: 00007FF71CB34DDF 
+20: 00007FF71CB33F8C 
+23: 00007FF71CB0FFBE 
+21: 00007FF71CB347FC 
+21: 00007FF71CB347FC 
+23: 00007FFBAF56C3FC RtlUserThreadStart+44
+21: 00007FF71CB0FB64 
+24: 00007FF71CEE871F 
+22: 00007FF71CB2F0E5 
+22: 00007FF71CE7C8C9 
+22: 00007FF71CB2F0E5 
+25: 00007FF71CB17F5E 
+23: 00007FF71CB33F8C 
+23: 00007FF71CB0FFBE 
+23: 00007FF71CB33F8C 
+26: 00007FF71D02FEA1 
+24: 00007FF71CB347FC 
+24: 00007FF71CEE871F 
+24: 00007FF71CB347FC 
+27: 00007FF71C5917ED 
+25: 00007FF71CB2F0E5 
+25: 00007FF71CB17F5E 
+25: 00007FF71CB2F0E5 
+26: 00007FF71CB33F8C 
+26: 00007FF71D02FEA1 
+28: 00007FF71C37B566 
+26: 00007FF71CB33F8C 
+29: 00007FF71C380155 
+27: 00007FF71CB347FC 
+27: 00007FF71CB347FC 
+30: 00007FF71C375A25 
+27: 00007FF71C5917ED 
+28: 00007FF71CB2F0E5 
+28: 00007FF71C37B566 
+28: 00007FF71CB2F0E5 
+31: 00007FF71C5B2323 
+29: 00007FF71CB33F8C 
+29: 00007FF71C380155 
+29: 00007FF71CB33F8C 
+32: 00007FF71DD1066E 
+30: 00007FF71CB347FC 
+30: 00007FF71C375A25 
+30: 00007FF71CB347FC 
+33: 00007FFBAE63E8D7 BaseThreadInitThunk+23
+31: 00007FF71CB2FFE7 
+31: 00007FF71C5B2323 
+34: 00007FFBAF56C3FC RtlUserThreadStart+44
+31: 00007FF71CB2FFE7 
+32: 00007FF71DD1066E 
+32: 00007FF71CB34DDF 
+32: 00007FF71CB34DDF 
+33: 00007FF71CE7C7DD 
+33: 00007FFBAE63E8D7 BaseThreadInitThunk+23
+34: 00007FF71CB0FFBE 
+33: 00007FF71CE7C7DD 
+34: 00007FFBAF56C3FC RtlUserThreadStart+44
+35: 00007FF71CEE871F 
+34: 00007FF71CB0FFBE 
+35: 00007FF71CEE871F 
+36: 00007FF71CB17F5E 
+36: 00007FF71CB17F5E 
+37: 00007FF71D02FEA1 
+37: 00007FF71D02FEA1 
+38: 00007FF71C5917ED 
+38: 00007FF71C5917ED 
+39: 00007FF71C37B566 
+39: 00007FF71C37B566 
+40: 00007FF71C380155 
+40: 00007FF71C380155 
+41: 00007FF71C375A25 
+41: 00007FF71C375A25 
+42: 00007FF71C5B2323 
+42: 00007FF71C5B2323 
+43: 00007FF71DD1066E 
+43: 00007FF71DD1066E 
+44: 00007FFBAE63E8D7 BaseThreadInitThunk+23
+44: 00007FFBAE63E8D7 BaseThreadInitThunk+23
+45: 00007FFBAF56C3FC RtlUserThreadStart+44
+45: 00007FFBAF56C3FC RtlUserThreadStart+44
+Error: Can't resolve 'tailwindcss' in 'C:\Users\mason\Documents\GitHub'
+    [2m[at finishWithoutResolve (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\mason\\Documents\\GitHub'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\mason\\Documents\\GitHub or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\mason\\Documents\\GitHub\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\mason\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\mason\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tailwindcss' in 'C:\Users\mason\Documents\GitHub'
+    [2m[at finishWithoutResolve (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\mason\\Documents\\GitHub'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\mason\\Documents\\GitHub or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\mason\\Documents\\GitHub\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\mason\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\mason\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+Error: Can't resolve 'tailwindcss' in 'C:\Users\mason\Documents\GitHub'
+    [2m[at finishWithoutResolve (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\mason\\Documents\\GitHub'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\mason\\Documents\\GitHub or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\mason\\Documents\\GitHub\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\mason\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\mason\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+
+<--- Last few GCs --->
+
+
+
+
+<--- Last few GCs --->
+#
+
+# Fatal JavaScript out of memory: MemoryChunk allocation failed during deserialization.
+
+<--- JS stacktrace --->
+
+
+
+#
+
+<--- JS stacktrace --->
+----- Native stack trace -----
+#
+
+
+# Fatal JavaScript out of memory: MemoryChunk allocation failed during deserialization.
+
+#
+
+----- Native stack trace -----
+#
+
+# Fatal JavaScript out of memory: MemoryChunk allocation failed during deserialization.
+#
+----- Native stack trace -----
+
+ 1: 00007FF71C5520AD node::SetCppgcReference+17245
+ 1: 00007FF71C5520AD node::SetCppgcReference+17245
+ 2: 00007FF71C4362CF node::TriggerNodeReport+75631
+ 3: 00007FF71D6016E6 v8::base::FatalOOM+54
+ 2: 00007FF71C4362CF node::TriggerNodeReport+75631
+ 4: 00007FF71D03A203 v8::Isolate::ReportExternalAllocationLimitReached+147
+ 3: 00007FF71D6016E6 v8::base::FatalOOM+54
+ 1: 00007FF71C5520AD node::SetCppgcReference+17245
+ 5: 00007FF71D027096 v8::Function::Experimental_IsNopFunction+2790
+ 4: 00007FF71D03A203 v8::Isolate::ReportExternalAllocationLimitReached+147
+ 6: 00007FF71CE76920 v8::internal::StrongRootAllocatorBase::StrongRootAllocatorBase+31392
+ 5: 00007FF71D027096 v8::Function::Experimental_IsNopFunction+2790
+ 7: 00007FF71CE3EADA v8::CpuProfileNode::GetScriptResourceNameStr+3210
+ 2: 00007FF71C4362CF node::TriggerNodeReport+75631
+ 6: 00007FF71CE76920 v8::internal::StrongRootAllocatorBase::StrongRootAllocatorBase+31392
+ 8: 00007FF71CE3F0F0 v8::CpuProfileNode::GetScriptResourceNameStr+4768
+ 3: 00007FF71D6016E6 v8::base::FatalOOM+54
+ 7: 00007FF71CE3EADA v8::CpuProfileNode::GetScriptResourceNameStr+3210
+ 9: 00007FF71CE3EDF5 v8::CpuProfileNode::GetScriptResourceNameStr+4005
+ 4: 00007FF71D03A203 v8::Isolate::ReportExternalAllocationLimitReached+147
+ 8: 00007FF71CE3F0F0 v8::CpuProfileNode::GetScriptResourceNameStr+4768
+10: 00007FF71CE2E86B v8::PrimitiveArray::Length+126779
+ 5: 00007FF71D027096 v8::Function::Experimental_IsNopFunction+2790
+ 9: 00007FF71CE3EDF5 v8::CpuProfileNode::GetScriptResourceNameStr+4005
+11: 00007FF71CE2DE2A v8::PrimitiveArray::Length+124154
+ 6: 00007FF71CE76920 v8::internal::StrongRootAllocatorBase::StrongRootAllocatorBase+31392
+10: 00007FF71CE24933 v8::PrimitiveArray::Length+86019
+12: 00007FF71CE846E2 v8::internal::StrongRootAllocatorBase::StrongRootAllocatorBase+88162
+ 7: 00007FF71CE3EADA v8::CpuProfileNode::GetScriptResourceNameStr+3210
+11: 00007FF71CE64C66 v8::CpuProfileNode::GetScriptResourceNameStr+159254
+13: 00007FF71CEE82C7 v8::base::CPU::has_sse41+74151
+ 8: 00007FF71CE3F0F0 v8::CpuProfileNode::GetScriptResourceNameStr+4768
+12: 00007FF71CE648ED v8::CpuProfileNode::GetScriptResourceNameStr+158365
+14: 00007FF71CB17F5E v8::internal::Version::GetString+126270
+ 9: 00007FF71CE3EDF5 v8::CpuProfileNode::GetScriptResourceNameStr+4005
+13: 00007FF71CE64038 v8::CpuProfileNode::GetScriptResourceNameStr+156136
+15: 00007FF71D02FEA1 v8::Isolate::Initialize+433
+10: 00007FF71CE24933 v8::PrimitiveArray::Length+86019
+14: 00007FF71CE63791 v8::CpuProfileNode::GetScriptResourceNameStr+153921
+16: 00007FF71C5917ED node::NewContext+413
+11: 00007FF71CE64C66 v8::CpuProfileNode::GetScriptResourceNameStr+159254
+17: 00007FF71C37B566 RSA_meth_get_flags+184694
+15: 00007FF71CB32D63 v8::internal::Version::GetString+236355
+12: 00007FF71CE648ED v8::CpuProfileNode::GetScriptResourceNameStr+158365
+16: 00007FF71CB346E3 v8::internal::Version::GetString+242883
+18: 00007FF71C380155 RSA_meth_get_flags+204133
+13: 00007FF71CE64038 v8::CpuProfileNode::GetScriptResourceNameStr+156136
+17: 00007FF71CB2F0E5 v8::internal::Version::GetString+220869
+19: 00007FF71C375A25 RSA_meth_get_flags+161333
+18: 00007FF71CB33F8C v8::internal::Version::GetString+241004
+14: 00007FF71CE63791 v8::CpuProfileNode::GetScriptResourceNameStr+153921
+20: 00007FF71C5B2323 uv_poll_stop+291
+15: 00007FF71CE8918D v8::Isolate::GetHeapProfiler+7629
+19: 00007FF71CB347FC v8::internal::Version::GetString+243164
+21: 00007FF71DD1066E inflateValidate+153502
+16: 00007FF71CE89ACA v8::Isolate::GetHeapProfiler+9994
+20: 00007FF71CB2F0E5 v8::internal::Version::GetString+220869
+22: 00007FFBAE63E8D7 BaseThreadInitThunk+23
+17: 00007FF71CB32DDB v8::internal::Version::GetString+236475
+21: 00007FF71CB33F8C v8::internal::Version::GetString+241004
+18: 00007FF71CB346E3 v8::internal::Version::GetString+242883
+22: 00007FF71CB347FC v8::internal::Version::GetString+243164
+23: 00007FFBAF56C3FC RtlUserThreadStart+44
+19: 00007FF71CB2FFE7 v8::internal::Version::GetString+224711
+23: 00007FF71CB2F0E5 v8::internal::Version::GetString+220869
+20: 00007FF71CB34DDF v8::internal::Version::GetString+244671
+24: 00007FF71CB33F8C v8::internal::Version::GetString+241004
+21: 00007FF71CE7C7DD v8::internal::StrongRootAllocatorBase::StrongRootAllocatorBase+55645
+25: 00007FF71CB347FC v8::internal::Version::GetString+243164
+22: 00007FF71CB0FFBE v8::internal::Version::GetString+93598
+26: 00007FF71CB2F0E5 v8::internal::Version::GetString+220869
+23: 00007FF71CEE871F v8::base::CPU::has_sse41+75263
+27: 00007FF71CB33F8C v8::internal::Version::GetString+241004
+24: 00007FF71CB17F5E v8::internal::Version::GetString+126270
+28: 00007FF71CB347FC v8::internal::Version::GetString+243164
+25: 00007FF71D02FEA1 v8::Isolate::Initialize+433
+29: 00007FF71CB2FFE7 v8::internal::Version::GetString+224711
+26: 00007FF71C5917ED node::NewContext+413
+30: 00007FF71CB34DDF v8::internal::Version::GetString+244671
+27: 00007FF71C37B566 RSA_meth_get_flags+184694
+31: 00007FF71CE7C7DD v8::internal::StrongRootAllocatorBase::StrongRootAllocatorBase+55645
+28: 00007FF71C380155 RSA_meth_get_flags+204133
+32: 00007FF71CB0FFBE v8::internal::Version::GetString+93598
+29: 00007FF71C375A25 RSA_meth_get_flags+161333
+33: 00007FF71CEE871F v8::base::CPU::has_sse41+75263
+30: 00007FF71C5B2323 uv_poll_stop+291
+34: 00007FF71CB17F5E v8::internal::Version::GetString+126270
+31: 00007FF71DD1066E inflateValidate+153502
+35: 00007FF71D02FEA1 v8::Isolate::Initialize+433
+32: 00007FFBAE63E8D7 BaseThreadInitThunk+23
+36: 00007FF71C5917ED node::NewContext+413
+33: 00007FFBAF56C3FC RtlUserThreadStart+44
+37: 00007FF71C37B566 RSA_meth_get_flags+184694
+38: 00007FF71C380155 RSA_meth_get_flags+204133
+39: 00007FF71C375A25 RSA_meth_get_flags+161333
+40: 00007FF71C5B2323 uv_poll_stop+291
+41: 00007FF71DD1066E inflateValidate+153502
+42: 00007FFBAE63E8D7 BaseThreadInitThunk+23
+43: 00007FFBAF56C3FC RtlUserThreadStart+44
+
+<--- Last few GCs --->
+
+
+<--- JS stacktrace --->
+
+FATAL ERROR: Committing semi space failed. Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+
+ 1: 00007FF71C5520AD 
+
+<--- Last few GCs --->
+ 2: 00007FF71C4BA4D8 
+
+ 3: 00007FF71D03A1B1 
+ 4: 00007FF71D027096 
+
+ 5: 00007FF71CE76920 
+<--- JS stacktrace --->
+ 6: 00007FF71CE2F6C3 
+
+ 7: 00007FF71CE7FA1C 
+FATAL ERROR: Committing semi space failed. Allocation failed - JavaScript heap out of memory
+ 8: 00007FF71CE702E9 
+----- Native stack trace -----
+ 9: 00007FF71CE6BCF5 
+
+10: 00007FF71C7F13BD 
+ 1: 00007FF71C5520AD node::SetCppgcReference+17245
+ 2: 00007FF71C4BA4D8 v8::base::CPU::num_virtual_address_bits+92376
+ 3: 00007FF71D03A1B1 v8::Isolate::ReportExternalAllocationLimitReached+65
+ 4: 00007FF71D027096 v8::Function::Experimental_IsNopFunction+2790
+ 5: 00007FF71CE76920 v8::internal::StrongRootAllocatorBase::StrongRootAllocatorBase+31392
+ 6: 00007FF71CE2F6C3 v8::PrimitiveArray::Length+130451
+ 7: 00007FF71CE7FA1C v8::internal::StrongRootAllocatorBase::StrongRootAllocatorBase+68508
+ 8: 00007FF71CE702E9 v8::internal::StrongRootAllocatorBase::StrongRootAllocatorBase+5225
+ 9: 00007FF71CE6BCF5 v8::CpuProfileNode::GetScriptResourceNameStr+188069
+10: 00007FF71C7F13BD BIO_ssl_shutdown+189
+Error: Can't resolve 'tailwindcss' in 'C:\Users\mason\Documents\GitHub'
+    [2m[at finishWithoutResolve (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:587:18)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:679:14][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:16:1)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m
+    [2m[at C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\enhanced-resolve\lib\Resolver.js:740:5][0m
+    [2m[at eval (eval at create (C:\Users\mason\Documents\GitHub\Wild-Washington\node_modules\tapable\lib\HookCodeFactory.js:31:10), <anonymous>:15:1)][0m {
+  details: "resolve 'tailwindcss' in 'C:\\Users\\mason\\Documents\\GitHub'\n" +
+    '  Parsed request is a module\n' +
+    '  No description file found in C:\\Users\\mason\\Documents\\GitHub or above\n' +
+    '  resolve as module\n' +
+    "    C:\\Users\\mason\\Documents\\GitHub\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\mason\\Documents\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\mason\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\Users\\node_modules doesn't exist or is not a directory\n" +
+    "    C:\\node_modules doesn't exist or is not a directory"
+}
+
+<--- Last few GCs --->
+
+
+<--- Last few GCs --->
+
+
+<--- JS stacktrace --->
+[320096:000002431BF15000]       39 ms: Scavenge 3.9 (5.5) -> 3.7 (6.3) MB, pooled: 0 MB, 0.59 / 0.00 ms  (average mu = 1.000, current mu = 1.000) allocation failure; 
+
+[320096:000002431BF15000]     2076 ms: Scavenge 4.8 (6.5) -> 4.5 (6.8) MB, pooled: 0 MB, 2022.49 / 0.00 ms  (average mu = 1.000, current mu = 1.000) task; 
+
+
+
+#
+
+# Fatal JavaScript out of memory: MemoryChunk allocation failed during deserialization.
+<--- JS stacktrace --->
+#
+
+----- Native stack trace -----
+FATAL ERROR: NewSpace::EnsureCurrentCapacity Allocation failed - JavaScript heap out of memory
+
+----- Native stack trace -----
+
+ 1: 00007FF71C5520AD 
+ 2: 00007FF71C4BA4D8 
+ 3: 00007FF71D03A1B1 
+ 4: 00007FF71D027096 
+ 5: 00007FF71CE76920 
+ 6: 00007FF71CE5442F 
+ 7: 00007FF71CE7D4B8 
+ 8: 00007FF71CE7FA88 
+ 9: 00007FF71CE702E9 
+10: 00007FF71CE6BCF5 
+11: 00007FF71C7F13BD 
+ 1: 00007FF71C5520AD 
+ 2: 00007FF71C4362CF 
+ 3: 00007FF71D6016E6 
+ 4: 00007FF71D03A203 
+ 5: 00007FF71D027096 
+ 6: 00007FF71CE76920 
+ 7: 00007FF71CE3EADA 
+ 8: 00007FF71CE3F0F0 
+ 9: 00007FF71CE3EDF5 
+10: 00007FF71CE24933 
+11: 00007FF71CE64C66 
+12: 00007FF71CE648ED 
+13: 00007FF71CE64038 
+14: 00007FF71CE63791 
+15: 00007FF71CE8918D 
+16: 00007FF71CE89ACA 
+17: 00007FF71CB32DDB 
+18: 00007FF71CB346E3 
+19: 00007FF71CB2FFE7 
+20: 00007FF71CB34DDF 
+21: 00007FF71CB0FB64 
+22: 00007FF71CE7C8C9 
+23: 00007FF71CB0FFBE 
+24: 00007FF71CEE871F 
+25: 00007FF71CB17F5E 
+26: 00007FF71D02FEA1 
+27: 00007FF71C5917ED 
+28: 00007FF71C37B566 
+29: 00007FF71C380155 
+30: 00007FF71C375A25 
+31: 00007FF71C5B2323 
+32: 00007FF71DD1066E 
+33: 00007FFBAE63E8D7 BaseThreadInitThunk+23
+34: 00007FFBAF56C3FC RtlUserThreadStart+44

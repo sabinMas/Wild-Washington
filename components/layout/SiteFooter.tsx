@@ -1,54 +1,117 @@
-import Link from "next/link";
+"use client";
 
-const footerLinks = [
-  { href: "/dashboard", label: "Explore species" },
-  { href: "/compare", label: "Compare trajectories" },
-  { href: "/learn", label: "Teaching pathways" },
-  { href: "/conservation", label: "Conservation actions" },
-  { href: "/methodology", label: "Methodology and sources" },
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+function LogoMark() {
+  return (
+    <svg
+      viewBox="0 0 64 64"
+      aria-hidden="true"
+      className="h-9 w-9 text-ocean"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M31 9C22 12 15 20 15 31C15 43 24 53 36 55C45 47 49 37 49 28C49 17 41 10 31 9Z"
+        fill="currentColor"
+        opacity="0.18"
+      />
+      <path
+        d="M30 12C23 15 18 22 18 31C18 40 23 47 31 51C39 47 44 39 44 30C44 22 39 15 30 12Z"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <circle cx="24" cy="23" r="3" fill="currentColor" />
+      <circle cx="37" cy="20" r="3" fill="currentColor" />
+      <circle cx="42" cy="31" r="3" fill="currentColor" />
+      <path
+        d="M29 28C26 29 24 31 24 35C24 39 27 42 31 42C35 42 38 39 38 35C38 31 36 29 33 28"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+const exploreLinks = [
+  { href: "/explore", label: "Wildlife" },
+  { href: "/compare", label: "Compare" },
+  { href: "/conservation", label: "Conservation" },
+  { href: "/learn", label: "Learn" },
+];
+
+const aboutLinks = [
+  { href: "/about", label: "Project Overview" },
+  { href: "/methodology", label: "Methodology" },
+  { href: "/accessibility", label: "Accessibility" },
+  { href: "/support", label: "Support" },
+  { href: "/partnerships", label: "Partnerships" },
 ];
 
 export function SiteFooter() {
+  const pathname = usePathname();
+
+  function isActive(href: string) {
+    return pathname === href || pathname.startsWith(`${href}/`);
+  }
+
   return (
-    <footer className="mt-16 border-t border-white/8 bg-[linear-gradient(180deg,#17211e_0%,#101715_100%)] py-10 text-sand sm:mt-20 sm:py-12">
-      <div className="shell grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-start">
+    <footer className="mt-16 border-t border-border bg-[var(--color-surface)] pt-10 sm:mt-20">
+      <div className="shell grid gap-10 pb-8 md:grid-cols-[1.2fr_1fr_1fr]">
         <div className="space-y-4">
-          <p className="section-kicker border-white/12 bg-white/10 text-sand">
-            Wild Washington
-          </p>
-          <p className="display-type max-w-2xl text-3xl font-semibold leading-tight text-sand sm:text-4xl">
-            A field guide for understanding Washington wildlife through evidence, place, and stewardship.
-          </p>
-          <p className="max-w-2xl text-sm leading-6 text-[rgba(232,222,206,0.76)] sm:text-[0.98rem]">
-            Wild Washington is designed for learners, classrooms, educators, and curious public
-            users who want a clearer read on species trends, habitat context, conservation work,
-            and what the limits of the data actually are.
+          <div className="flex items-center gap-3">
+            <LogoMark />
+            <span className="display-type text-[1.5rem] font-bold text-ink">Wild Washington</span>
+          </div>
+          <p className="text-sm text-muted">
+            Washington wildlife stories for exploration, learning, and conservation.
           </p>
         </div>
 
-        <div className="grid gap-4 text-sm leading-6 text-[rgba(232,222,206,0.74)]">
-          <div className="rounded-[1.6rem] border border-white/8 bg-white/5 p-5">
-            <p className="eyebrow text-[rgba(232,222,206,0.58)]">Explore next</p>
-            <div className="mt-3 grid gap-2">
-              {footerLinks.map((item) => (
+        <nav aria-labelledby="footer-explore-heading">
+          <h2 id="footer-explore-heading" className="eyebrow">
+            Explore
+          </h2>
+          <ul className="mt-4 grid gap-3">
+            {exploreLinks.map((item) => (
+              <li key={item.href}>
                 <Link
-                  key={item.href}
                   href={item.href}
-                  className="rounded-2xl border border-white/8 bg-white/5 px-4 py-3 font-semibold text-[rgba(232,222,206,0.88)] transition hover:bg-white/10"
+                  aria-current={isActive(item.href) ? "page" : undefined}
+                  className="text-base font-semibold text-ink transition-colors hover:text-ocean"
                 >
                   {item.label}
                 </Link>
-              ))}
-            </div>
-          </div>
-          <div className="rounded-[1.6rem] border border-white/8 bg-white/5 p-5">
-            <p className="eyebrow text-[rgba(232,222,206,0.58)]">Trust and build</p>
-            <p className="mt-2">
-              Source systems in the project draw from NOAA Fisheries, WDFW, US Fish and Wildlife
-              Service, and the Center for Whale Research. The app itself is built with Next.js,
-              Recharts, Leaflet, and an adapter-based species schema that keeps source caveats visible.
-            </p>
-          </div>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <nav aria-labelledby="footer-about-heading">
+          <h2 id="footer-about-heading" className="eyebrow">
+            About
+          </h2>
+          <ul className="mt-4 grid gap-3">
+            {aboutLinks.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  aria-current={isActive(item.href) ? "page" : undefined}
+                  className="text-base font-semibold text-ink transition-colors hover:text-ocean"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+
+      <div className="border-t border-border">
+        <div className="shell py-4">
+          <p className="text-sm text-muted">(c) 2025 Wild Washington | Data from NOAA, WDFW, USFWS, CWR</p>
         </div>
       </div>
     </footer>

@@ -8,7 +8,9 @@ export const LazySpeciesMap = dynamic(
     ssr: false,
     loading: () => (
       <div className="panel rounded-[1.75rem] p-6">
-        <p className="section-kicker">Range map</p>
+        <span className="section-kicker" aria-hidden="true">
+          Range map
+        </span>
         <div className="mt-5 h-[380px] animate-pulse rounded-[1.5rem] bg-mist" />
       </div>
     ),

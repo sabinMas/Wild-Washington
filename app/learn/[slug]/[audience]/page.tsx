@@ -268,19 +268,19 @@ export default async function LessonPage({
             <article className="story-card p-5">
               <h3 className="text-lg font-bold text-ink">Where to go next</h3>
               <p className="mt-2 text-sm leading-6 text-muted">
-                Move from the lesson to the full species page, the conservation route, or the
-                methodology page to connect classroom evidence with Washington organizations,
+                Move from the lesson to the full species page, the conservation action route, or the
+                about-the-data page to connect classroom evidence with Washington organizations,
                 stewardship options, and measurement limits.
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
                 <Link href={`/species/${species.slug}`} className="button-primary">
                   Open species page
                 </Link>
-                <Link href="/conservation" className="button-secondary">
-                  Open conservation links
+                <Link href="/conservation-action" className="button-secondary">
+                  Open conservation action
                 </Link>
-                <Link href="/methodology" className="button-secondary">
-                  Review methodology
+                <Link href="/about-data" className="button-secondary">
+                  Review the data approach
                 </Link>
               </div>
             </article>

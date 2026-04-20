@@ -18,8 +18,8 @@ export default function Error({ reset }: { error: Error & { digest?: string }; r
           <button type="button" onClick={() => reset()} className="button-primary">
             Retry
           </button>
-          <Link href="/dashboard" className="button-secondary">
-            Return to the dashboard
+          <Link href="/explore" className="button-secondary">
+            Return to Explore Wildlife
           </Link>
         </div>
       </div>

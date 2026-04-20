@@ -10,11 +10,11 @@ export default function NotFound() {
         </h1>
         <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-muted">
           The link may be outdated, or the species slug may not match the current dataset. Try the
-          dashboard, comparison view, or learning hub instead.
+          wildlife guide, comparison view, or learning hub instead.
         </p>
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <Link href="/dashboard" className="button-primary inline-flex">
-            Return to the dashboard
+          <Link href="/explore" className="button-primary inline-flex">
+            Return to Explore Wildlife
           </Link>
           <Link href="/compare" className="button-secondary inline-flex">
             Open comparison view

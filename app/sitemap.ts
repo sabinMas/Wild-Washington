@@ -7,11 +7,16 @@ const baseUrl = "https://wild-washington.vercel.app";
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes: MetadataRoute.Sitemap = [
     "",
-    "/dashboard",
+    "/about",
+    "/explore",
     "/compare",
     "/learn",
-    "/conservation",
-    "/methodology",
+    "/conservation-action",
+    "/about-data",
+    "/institutional-use",
+    "/partnerships",
+    "/accessibility",
+    "/support",
   ].map((path) => ({
     url: `${baseUrl}${path}`,
     lastModified: new Date(),

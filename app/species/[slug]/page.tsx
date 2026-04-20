@@ -70,14 +70,22 @@ export default async function SpeciesPage({
       <section className="panel rounded-[1.9rem] px-5 py-6 sm:px-6 sm:py-8 md:px-10 md:py-10">
         <div className="grid gap-8 xl:grid-cols-[1.02fr_0.98fr] xl:items-start">
           <div className="max-w-3xl">
-            <p className="section-kicker">{species.speciesGroup}</p>
-            <div className="mt-4 flex flex-wrap items-center gap-2">
-              <StatusBadge trend={species.trend} />
-              <span className="info-pill">{storyAngle.label}</span>
-              <span className="rounded-full bg-sand/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-muted">
-                {species.listingStatus}
-              </span>
-            </div>
+            <span className="section-kicker" aria-hidden="true">
+              {species.speciesGroup}
+            </span>
+            <ul className="mt-4 flex flex-wrap items-center gap-2" aria-label="Species status labels">
+              <li className="list-none">
+                <StatusBadge trend={species.trend} />
+              </li>
+              <li className="list-none">
+                <span className="info-pill">{storyAngle.label}</span>
+              </li>
+              <li className="list-none">
+                <span className="rounded-full bg-sand/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-muted">
+                  {species.listingStatus}
+                </span>
+              </li>
+            </ul>
             <h1 className="hero-title mt-4 font-semibold text-ocean">{species.commonName}</h1>
             <p className="mt-3 text-base italic text-muted sm:text-lg">{species.scientificName}</p>
             <p className="mt-5 max-w-2xl text-base leading-7 text-muted sm:mt-6 sm:text-lg sm:leading-8">
@@ -85,12 +93,12 @@ export default async function SpeciesPage({
             </p>
 
             <div className="story-card mt-6 p-5">
-              <p className="eyebrow">What is happening with this species?</p>
+              <h2 className="eyebrow text-ink">What is happening with this species?</h2>
               <p className="mt-3 text-sm leading-6 text-muted">{getTrendSummary(species)}</p>
             </div>
 
-            <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-              <article className="mini-stat sm:col-span-2 xl:col-span-2">
+            <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
+              <article className="mini-stat">
                 <p className="eyebrow">Current observed indicator</p>
                 <p className="mt-2 text-2xl font-bold text-ink sm:text-3xl">
                   {formatNumber(species.currentPopulation.estimate)}{" "}
@@ -99,7 +107,10 @@ export default async function SpeciesPage({
                   </span>
                 </p>
                 <p className="mt-3 text-sm leading-6 text-muted">
-                  {species.populationMetric.label} in {species.currentPopulation.year}
+                  {species.populationMetric.label} in{" "}
+                  <time dateTime={String(species.currentPopulation.year)}>
+                    {species.currentPopulation.year}
+                  </time>
                 </p>
               </article>
               <article className="mini-stat">
@@ -116,13 +127,15 @@ export default async function SpeciesPage({
               </article>
             </div>
 
-            <div className="mt-5 grid gap-4 lg:max-w-[48rem] lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
-              <div className="guidance-box">
-                <p className="eyebrow">What to do next</p>
+            <div className="mt-5 max-w-[48rem] space-y-4">
+              <div className="guidance-box max-w-[65ch]">
+                <span className="eyebrow" aria-hidden="true">
+                  What to do next
+                </span>
                 <p className="mt-2 text-sm leading-6 text-muted">
                   Start with the chart and range map to understand the evidence, then move into the
-                  threats, recovery work, lesson paths, and action links that give the number
-                  context.
+                  threats, recovery work, lesson paths, source notes, and action links that give the
+                  number context.
                 </p>
               </div>
               <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -189,7 +202,9 @@ export default async function SpeciesPage({
             </figure>
 
             <div className="story-card p-5">
-              <p className="eyebrow">Why this page matters</p>
+              <span className="eyebrow" aria-hidden="true">
+                Why this page matters
+              </span>
               <h2 className="supporting-title mt-3 font-semibold text-ocean">
                 {species.quickFact}
               </h2>
@@ -205,7 +220,9 @@ export default async function SpeciesPage({
       <section id="species-evidence" className="mt-6 sm:mt-8">
         <div className="mb-5 flex flex-col gap-3 sm:mb-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
-            <p className="section-kicker">Read the evidence</p>
+            <span className="section-kicker" aria-hidden="true">
+              Read the evidence
+            </span>
             <h2 className="section-title mt-4 font-semibold text-ocean">
               Start with the observed trend and the places that still matter most
             </h2>
@@ -220,23 +237,23 @@ export default async function SpeciesPage({
           <PopulationTrendChart species={species} />
           <div className="grid gap-6">
             <div className="panel rounded-[1.75rem] p-5 sm:p-6">
-              <p className="section-kicker">Metric guide</p>
+              <h3 className="section-title mt-1 font-semibold text-ocean">Metric guide</h3>
               <div className="mt-5 grid gap-4">
                 <article className="story-card p-4">
-                  <p className="eyebrow">What this number is</p>
-                  <h3 className="mt-2 text-xl font-bold text-ink">{species.populationMetric.label}</h3>
+                  <h4 className="eyebrow text-ink">What this number is</h4>
+                  <p className="mt-2 text-xl font-bold text-ink">{species.populationMetric.label}</p>
                   <p className="mt-3 text-sm leading-6 text-muted">
                     {species.populationMetric.whatItTracks}
                   </p>
                 </article>
                 <article className="story-card p-4">
-                  <p className="eyebrow">Why it matters</p>
+                  <h4 className="eyebrow text-ink">Why it matters</h4>
                   <p className="mt-2 text-sm leading-6 text-muted">
                     {species.populationMetric.whyItMatters}
                   </p>
                 </article>
                 <article className="story-card p-4">
-                  <p className="eyebrow">Read with care</p>
+                  <h4 className="eyebrow text-ink">Read with care</h4>
                   <p className="mt-2 text-sm leading-6 text-muted">
                     {species.populationMetric.precisionNote}
                   </p>
@@ -249,7 +266,9 @@ export default async function SpeciesPage({
 
         <div className="mt-6 grid gap-4 xl:grid-cols-[minmax(0,1fr)_minmax(18rem,0.95fr)]">
           <div className="story-card p-5">
-            <p className="eyebrow">Interpret the chart</p>
+            <span className="eyebrow" aria-hidden="true">
+              Interpret the chart
+            </span>
             <p className="mt-3 text-sm leading-6 text-muted">
               Use the trend chart first for direction, then the map for place, and then the
               threats and recovery work below for explanation. The sequence matters because a line
@@ -258,7 +277,9 @@ export default async function SpeciesPage({
           </div>
 
           <div className="story-card p-5">
-            <p className="eyebrow">Keep the context visible</p>
+            <span className="eyebrow" aria-hidden="true">
+              Keep the context visible
+            </span>
             <p className="mt-3 text-sm leading-6 text-muted">
               When you need a second species to sharpen the story, move to comparison mode rather
               than treating this page like a complete answer by itself.
@@ -274,7 +295,9 @@ export default async function SpeciesPage({
 
       <section className="mt-6 panel rounded-[1.75rem] p-5 sm:mt-8 sm:p-6">
         <div className="max-w-2xl">
-          <p className="section-kicker">What is shaping the story</p>
+          <span className="section-kicker" aria-hidden="true">
+            What is shaping the story
+          </span>
           <h2 className="section-title mt-4 font-semibold text-ocean">
             Put the pressure points next to the recovery work
           </h2>
@@ -285,24 +308,28 @@ export default async function SpeciesPage({
         </div>
 
         <div className="mt-6 grid gap-6 lg:grid-cols-2">
-          <div>
-            <p className="eyebrow">Threats</p>
+          <section aria-labelledby="species-threats-heading">
+            <h3 id="species-threats-heading" className="eyebrow text-ink">
+              Threats
+            </h3>
             <div className="mt-4 grid gap-4">
               {species.threats.map((threat) => (
                 <article key={threat.title} className="story-card p-5">
-                  <h3 className="text-lg font-bold text-ink">{threat.title}</h3>
+                  <h4 className="text-lg font-bold text-ink">{threat.title}</h4>
                   <p className="mt-2 text-sm leading-6 text-muted">{threat.description}</p>
                 </article>
               ))}
             </div>
-          </div>
+          </section>
 
-          <div>
-            <p className="eyebrow">Recovery work</p>
+          <section aria-labelledby="species-recovery-heading">
+            <h3 id="species-recovery-heading" className="eyebrow text-ink">
+              Recovery work
+            </h3>
             <div className="mt-4 grid gap-4">
               {species.conservationEfforts.map((effort) => (
                 <article key={effort.title} className="story-card p-5">
-                  <h3 className="text-lg font-bold text-ink">{effort.title}</h3>
+                  <h4 className="text-lg font-bold text-ink">{effort.title}</h4>
                   <p className="mt-2 text-sm leading-6 text-muted">{effort.description}</p>
                   <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-muted">
                     Partners: {effort.partners.join(", ")}
@@ -310,14 +337,16 @@ export default async function SpeciesPage({
                 </article>
               ))}
             </div>
-          </div>
+          </section>
         </div>
       </section>
 
       <section className="mt-6 grid gap-6 sm:mt-8 xl:grid-cols-[minmax(0,1.12fr)_minmax(20rem,0.88fr)]">
         <div className="panel rounded-[1.75rem] p-5 sm:p-6">
           <div className="max-w-2xl">
-            <p className="section-kicker">Context over time</p>
+            <span className="section-kicker" aria-hidden="true">
+              Context over time
+            </span>
             <h2 className="section-title mt-4 font-semibold text-ocean">
               Recovery moments and data notes that shape this page
             </h2>
@@ -328,36 +357,42 @@ export default async function SpeciesPage({
           </div>
 
           <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(18rem,0.95fr)]">
-            <div>
-              <p className="eyebrow">Timeline</p>
-              <div className="mt-4 grid gap-4">
+            <section aria-labelledby="species-timeline-heading">
+              <h3 id="species-timeline-heading" className="eyebrow text-ink">
+                Timeline
+              </h3>
+              <ol className="mt-4 grid gap-4" aria-label={`${species.commonName} timeline`}>
                 {species.timeline.map((event) => (
-                  <article key={`${event.year}-${event.title}`} className="story-card p-5">
+                  <li key={`${event.year}-${event.title}`} className="list-none story-card p-5">
                     <p className="text-sm font-semibold uppercase tracking-[0.16em] text-ocean">
-                      {event.year}
+                      <time dateTime={String(event.year)}>{event.year}</time>
                     </p>
-                    <h3 className="mt-2 text-lg font-bold text-ink">{event.title}</h3>
+                    <h4 className="mt-2 text-lg font-bold text-ink">{event.title}</h4>
                     <p className="mt-2 text-sm leading-6 text-muted">{event.description}</p>
-                  </article>
+                  </li>
                 ))}
-              </div>
-            </div>
+              </ol>
+            </section>
 
-            <div>
-              <p className="eyebrow">Data notes</p>
-              <div className="mt-4 grid gap-4">
+            <section aria-labelledby="species-data-notes-heading">
+              <h3 id="species-data-notes-heading" className="eyebrow text-ink">
+                Data notes
+              </h3>
+              <ul className="mt-4 grid gap-4">
                 {species.dataNotes.map((note) => (
-                  <article key={note} className="story-card p-5">
+                  <li key={note} className="list-none story-card p-5">
                     <p className="text-sm leading-6 text-muted">{note}</p>
-                  </article>
+                  </li>
                 ))}
-              </div>
-            </div>
+              </ul>
+            </section>
           </div>
         </div>
 
         <div className="panel rounded-[1.75rem] p-5 sm:p-6">
-          <p className="section-kicker">Sources</p>
+          <span className="section-kicker" aria-hidden="true">
+            Sources
+          </span>
           <h2 className="section-title mt-4 font-semibold text-ocean">
             Where to verify the data story
           </h2>
@@ -374,7 +409,9 @@ export default async function SpeciesPage({
                 rel="noreferrer"
                 className="route-link-card"
               >
-                <p className="eyebrow">{source.organization}</p>
+                <span className="eyebrow" aria-hidden="true">
+                  {source.organization}
+                </span>
                 <h3 className="supporting-title mt-3 font-semibold text-ocean">
                   {source.label}
                 </h3>
@@ -389,7 +426,9 @@ export default async function SpeciesPage({
         <div className="panel rounded-[1.75rem] p-5 sm:p-6">
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="section-kicker">Lesson paths</p>
+              <span className="section-kicker" aria-hidden="true">
+                Lesson paths
+              </span>
               <h2 className="section-title mt-4 font-semibold text-ocean">
                 Use this species with different audiences
               </h2>
@@ -423,12 +462,14 @@ export default async function SpeciesPage({
 
         <div className="grid gap-6">
           <div className="story-card p-5">
-            <p className="eyebrow">Next move</p>
-            <h2 className="supporting-title mt-3 font-semibold text-ocean">
+            <span className="eyebrow" aria-hidden="true">
+              Next move
+            </span>
+            <h3 className="supporting-title mt-3 font-semibold text-ocean">
               {compareSuggestion
                 ? `Pair this story with ${compareSuggestion.commonName}`
                 : "Move this story into comparison mode"}
-            </h2>
+            </h3>
             <p className="mt-3 text-sm leading-6 text-muted">
               Comparison works especially well after a single species page because you already know
               what the indicator means before you ask how another habitat or species differs.
@@ -439,7 +480,9 @@ export default async function SpeciesPage({
           </div>
 
           <div className="panel rounded-[1.75rem] p-5 sm:p-6">
-            <p className="section-kicker">Take action</p>
+            <span className="section-kicker" aria-hidden="true">
+              Take action
+            </span>
             <h2 className="section-title mt-4 font-semibold text-ocean">
               Field trips, citizen science, and volunteer options
             </h2>

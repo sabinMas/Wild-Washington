@@ -8,9 +8,9 @@ const labelMap: Record<TrendDirection, string> = {
 };
 
 const toneMap: Record<TrendDirection, string> = {
-  improving: "bg-success/14 text-success border-success/22",
-  declining: "bg-danger/14 text-danger border-danger/22",
-  stable: "bg-warning/14 text-warning border-warning/22",
+  improving: "border-transparent bg-success text-white",
+  declining: "border-transparent bg-danger text-white",
+  stable: "border-transparent bg-warning text-[var(--color-text)]",
 };
 
 export function StatusBadge({ trend }: { trend: TrendDirection }) {

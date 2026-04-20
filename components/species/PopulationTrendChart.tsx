@@ -29,8 +29,11 @@ export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
   const lastPoint = species.populationSeries.at(-1);
   const changeRatio = getTrendDelta(species);
   const roundedChange = Math.round(Math.abs(changeRatio));
-  const observedWindow =
-    firstPoint && lastPoint ? `${firstPoint.year}-${lastPoint.year}` : "Observed window";
+  const chartSummary =
+    firstPoint && lastPoint
+      ? `${species.commonName} uses ${species.populationMetric.label.toLowerCase()} data from ${firstPoint.year} to ${lastPoint.year}. The latest observed value is ${formatNumber(species.currentPopulation.estimate)} ${species.currentPopulation.unit} in ${species.currentPopulation.year}. This is about ${roundedChange}% ${changeRatio >= 0 ? "above" : "below"} the first observed checkpoint.`
+      : `${species.commonName} chart summary is unavailable.`;
+  const trendTableLabel = `${species.commonName} observed trend data`;
 
   useEffect(() => {
     const timeout = window.setTimeout(() => {
@@ -55,10 +58,12 @@ export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
     <div className="panel min-w-0 rounded-[1.75rem] p-4 sm:p-5">
       <div className="mb-5 grid gap-4 sm:mb-6 xl:grid-cols-[1.1fr_0.9fr]">
         <div>
-          <p className="section-kicker">Trend chart</p>
-          <h2 className="section-title mt-3 font-bold text-ocean">
+          <span className="section-kicker" aria-hidden="true">
+            Trend chart
+          </span>
+          <h3 className="section-title mt-3 font-bold text-ocean">
             What the indicator suggests over time
-          </h2>
+          </h3>
           <p className="mt-3 text-sm font-semibold text-ocean">{getTrendSummary(species)}</p>
           <p className="mt-3 text-sm leading-6 text-muted">
             {species.populationMetric.whatItTracks}
@@ -87,7 +92,7 @@ export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
         </div>
       </div>
 
-      <div className="h-[320px] sm:h-[340px]">
+      <div className="h-[320px] sm:h-[340px]" role="img" aria-label={chartSummary}>
         {mounted ? (
           <ResponsiveContainer width="100%" height="100%">
             <ComposedChart
@@ -165,6 +170,63 @@ export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
         )}
       </div>
 
+      <details className="mt-5 rounded-[1.25rem] border border-border bg-[var(--color-surface-2)] p-4">
+        <summary className="cursor-pointer text-sm font-semibold text-ocean">
+          Read the observed data as a table
+        </summary>
+        <div className="mt-4 overflow-x-auto">
+          <table className="min-w-full border-separate border-spacing-y-2 text-left text-sm">
+            <caption className="sr-only">{trendTableLabel}</caption>
+            <thead>
+              <tr>
+                <th scope="col" className="pr-4 font-semibold text-ink">
+                  Year
+                </th>
+                <th scope="col" className="pr-4 font-semibold text-ink">
+                  {species.populationMetric.label}
+                </th>
+                {hasInterval ? (
+                  <>
+                    <th scope="col" className="pr-4 font-semibold text-ink">
+                      Lower bound
+                    </th>
+                    <th scope="col" className="font-semibold text-ink">
+                      Upper bound
+                    </th>
+                  </>
+                ) : null}
+              </tr>
+            </thead>
+            <tbody>
+              {species.populationSeries.map((point) => (
+                <tr key={point.year}>
+                  <th scope="row" className="pr-4 font-semibold text-ink">
+                    <time dateTime={String(point.year)}>{point.year}</time>
+                  </th>
+                  <td className="pr-4 text-muted">
+                    {formatNumber(point.estimate)} {species.currentPopulation.unit}
+                  </td>
+                  {hasInterval ? (
+                    <>
+                      <td className="pr-4 text-muted">
+                        {point.low !== undefined
+                          ? `${formatNumber(point.low)} ${species.currentPopulation.unit}`
+                          : "Not reported"}
+                      </td>
+                      <td className="text-muted">
+                        {point.high !== undefined
+                          ? `${formatNumber(point.high)} ${species.currentPopulation.unit}`
+                          : "Not reported"}
+                      </td>
+                    </>
+                  ) : null}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </details>
+
       <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         <article className="panel-soft rounded-[1.25rem] p-4">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
@@ -174,7 +236,11 @@ export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
             {formatNumber(species.currentPopulation.estimate)} {species.currentPopulation.unit}
           </p>
           <p className="mt-2 text-sm leading-6 text-muted">
-            Reported for {species.currentPopulation.year}.
+            Reported for{" "}
+            <time dateTime={String(species.currentPopulation.year)}>
+              {species.currentPopulation.year}
+            </time>
+            .
           </p>
         </article>
 
@@ -187,7 +253,13 @@ export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
             {roundedChange}%
           </p>
           <p className="mt-2 text-sm leading-6 text-muted">
-            Compared with the first observed checkpoint in {firstPoint?.year ?? "the baseline year"}.
+            Compared with the first observed checkpoint in{" "}
+            {firstPoint ? (
+              <time dateTime={String(firstPoint.year)}>{firstPoint.year}</time>
+            ) : (
+              "the baseline year"
+            )}
+            .
           </p>
         </article>
 
@@ -195,7 +267,17 @@ export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
             Observed window
           </p>
-          <p className="mt-2 text-xl font-bold text-ink">{observedWindow}</p>
+          <p className="mt-2 text-xl font-bold text-ink">
+            {firstPoint && lastPoint ? (
+              <>
+                <time dateTime={String(firstPoint.year)}>{firstPoint.year}</time>
+                {" - "}
+                <time dateTime={String(lastPoint.year)}>{lastPoint.year}</time>
+              </>
+            ) : (
+              "Observed window"
+            )}
+          </p>
           <p className="mt-2 text-sm leading-6 text-muted">
             Only observed checkpoints are shown so the chart does not imply false year-by-year precision.
           </p>

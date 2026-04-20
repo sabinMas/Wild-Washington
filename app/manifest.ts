@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Wild Washington",
     short_name: "Wild Washington",
     description:
-      "A Washington wildlife field guide for learners, educators, and curious public users.",
+      "A Washington wildlife education and conservation interpretation platform for public visitors, educators, and partner organizations.",
     start_url: "/",
     display: "standalone",
     background_color: "#f2eadf",

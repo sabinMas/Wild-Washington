@@ -18,8 +18,37 @@ import {
   getStoryAngle,
   getTrendSummary,
 } from "@/lib/data/site-content";
-import { formatNumber } from "@/lib/utils";
+import { cn, formatNumber } from "@/lib/utils";
 import { type SpeciesRecord } from "@/types/species";
+
+const linePatterns = ["", "8 4", "3 3", "10 4 3 4"] as const;
+
+function getLinePattern(index: number) {
+  return linePatterns[index] ?? linePatterns[0];
+}
+
+function LinePatternSwatch({
+  color,
+  pattern,
+}: {
+  color: string;
+  pattern: string;
+}) {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 20 10" className="h-3 w-5 shrink-0">
+      <line
+        x1="1"
+        y1="5"
+        x2="19"
+        y2="5"
+        stroke={color}
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeDasharray={pattern || undefined}
+      />
+    </svg>
+  );
+}
 
 function parseSelection(
   value: string | null,
@@ -130,6 +159,21 @@ export function ComparisonExplorer({ species }: { species: SpeciesRecord[] }) {
   const selectedCount = visibleSpecies.length;
   const mixedMetrics =
     new Set(visibleSpecies.map((record) => record.populationMetric.kind)).size > 1;
+  const comparisonSummary =
+    visibleSpecies.length > 0
+      ? `Selected species: ${visibleSpecies
+          .map(
+            (record) =>
+              `${record.commonName}, latest value ${formatNumber(record.currentPopulation.estimate)} ${record.currentPopulation.unit} in ${record.currentPopulation.year}`,
+          )
+          .join("; ")}.`
+      : "No species are currently selected for comparison.";
+  const comparisonChartLabel = `${comparisonSummary} Each selected species uses a distinct line dash pattern in addition to color.`;
+
+  function getSelectedPattern(slug: string) {
+    const index = selected.indexOf(slug);
+    return index === -1 ? "" : getLinePattern(index);
+  }
 
   function toggleSpecies(slug: string) {
     setSelected((current) => {
@@ -171,7 +215,9 @@ export function ComparisonExplorer({ species }: { species: SpeciesRecord[] }) {
       <div className="panel min-w-0 rounded-[1.75rem] p-4 sm:p-5">
         <div className="grid gap-5 xl:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)]">
           <div>
-            <p className="section-kicker">Signature feature</p>
+            <span className="section-kicker" aria-hidden="true">
+              Signature feature
+            </span>
             <h2 className="section-title mt-3 font-bold text-ocean">
               Build a comparison set that tells a real ecological story
             </h2>
@@ -183,7 +229,9 @@ export function ComparisonExplorer({ species }: { species: SpeciesRecord[] }) {
           </div>
 
           <div className="guidance-box">
-            <p className="eyebrow">How to read this</p>
+            <span className="eyebrow" aria-hidden="true">
+              How to read this
+            </span>
             <p className="mt-2 text-sm leading-6 text-muted">
               The `100%` line marks each species&apos; own baseline. Above `100%` means growth
               relative to that starting point. Below it means decline relative to that same first
@@ -192,15 +240,22 @@ export function ComparisonExplorer({ species }: { species: SpeciesRecord[] }) {
           </div>
         </div>
 
-        <div className="mt-5 grid gap-3 md:grid-cols-3">
+        <div
+          role="group"
+          aria-label="Starter comparison sets"
+          className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-3"
+        >
           {presets.map((preset) => (
             <button
               key={preset.key}
               type="button"
               onClick={() => setSelected(preset.slugs)}
-              className="route-link-card text-left"
+              aria-label={`Load comparison preset: ${preset.title}`}
+              className="route-link-card h-full text-left"
             >
-              <p className="eyebrow">Starter set</p>
+              <span className="eyebrow" aria-hidden="true">
+                Starter set
+              </span>
               <h3 className="supporting-title mt-3 font-semibold text-ocean">
                 {preset.title}
               </h3>
@@ -238,54 +293,69 @@ export function ComparisonExplorer({ species }: { species: SpeciesRecord[] }) {
         </div>
 
         {shareMessage ? (
-          <p className="mt-3 text-sm font-semibold text-ocean">{shareMessage}</p>
+          <p role="status" aria-live="polite" className="mt-3 text-sm font-semibold text-ocean">
+            {shareMessage}
+          </p>
         ) : null}
 
-        <div className="-mx-1 mt-5 flex gap-2 overflow-x-auto px-1 pb-1 md:mx-0 md:flex-wrap md:overflow-visible md:px-0">
-          {species.map((record) => {
-            const active = selected.includes(record.slug);
+        <div className="relative">
+          <div className="-mx-1 mt-5 flex gap-2 overflow-x-auto px-1 pb-2 md:mx-0 md:flex-wrap md:overflow-visible md:px-0 [mask-image:linear-gradient(to_right,black_85%,transparent_100%)] md:[mask-image:none]">
+            {species.map((record) => {
+              const active = selected.includes(record.slug);
+              const pattern = getSelectedPattern(record.slug);
 
-            return (
-              <button
-                key={record.slug}
-                type="button"
-                onClick={() => toggleSpecies(record.slug)}
-                data-active={active}
-                className="filter-chip shrink-0"
-                style={active ? { backgroundColor: record.primaryColor } : undefined}
-              >
-                {record.commonName}
-              </button>
-            );
-          })}
+              return (
+                <button
+                  key={record.slug}
+                  type="button"
+                  onClick={() => toggleSpecies(record.slug)}
+                  aria-pressed={active}
+                  className={cn(
+                    "filter-chip shrink-0 gap-2",
+                    active && "bg-[var(--color-surface)] text-ink shadow-[var(--shadow-sm)]",
+                  )}
+                  style={active ? { borderColor: record.primaryColor } : undefined}
+                >
+                  <LinePatternSwatch color={record.primaryColor} pattern={pattern} />
+                  {record.commonName}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
 
       <div className="panel rounded-[1.75rem] p-4 sm:p-5">
         <div className="mb-4 grid gap-4 xl:grid-cols-[1.08fr_0.92fr]">
           <div>
-            <p className="section-kicker">Normalized comparison</p>
+            <span className="section-kicker" aria-hidden="true">
+              Normalized comparison
+            </span>
             <h2 className="section-title mt-3 font-bold text-ocean">
               Change from each species&apos; own baseline
             </h2>
           </div>
 
           <div className="story-card p-4">
-            <p className="eyebrow">Interpretation tip</p>
+            <span className="eyebrow" aria-hidden="true">
+              Interpretation tip
+            </span>
             <p className="mt-2 text-sm leading-6 text-muted">
               Start with the overall shape of the lines, then check each species card below for
               the actual metric and baseline year. That keeps the comparison honest when counts,
               territory units, and estimates appear together.
             </p>
-            <Link href="/methodology" className="mt-3 inline-flex text-sm font-semibold text-ocean">
-              Review methodology notes
+            <Link href="/about-data" className="mt-3 inline-flex text-sm font-semibold text-ocean">
+              Review data notes and methodology
             </Link>
           </div>
         </div>
 
         {selectedCount === 0 ? (
           <div className="panel-soft rounded-[1.5rem] p-6 text-center sm:p-8">
-            <p className="eyebrow">No species selected</p>
+            <span className="eyebrow" aria-hidden="true">
+              No species selected
+            </span>
             <h3 className="section-title mt-3 text-ocean">
               Choose a starter set or build your own comparison
             </h3>
@@ -303,7 +373,11 @@ export function ComparisonExplorer({ species }: { species: SpeciesRecord[] }) {
               </div>
             ) : null}
 
-            <div className="h-[320px] min-w-0 w-full sm:h-[420px]">
+            <div
+              className="h-[320px] min-w-0 w-full sm:h-[420px]"
+              role="img"
+              aria-label={comparisonChartLabel}
+            >
               {mounted ? (
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart
@@ -359,6 +433,7 @@ export function ComparisonExplorer({ species }: { species: SpeciesRecord[] }) {
                         name={record.commonName}
                         stroke={record.primaryColor}
                         strokeWidth={3}
+                        strokeDasharray={getSelectedPattern(record.slug) || undefined}
                         dot={{ r: 3, fill: record.primaryColor, strokeWidth: 0 }}
                         activeDot={{ r: 5 }}
                         connectNulls={false}
@@ -371,19 +446,61 @@ export function ComparisonExplorer({ species }: { species: SpeciesRecord[] }) {
               )}
             </div>
 
+            <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-muted">
+              Each selected species uses a unique line pattern as well as color.
+            </p>
+
+            <details className="mt-4 rounded-[1.25rem] border border-border bg-[var(--color-surface-2)] p-4">
+              <summary className="cursor-pointer text-sm font-semibold text-ocean">
+                Read the comparison data as a table
+              </summary>
+              <div className="mt-4 overflow-x-auto">
+                <table className="min-w-full border-separate border-spacing-y-2 text-left text-sm">
+                  <caption className="sr-only">Selected comparison data by year</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col" className="pr-4 font-semibold text-ink">
+                        Year
+                      </th>
+                      {visibleSpecies.map((record) => (
+                        <th key={record.slug} scope="col" className="pr-4 font-semibold text-ink">
+                          {record.commonName}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {data.map((row) => (
+                      <tr key={row.year}>
+                        <th scope="row" className="pr-4 font-semibold text-ink">
+                          <time dateTime={String(row.year)}>{row.year}</time>
+                        </th>
+                        {visibleSpecies.map((record) => {
+                          const value = row[record.slug];
+
+                          return (
+                            <td key={`${row.year}-${record.slug}`} className="pr-4 text-muted">
+                              {typeof value === "number" ? `${value}% of baseline` : "Not observed"}
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </details>
+
             <div className="mt-4 grid gap-3 md:grid-cols-2">
               {visibleSpecies.map((record) => {
                 const storyAngle = getStoryAngle(record);
+                const pattern = getSelectedPattern(record.slug);
 
                 return (
                   <article key={record.slug} className="metric-card">
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex items-center gap-3">
-                        <span
-                          className="size-3 rounded-full"
-                          style={{ backgroundColor: record.primaryColor }}
-                          aria-hidden="true"
-                        />
+                        <LinePatternSwatch color={record.primaryColor} pattern={pattern} />
                         <div>
                           <p className="font-semibold text-ink">{record.commonName}</p>
                           <p className="mt-1 text-xs font-semibold uppercase tracking-[0.14em] text-muted">
@@ -394,6 +511,7 @@ export function ComparisonExplorer({ species }: { species: SpeciesRecord[] }) {
                       <button
                         type="button"
                         onClick={() => toggleSpecies(record.slug)}
+                        aria-label={`Remove ${record.commonName} from the comparison`}
                         className="text-sm font-semibold text-ocean"
                       >
                         Remove
@@ -403,14 +521,25 @@ export function ComparisonExplorer({ species }: { species: SpeciesRecord[] }) {
                     <div className="mt-3 flex flex-wrap gap-2">
                       <span className="info-pill">{storyAngle.label}</span>
                       <span className="info-pill">
-                        Baseline {record.populationSeries[0]?.year ?? "start"}
+                        Baseline{" "}
+                        {record.populationSeries[0]?.year ? (
+                          <time dateTime={String(record.populationSeries[0].year)}>
+                            {record.populationSeries[0].year}
+                          </time>
+                        ) : (
+                          "start"
+                        )}
                       </span>
                     </div>
 
                     <p className="mt-3 text-sm leading-6 text-muted">{getTrendSummary(record)}</p>
                     <p className="mt-3 text-sm leading-6 text-muted">
                       Latest observed reading: {formatNumber(record.currentPopulation.estimate)}{" "}
-                      {record.currentPopulation.unit} in {record.currentPopulation.year}.
+                      {record.currentPopulation.unit} in{" "}
+                      <time dateTime={String(record.currentPopulation.year)}>
+                        {record.currentPopulation.year}
+                      </time>
+                      .
                     </p>
 
                     <div className="mt-4 flex flex-wrap gap-3">

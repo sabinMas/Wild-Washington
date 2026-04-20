@@ -4,7 +4,7 @@ import { ComparisonExplorer } from "@/components/species/ComparisonExplorer";
 import { getSpeciesRecords } from "@/lib/data/species";
 
 export const metadata = {
-  title: "Compare",
+  title: "Compare Species",
 };
 
 export default function ComparePage() {
@@ -14,35 +14,37 @@ export default function ComparePage() {
     <div className="shell py-8 sm:py-12">
       <div className="grid gap-5 xl:grid-cols-[minmax(0,1.12fr)_minmax(18rem,0.88fr)] xl:items-end">
         <div className="max-w-3xl">
-          <p className="section-kicker">Comparison view</p>
+          <span className="section-kicker" aria-hidden="true">
+            Compare species
+          </span>
           <h1 className="hero-title mt-4 max-w-4xl font-semibold text-ocean">
-            Compare recovery trajectories without flattening different kinds of evidence
+            See how animal stories change side by side
           </h1>
           <p className="lede mt-5">
-            This is the app&apos;s signature feature. Use normalized change to compare how species
-            respond to habitat loss, restoration, disturbance, or prey shifts, even when their
-            underlying indicators are counts, territories, occupied units, or other different metrics.
+            Choose two to four species and compare their lines on one chart. This view helps you see
+            which animals are recovering, which are struggling, and how their habitats shape the story.
           </p>
         </div>
 
         <div className="story-card p-5">
-          <p className="eyebrow">Why compare?</p>
+          <span className="eyebrow" aria-hidden="true">
+            What to look for
+          </span>
           <h2 className="supporting-title mt-3 font-semibold text-ocean">
-            One species story is useful. Two or three together can reveal the landscape-level pattern.
+            Look for the moments where two species split apart or move together.
           </h2>
           <p className="mt-3 text-sm leading-6 text-muted">
-            Comparison helps students and public users see that recovery is shaped by habitat, data
-            quality, and management choices, not just by whether a line goes up or down.
+            Those shifts can point to different habitats, different pressures, or different recovery work across Washington.
           </p>
         </div>
       </div>
 
       <div className="mt-6 flex flex-wrap gap-3">
-        <Link href="/dashboard" className="button-secondary">
-          Start from the dashboard
+        <Link href="/explore" className="button-secondary">
+          Start from Explore Wildlife
         </Link>
-        <Link href="/methodology" className="button-secondary">
-          Review methodology first
+        <Link href="/about-data" className="button-secondary">
+          See how the chart works
         </Link>
       </div>
 
@@ -50,7 +52,9 @@ export default function ComparePage() {
         <Suspense
           fallback={
             <div className="panel rounded-[1.75rem] p-5">
-              <p className="section-kicker">Loading comparison</p>
+              <span className="section-kicker" aria-hidden="true">
+                Loading comparison
+              </span>
               <div className="mt-5 h-[420px] animate-pulse rounded-[1.5rem] bg-mist" />
             </div>
           }

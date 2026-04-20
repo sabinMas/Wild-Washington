@@ -111,9 +111,9 @@ export function SpeciesExplorer({ species }: { species: SpeciesRecord[] }) {
     query.trim().length > 0 || trend !== "all" || group !== "all" || sortBy !== "name";
   const helperText =
     query.trim().length > 0
-      ? `Searching for "${query.trim()}". Search checks species name, group, and listing status so educators and students can find a teaching set quickly.`
+      ? `Searching for "${query.trim()}". Search checks species name, group, and listing status so you can quickly find the animals you want to explore.`
       : trend === "all" && group === "all"
-        ? "Start broad, then use trend or group chips to build a smaller set for discussion, comparison, or classroom use."
+        ? "Start broad, then use the trend and group filters to narrow the set and follow a few animal stories at a time."
         : `Showing a narrower browse lens${group !== "all" ? ` for ${group.toLowerCase()} species` : ""}${trend !== "all" ? ` with a ${trend} trend` : ""}.`;
 
   function resetControls() {
@@ -126,24 +126,29 @@ export function SpeciesExplorer({ species }: { species: SpeciesRecord[] }) {
   return (
     <div className="space-y-6 sm:space-y-8">
       <div className="panel rounded-[1.75rem] p-4 sm:p-5 lg:p-6">
-        <div className="grid gap-5 xl:grid-cols-[minmax(0,1.3fr)_minmax(18rem,0.9fr)]">
-          <div className="grid gap-4">
+        <div className="grid min-w-0 gap-5 xl:grid-cols-[minmax(0,1.3fr)_minmax(18rem,0.9fr)]">
+          <div className="grid min-w-0 gap-4">
             <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_14rem]">
-              <label className="grid gap-2">
-                <span className="text-sm font-semibold text-muted">
+              <div className="grid gap-2">
+                <label htmlFor="species-search" className="text-sm font-semibold text-muted">
                   Search by species, group, or listing status
-                </span>
+                </label>
                 <input
+                  id="species-search"
+                  type="search"
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
                   placeholder="Try orca, bird, threatened, salmon..."
                   className="input-field"
                 />
-              </label>
+              </div>
 
-              <label className="grid gap-2">
-                <span className="text-sm font-semibold text-muted">Sort by</span>
+              <div className="grid gap-2">
+                <label htmlFor="species-sort" className="text-sm font-semibold text-muted">
+                  Sort by
+                </label>
                 <select
+                  id="species-sort"
                   value={sortBy}
                   onChange={(event) =>
                     setSortBy(event.target.value as (typeof sortOptions)[number]["value"])
@@ -156,17 +161,15 @@ export function SpeciesExplorer({ species }: { species: SpeciesRecord[] }) {
                     </option>
                   ))}
                 </select>
-              </label>
+              </div>
             </div>
 
             <div className="grid gap-4">
-              <div>
-                <div className="mb-2 flex items-center justify-between gap-3">
-                  <p className="text-sm font-semibold text-muted">Browse by trend</p>
-                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">
-                    Story direction
-                  </p>
-                </div>
+              <fieldset className="m-0 min-w-0 border-0 p-0">
+                <legend className="text-sm font-semibold text-muted">Browse by trend</legend>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.14em] text-muted">
+                  Story direction
+                </p>
                 <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1 md:mx-0 md:flex-wrap md:overflow-visible md:px-0">
                   {trendFilters.map((option) => {
                     const active = trend === option.value;
@@ -175,6 +178,8 @@ export function SpeciesExplorer({ species }: { species: SpeciesRecord[] }) {
                         key={option.value}
                         type="button"
                         onClick={() => setTrend(option.value)}
+                        aria-label={`${option.label}, ${counts[option.value]} species`}
+                        aria-pressed={active}
                         data-active={active}
                         className="filter-chip shrink-0"
                       >
@@ -191,15 +196,13 @@ export function SpeciesExplorer({ species }: { species: SpeciesRecord[] }) {
                     );
                   })}
                 </div>
-              </div>
+              </fieldset>
 
-              <div>
-                <div className="mb-2 flex items-center justify-between gap-3">
-                  <p className="text-sm font-semibold text-muted">Browse by group</p>
-                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">
-                    Teaching set
-                  </p>
-                </div>
+              <fieldset className="m-0 min-w-0 border-0 p-0">
+                <legend className="text-sm font-semibold text-muted">Browse by group</legend>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.14em] text-muted">
+                  Teaching set
+                </p>
                 <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1 md:mx-0 md:flex-wrap md:overflow-visible md:px-0">
                   {groupFilters.map((option) => {
                     const active = group === option;
@@ -209,6 +212,8 @@ export function SpeciesExplorer({ species }: { species: SpeciesRecord[] }) {
                         key={option}
                         type="button"
                         onClick={() => setGroup(option)}
+                        aria-label={`${option === "all" ? "All groups" : option}, ${counts.byGroup[option]} species`}
+                        aria-pressed={active}
                         data-active={active}
                         className="filter-chip shrink-0"
                       >
@@ -225,51 +230,57 @@ export function SpeciesExplorer({ species }: { species: SpeciesRecord[] }) {
                     );
                   })}
                 </div>
-              </div>
+              </fieldset>
             </div>
 
-            <p className="text-sm leading-6 text-muted">{helperText}</p>
+            <p className="min-w-0 text-sm leading-6 text-muted">{helperText}</p>
           </div>
 
-          <div className="grid gap-3">
-            <div className="guidance-box">
-              <p className="eyebrow">Start here</p>
+          <div className="grid min-w-0 gap-3">
+            <div className="guidance-box min-w-0 p-4 sm:p-5">
+              <span className="eyebrow" aria-hidden="true">
+                Start here
+              </span>
               <p className="mt-2 text-sm leading-6 text-muted">
                 Open a single species when you want the full story. Jump to Compare when you want
-                to see why different habitats and pressures produce different trajectories.
+                to see how different animals respond to habitat change, pressure, and recovery work.
               </p>
             </div>
 
-            <Link href="/compare" className="route-link-card">
-              <p className="eyebrow">Signature move</p>
-              <h3 className="supporting-title mt-3 font-semibold text-ocean">
-                Turn this browse list into a comparison set
+            <Link href="/compare" className="route-link-card min-w-0 p-4 sm:p-5">
+              <span className="eyebrow" aria-hidden="true">
+                Look side by side
+              </span>
+              <h3 className="supporting-title mt-3 break-words font-semibold text-ocean">
+                Put two or more species on the same chart
               </h3>
               <p className="mt-3 text-sm leading-6 text-muted">
-                Compare up to four species on one normalized chart to show how recovery stories
-                diverge across Washington landscapes.
+                Compare up to four species at once to spot where their stories line up and where they change.
               </p>
             </Link>
 
-            <Link href="/learn" className="route-link-card">
-              <p className="eyebrow">Classroom shortcut</p>
-              <h3 className="supporting-title mt-3 font-semibold text-ocean">
-                Need a lesson path instead of open browsing?
+            <Link href="/learn" className="route-link-card min-w-0 p-4 sm:p-5">
+              <span className="eyebrow" aria-hidden="true">
+                Try an activity
+              </span>
+              <h3 className="supporting-title mt-3 break-words font-semibold text-ocean">
+                Follow your wildlife questions into the learning hub
               </h3>
               <p className="mt-3 text-sm leading-6 text-muted">
-                Start in the learning hub when you want audience-specific activities, prompts, and
-                assessments tied to the same species evidence.
+                Find prompts, vocabulary, and lesson paths that use the same species evidence you see here.
               </p>
             </Link>
           </div>
         </div>
       </div>
 
-      <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-        <div>
-          <p className="text-sm font-semibold text-ink">
-            Showing {filtered.length} of {species.length} species
-          </p>
+      <div className="flex min-w-0 flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        <div className="min-w-0">
+          <div aria-live="polite" aria-atomic="true">
+            <p className="text-sm font-semibold text-ink">
+              Showing {filtered.length} of {species.length} species
+            </p>
+          </div>
           <p className="mt-1 text-sm leading-6 text-muted">
             Each card opens a story-driven species profile with a trend chart, map context, source
             notes, lesson paths, and conservation next steps.
@@ -277,20 +288,22 @@ export function SpeciesExplorer({ species }: { species: SpeciesRecord[] }) {
         </div>
         {hasActiveControls ? (
           <button type="button" onClick={resetControls} className="button-secondary">
-            Reset dashboard controls
+            Clear filters
           </button>
         ) : null}
       </div>
 
       {filtered.length === 0 ? (
         <div className="panel rounded-[1.5rem] p-6 text-center sm:p-8">
-          <p className="eyebrow">No matching species</p>
+          <span className="eyebrow" aria-hidden="true">
+            No matching species
+          </span>
           <h2 className="section-title mt-3 text-ocean">
             Try a broader search or switch back to all groups
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-muted">
-            Search works across names, groups, and listing status. If you are building a classroom
-            comparison, reset the filters and start with a trend chip or species group instead.
+            Search works across names, groups, and listing status. Reset the filters and start with
+            a trend or species group if you want to widen the animal set again.
           </p>
           <div className="mt-6 flex justify-center">
             <button type="button" onClick={resetControls} className="button-primary">
@@ -299,7 +312,7 @@ export function SpeciesExplorer({ species }: { species: SpeciesRecord[] }) {
           </div>
         </div>
       ) : (
-        <div className="grid gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-3" data-card-grid>
           {filtered.map((record) => (
             <SpeciesCard key={record.slug} species={record} />
           ))}

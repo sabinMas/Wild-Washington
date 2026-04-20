@@ -3,7 +3,7 @@ import { LearningHubExplorer } from "@/components/species/LearningHubExplorer";
 import { getSpeciesRecords } from "@/lib/data/species";
 
 export const metadata = {
-  title: "Learn",
+  title: "Learning Hub",
 };
 
 export default function LearnPage() {
@@ -15,33 +15,30 @@ export default function LearnPage() {
         <div className="max-w-3xl">
           <p className="section-kicker">Learning hub</p>
           <h1 className="hero-title mt-4 font-bold text-ocean">
-            Start with the audience, then choose the species lesson that fits
+            Learn through the animals of Washington
           </h1>
           <p className="lede mt-5">
-            Wild Washington&apos;s learning area is built for real classroom and self-guided use.
-            Pick the learner context first, then open a lesson path with objectives, vocabulary,
-            visual analysis, prompts, and assessment ideas tied to the same species evidence used
-            across the app.
+            Start with a species, a question, or an activity. Each lesson path uses the same wildlife
+            evidence from the rest of the site, with prompts, vocabulary, and ways to look closer.
           </p>
         </div>
 
         <div className="story-card p-5">
-          <p className="eyebrow">Teaching principle</p>
+          <p className="eyebrow">Start here</p>
           <h2 className="supporting-title mt-3 font-semibold text-ocean">
-            Reduce scanning fatigue first, then make the next teaching move obvious
+            Pick a path that matches the age group, then follow the species story.
           </h2>
           <p className="mt-3 text-sm leading-6 text-muted">
-            The learning hub is organized so educators can find a lesson path quickly and then move
-            back into the species page or conservation route when they want more context.
+            You can move from one lesson into the species page or conservation section whenever you want more context.
           </p>
         </div>
       </div>
 
       <div className="mt-6 flex flex-wrap gap-3">
-        <Link href="/dashboard" className="button-secondary">
-          Browse all species first
+        <Link href="/explore" className="button-secondary">
+          Browse wildlife first
         </Link>
-        <Link href="/conservation" className="button-secondary">
+        <Link href="/conservation-action" className="button-secondary">
           Connect lessons to action
         </Link>
       </div>
