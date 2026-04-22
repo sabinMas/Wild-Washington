@@ -52,6 +52,20 @@ export default function HomePage() {
         totalObservedCheckpoints={methodology.totalObservedCheckpoints}
       />
 
+      <section className="shell pt-8">
+        <div className="panel rounded-[1.5rem] px-5 py-4 sm:px-6">
+          <p className="eyebrow text-ocean">Built with Codex</p>
+          <p className="mt-2 max-w-3xl text-sm leading-6 text-muted sm:text-base">
+            Wild Washington was built with OpenAI Codex as a pair-programming partner for route
+            scaffolding, chart iteration, metadata setup, and UI refactors, with final editorial
+            direction and data choices reviewed by hand.
+          </p>
+          <Link href="/about" className="mt-3 inline-flex text-sm font-semibold text-ocean">
+            See how the project was built
+          </Link>
+        </div>
+      </section>
+
       <section
         aria-labelledby="wildlife-grid-heading"
         id="wildlife-grid"

@@ -58,6 +58,34 @@ export default function AboutPage() {
           ))}
         </div>
       </section>
+
+      <section className="mt-8 panel rounded-[1.75rem] p-5 sm:p-6">
+        <SectionIntro
+          kicker="Built with Codex"
+          title="Codex was used as a build partner, not a substitute for editorial judgment"
+          description="OpenAI Codex supported implementation across routing, UI composition, metadata, chart scaffolding, and refactors while the final product direction, data choices, copy edits, and source review stayed human-led."
+        />
+        <div className="grid gap-4 md:grid-cols-3">
+          <article className="story-card p-5">
+            <h3 className="text-lg font-bold text-ink">Where Codex helped</h3>
+            <p className="mt-3 text-sm leading-6 text-muted">
+              Route scaffolding, shared component structure, chart iteration, metadata plumbing, and cleanup passes that made the product easier to ship.
+            </p>
+          </article>
+          <article className="story-card p-5">
+            <h3 className="text-lg font-bold text-ink">What stayed human-led</h3>
+            <p className="mt-3 text-sm leading-6 text-muted">
+              Species selection, data interpretation, Washington-specific framing, educational voice, source review, and final quality decisions.
+            </p>
+          </article>
+          <article className="story-card p-5">
+            <h3 className="text-lg font-bold text-ink">Why that matters</h3>
+            <p className="mt-3 text-sm leading-6 text-muted">
+              The app aims to be transparent about AI assistance while still treating public trust, editorial scope, and wildlife data context as responsibilities that require careful review.
+            </p>
+          </article>
+        </div>
+      </section>
     </div>
   );
 }

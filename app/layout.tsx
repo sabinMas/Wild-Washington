@@ -37,20 +37,29 @@ export const metadata: Metadata = {
     template: "%s | Wild Washington",
   },
   description:
-    "Explore Washington wildlife through species stories, comparison tools, conservation context, and exhibit-ready learning paths.",
+    "Explore Washington wildlife through species stories, comparison tools, conservation context, and exhibit-ready learning paths built with Codex.",
   openGraph: {
     title: "Wild Washington",
     description:
-      "A child-first museum exhibit experience for exploring Washington wildlife at risk.",
+      "A Codex-built Washington wildlife explorer for educators, learners, and curious public visitors.",
     type: "website",
     siteName: "Wild Washington",
     url: "https://wild-washington.vercel.app",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Wild Washington social card showing wildlife, maps, and comparison storytelling.",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Wild Washington",
     description:
       "Meet Washington wildlife through real species stories, data, and conservation context.",
+    images: ["/opengraph-image"],
   },
   alternates: {
     canonical: "/",

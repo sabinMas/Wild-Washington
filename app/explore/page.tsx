@@ -41,13 +41,13 @@ export default function ExplorePage() {
           <dt className="eyebrow">Trend directions</dt>
           <dd className="mt-3 flex flex-wrap gap-2">
             <span className="inline-flex items-center rounded-full bg-[var(--color-success)] px-3 py-1 text-sm font-semibold text-white">
-              {summary.improving} Improving
+              {summary.improving} recovering
             </span>
             <span className="inline-flex items-center rounded-full bg-[var(--color-danger)] px-3 py-1 text-sm font-semibold text-white">
-              {summary.declining} Declining
+              {summary.declining} facing pressure
             </span>
-            <span className="inline-flex items-center rounded-full bg-[var(--color-warning)] px-3 py-1 text-sm font-semibold text-[var(--color-text)]">
-              {summary.stable} Stable
+            <span className="inline-flex items-center rounded-full bg-[var(--color-surface-offset)] px-3 py-1 text-sm font-semibold text-[var(--color-text)]">
+              {summary.totalSpecies} species tracked
             </span>
           </dd>
           <dd className="mt-2 text-sm leading-6 text-muted">
@@ -56,9 +56,9 @@ export default function ExplorePage() {
         </dl>
         <dl className="mini-stat">
           <dt className="eyebrow">Learning paths</dt>
-          <dd className="mt-2 text-2xl font-bold text-ink">4 lesson paths</dd>
+          <dd className="mt-2 text-2xl font-bold text-ink">4 audience tiers</dd>
           <dd className="mt-2 text-sm leading-6 text-muted">
-            Each species also connects to activities, prompts, and classroom-ready lesson ideas.
+            Every featured species includes elementary, middle, high school, and educator walkthroughs.
           </dd>
         </dl>
       </div>

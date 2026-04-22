@@ -72,6 +72,7 @@ export function adaptSpeciesRecord(record: RawSpeciesRecord): SpeciesRecord {
     commonName: record.commonName,
     scientificName: record.scientificName,
     shortLabel: record.shortLabel,
+    suggestedComparisonSlug: record.suggestedComparisonSlug,
     speciesGroup: record.speciesGroup,
     listingStatus: record.listingStatus,
     heroSummary: record.heroSummary,

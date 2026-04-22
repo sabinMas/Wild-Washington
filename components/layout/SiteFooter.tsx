@@ -44,7 +44,7 @@ const exploreLinks = [
 
 const aboutLinks = [
   { href: "/about", label: "Project Overview" },
-  { href: "/methodology", label: "Methodology" },
+  { href: "/about-data", label: "About the data" },
   { href: "/accessibility", label: "Accessibility" },
   { href: "/support", label: "Support" },
   { href: "/partnerships", label: "Partnerships" },
@@ -52,6 +52,7 @@ const aboutLinks = [
 
 export function SiteFooter() {
   const pathname = usePathname();
+  const currentYear = new Date().getFullYear();
 
   function isActive(href: string) {
     return pathname === href || pathname.startsWith(`${href}/`);
@@ -111,7 +112,10 @@ export function SiteFooter() {
 
       <div className="border-t border-border">
         <div className="shell py-4">
-          <p className="text-sm text-muted">(c) 2025 Wild Washington | Data from NOAA, WDFW, USFWS, CWR</p>
+          <p className="text-sm text-muted">
+            (c) {currentYear} Wild Washington | Built with Codex | Data from NOAA, WDFW, USFWS,
+            CWR
+          </p>
         </div>
       </div>
     </footer>

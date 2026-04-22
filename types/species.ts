@@ -121,6 +121,7 @@ export interface RawSpeciesRecord {
   commonName: string;
   scientificName: string;
   shortLabel: string;
+  suggestedComparisonSlug?: string;
   speciesGroup: string;
   listingStatus: string;
   heroSummary: string;
@@ -156,6 +157,7 @@ export interface SpeciesRecord {
   commonName: string;
   scientificName: string;
   shortLabel: string;
+  suggestedComparisonSlug?: string;
   speciesGroup: string;
   listingStatus: string;
   heroSummary: string;

@@ -4,6 +4,12 @@ Wild Washington is a Washington wildlife field guide built as an educational web
 
 Live app: [wild-washington.vercel.app](https://wild-washington.vercel.app/)
 
+## Built With Codex
+
+Wild Washington was built with OpenAI Codex as a pair-programming partner. Codex helped scaffold App Router routes, comparison-chart logic, metadata and SEO plumbing, Tailwind refactors, and content-shell improvements, while product framing, editing, data curation, and final review stayed human-directed.
+
+The goal was not to auto-generate a site end to end. It was to use Codex to move faster on implementation details while keeping the final educational voice, source choices, and product decisions intentional.
+
 ## Who It Serves
 
 - Learners who need a clearer way to understand what species trend data actually means.
@@ -50,6 +56,7 @@ Wild Washington adapts different species datasets into a shared interface, but i
 
 ## Tech Stack
 
+- OpenAI Codex-assisted development workflow
 - Next.js App Router
 - React 19
 - TypeScript

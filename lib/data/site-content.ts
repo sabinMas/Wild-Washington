@@ -152,6 +152,17 @@ export function getSuggestedCompareSpecies(
   species: SpeciesRecord,
   collection: SpeciesRecord[],
 ) {
+  if (species.suggestedComparisonSlug) {
+    const curatedMatch = collection.find(
+      (candidate) =>
+        candidate.slug === species.suggestedComparisonSlug && candidate.slug !== species.slug,
+    );
+
+    if (curatedMatch) {
+      return curatedMatch;
+    }
+  }
+
   return [...collection]
     .filter((candidate) => candidate.slug !== species.slug)
     .sort((a, b) => {
