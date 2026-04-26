@@ -91,7 +91,7 @@ export function RotatingSpeciesShowcase({
   return (
     <>
       <section
-        className="relative min-h-[100svh] overflow-hidden bg-black text-white"
+        className="relative min-h-[85svh] overflow-hidden bg-black text-white sm:min-h-[100svh]"
         style={{
           backgroundImage: `url(${activeSpecies.media.src})`,
           backgroundPosition: "center",
@@ -117,8 +117,8 @@ export function RotatingSpeciesShowcase({
           }}
         />
 
-        <div className="shell relative flex min-h-[100svh] items-end pb-16 pt-24 sm:pb-20 sm:pt-28 lg:pb-20 lg:pt-32">
-          <div className="w-full max-w-4xl rounded-[var(--radius-xl)] border border-white/12 bg-black/42 px-5 py-6 shadow-[var(--shadow-lg)] backdrop-blur-sm sm:px-7 sm:py-7 lg:px-8">
+        <div className="shell relative flex min-h-[85svh] items-end pb-12 pt-20 sm:min-h-[100svh] sm:pb-20 sm:pt-28 lg:pb-20 lg:pt-32">
+          <div className="w-full max-w-4xl rounded-[var(--radius-xl)] border border-white/12 bg-black/42 px-4 py-5 shadow-[var(--shadow-lg)] backdrop-blur-sm sm:px-7 sm:py-7 lg:px-8">
             <div className="flex min-w-0 flex-col gap-6">
               <div className="min-w-0 max-w-3xl">
                 <p className="eyebrow text-[var(--color-accent)]">
@@ -128,7 +128,7 @@ export function RotatingSpeciesShowcase({
                   {activeSpecies.commonName}
                 </h1>
                 <div className="mt-5 flex min-w-0 flex-col gap-3 sm:flex-row sm:items-end sm:gap-5">
-                  <span className="display-type shrink-0 text-[clamp(3.6rem,12vw,5.75rem)] font-black leading-none text-white">
+                  <span className="display-type shrink-0 text-[clamp(2.9rem,16vw,5.75rem)] font-black leading-none text-white">
                     {formatNumber(activeSpecies.currentPopulation.estimate)}
                   </span>
                   <span className="max-w-xl text-base font-medium leading-6 tracking-[0.02em] text-white/88 sm:pb-2 sm:text-lg">

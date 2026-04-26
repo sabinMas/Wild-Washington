@@ -129,10 +129,10 @@ export default function HomePage() {
               Take Action
             </Link>
             <Link
-              href="/support"
+              href="/about"
               className="button-outline w-full border-white text-white hover:bg-white/10 sm:w-auto"
             >
-              Support the Program
+              See the Project Story
             </Link>
           </div>
         </div>

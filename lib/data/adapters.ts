@@ -61,9 +61,9 @@ function createCurrentPopulation(
 
 export function adaptSpeciesRecord(record: RawSpeciesRecord): SpeciesRecord {
   const populationSeries = interpolateSeries(record);
-  const media = speciesMediaBySlug[record.slug];
+  const mediaBundle = speciesMediaBySlug[record.slug];
 
-  if (!media) {
+  if (!mediaBundle) {
     throw new Error(`Missing media definition for ${record.slug}.`);
   }
 
@@ -78,7 +78,9 @@ export function adaptSpeciesRecord(record: RawSpeciesRecord): SpeciesRecord {
     heroSummary: record.heroSummary,
     quickFact: record.quickFact,
     primaryColor: record.primaryColor,
-    media,
+    media: mediaBundle.featured,
+    mediaGallery: mediaBundle.gallery,
+    motionMedia: mediaBundle.motionMedia ?? [],
     sourceSystem: record.sourceSystem,
     dataNotes: record.dataNotes,
     trend: deriveTrend(populationSeries),

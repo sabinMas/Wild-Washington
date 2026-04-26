@@ -67,8 +67,8 @@ export default function ExplorePage() {
         <Link href="/about-data" className="button-secondary">
           See how the data works
         </Link>
-        <Link href="/institutional-use" className="button-secondary">
-          Use in museums and classrooms
+        <Link href="/about" className="button-secondary">
+          Learn how the project was built
         </Link>
       </div>
 

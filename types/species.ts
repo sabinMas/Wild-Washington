@@ -106,6 +106,17 @@ export interface SpeciesMedia {
   licenseHref: string;
 }
 
+export interface SpeciesMotionMedia {
+  title: string;
+  description: string;
+  href: string;
+  creator: string;
+  sourceLabel: string;
+  sourceHref: string;
+  licenseLabel: string;
+  licenseHref: string;
+}
+
 export interface CurrentPopulationSnapshot {
   year: number;
   estimate: number;
@@ -164,6 +175,8 @@ export interface SpeciesRecord {
   quickFact: string;
   primaryColor: string;
   media: SpeciesMedia;
+  mediaGallery: SpeciesMedia[];
+  motionMedia: SpeciesMotionMedia[];
   sourceSystem: string;
   dataNotes: string[];
   trend: TrendDirection;

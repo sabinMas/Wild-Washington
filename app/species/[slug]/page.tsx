@@ -127,6 +127,27 @@ export default async function SpeciesPage({
               </article>
             </div>
 
+            <div className="mt-4 grid gap-4 md:grid-cols-2">
+              <article className="story-card p-5">
+                <p className="eyebrow">Washington-only scope</p>
+                <p className="mt-3 text-sm leading-6 text-muted">
+                  This page focuses on Washington state monitoring and recovery context. It is meant
+                  to help readers understand the Washington story first, not replace broader regional
+                  or national population assessments.
+                </p>
+              </article>
+              <article className="story-card p-5">
+                <p className="eyebrow">Latest source window</p>
+                <p className="mt-3 text-sm leading-6 text-muted">
+                  Updated with source records through{" "}
+                  <time dateTime={String(species.currentPopulation.year)}>
+                    {species.currentPopulation.year}
+                  </time>
+                  . Use the source links below when you need the original agency or partner materials.
+                </p>
+              </article>
+            </div>
+
             <div className="mt-5 max-w-[48rem] space-y-4">
               <div className="guidance-box max-w-[65ch]">
                 <span className="eyebrow" aria-hidden="true">
@@ -200,6 +221,100 @@ export default async function SpeciesPage({
                 </span>
               </figcaption>
             </figure>
+
+            {species.mediaGallery.length > 0 ? (
+              <section className="panel rounded-[1.75rem] p-5 sm:p-6" aria-labelledby="species-gallery-heading">
+                <span className="section-kicker" aria-hidden="true">
+                  More photos
+                </span>
+                <h2
+                  id="species-gallery-heading"
+                  className="supporting-title mt-3 font-semibold text-ocean"
+                >
+                  More looks at this species
+                </h2>
+                <p className="mt-3 text-sm leading-6 text-muted">
+                  Kids usually learn faster when they can compare markings, posture, habitat, and
+                  age differences across more than one photo.
+                </p>
+                <div className="mt-5 grid gap-4">
+                  {species.mediaGallery.map((media) => (
+                    <figure key={media.src} className="story-card overflow-hidden">
+                      <div className="relative aspect-[4/3]">
+                        <Image
+                          src={media.src}
+                          alt={media.alt}
+                          fill
+                          sizes="(min-width: 1280px) 20rem, (min-width: 640px) 50vw, 100vw"
+                          className="object-cover"
+                        />
+                      </div>
+                      <figcaption className="grid gap-2 p-4 text-sm leading-6 text-muted">
+                        <span>{media.alt}</span>
+                        <span>
+                          Photo by{" "}
+                          <a
+                            href={media.photographerHref}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="font-semibold text-ocean underline decoration-ocean/30 underline-offset-3"
+                          >
+                            {media.photographer}
+                          </a>{" "}
+                          via{" "}
+                          <a
+                            href={media.sourceHref}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="font-semibold text-ocean underline decoration-ocean/30 underline-offset-3"
+                          >
+                            {media.sourceLabel}
+                          </a>
+                          . License:{" "}
+                          <a
+                            href={media.licenseHref}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="font-semibold text-ocean underline decoration-ocean/30 underline-offset-3"
+                          >
+                            {media.licenseLabel}
+                          </a>
+                          .
+                        </span>
+                      </figcaption>
+                    </figure>
+                  ))}
+                </div>
+
+                {species.motionMedia.length > 0 ? (
+                  <div className="mt-5 grid gap-3">
+                    {species.motionMedia.map((media) => (
+                      <a
+                        key={media.href}
+                        href={media.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="route-link-card"
+                      >
+                        <span className="eyebrow" aria-hidden="true">
+                          Motion media
+                        </span>
+                        <h3 className="supporting-title mt-3 font-semibold text-ocean">
+                          {media.title}
+                        </h3>
+                        <p className="mt-2 text-sm leading-6 text-muted">{media.description}</p>
+                        <p className="mt-3 text-sm leading-6 text-muted">
+                          Source: {media.sourceLabel}
+                        </p>
+                        <p className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-muted">
+                          {media.creator} • {media.licenseLabel}
+                        </p>
+                      </a>
+                    ))}
+                  </div>
+                ) : null}
+              </section>
+            ) : null}
 
             <div className="story-card p-5">
               <span className="eyebrow" aria-hidden="true">

@@ -3,25 +3,25 @@ import { PageHero } from "@/components/site/PageHero";
 import { institutionalUseCards } from "@/lib/data/institutional-content";
 
 export const metadata = {
-  title: "For Museums & Educators",
+  title: "For Educators",
 };
 
 export default function InstitutionalUsePage() {
   return (
     <div className="shell py-8 sm:py-12">
       <PageHero
-        kicker="For museums and educators"
-        title="Designed to support exhibits, public programs, classrooms, and conservation outreach"
-        description="Wild Washington is structured as a shared educational platform rather than a single-purpose app. That makes it easier for museums, schools, and nonprofits to adapt it for public interpretation, youth engagement, and donor education."
+        kicker="For educators"
+        title="Designed to support classrooms, informal learning, and public interpretation"
+        description="Wild Washington is structured as a shared educational platform rather than a single-purpose app. That makes it useful for classroom teaching, exhibit-adjacent learning, self-guided discovery, and conservation communication."
         actions={[
-          { href: "/partnerships", label: "View partnerships", variant: "secondary" },
-          { href: "/support", label: "Support the program", variant: "ghost" },
+          { href: "/learn", label: "Open the learning hub", variant: "secondary" },
+          { href: "/about", label: "See project overview", variant: "ghost" },
         ]}
         aside={{
-          kicker: "Adoption note",
-          title: "The current architecture is aimed at making future CMS or flat-file management realistic for non-engineers.",
+          kicker: "Teaching note",
+          title: "The current architecture keeps species stories, lessons, and methodology aligned across the site.",
           description:
-            "Structured content, reusable sections, and clearer route boundaries are part of the handoff strategy as much as the visual design.",
+            "Structured content, reusable sections, and clearer route boundaries make it easier to reuse the same evidence in multiple learning contexts.",
         }}
       />
 

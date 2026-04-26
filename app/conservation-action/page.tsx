@@ -16,17 +16,17 @@ export default function ConservationActionPage() {
     <div className="shell py-8 sm:py-12">
       <PageHero
         kicker="Conservation action"
-        title="Connect species stories to stewardship, field experiences, and partner organizations"
-        description="This route extends the learning journey into real-world action. It is designed for visitors, educators, and institutional partners who want to move from understanding a species trend to finding a practical local next step."
+        title="Connect species stories to stewardship, field experiences, and community action"
+        description="This route extends the learning journey into real-world action. It is designed for visitors, educators, and curious public users who want to move from understanding a species trend to finding a practical local next step."
         actions={[
           { href: "/learn", label: "Connect to lessons", variant: "secondary" },
-          { href: "/support", label: "Support the program", variant: "ghost" },
+          { href: "/about", label: "See the project overview", variant: "ghost" },
         ]}
         aside={{
           kicker: "Public-program framing",
           title: "Choose the action type first, then decide which species story or habitat you want to extend.",
           description:
-            "Field experiences, citizen science, volunteer programs, and partner organizations are grouped to work for museum visitors, educators, and community stewards.",
+            "Field experiences, citizen science, volunteer programs, and stewardship opportunities are grouped to work for classrooms, self-guided exploration, and community learning.",
         }}
       />
 

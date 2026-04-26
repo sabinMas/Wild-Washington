@@ -12,10 +12,10 @@ export default function AboutPage() {
     <div className="shell py-8 sm:py-12">
       <PageHero
         kicker="Project overview"
-        title="A public-facing wildlife education platform designed for institutional stewardship"
-        description="Wild Washington began as a Washington wildlife field guide and is now being refactored into a museum-ready, nonprofit-ready educational program that can support public interpretation, classroom learning, and conservation storytelling."
+        title="A public-facing wildlife education platform designed for independent release"
+        description="Wild Washington began as a Washington wildlife field guide and grew into a public educational product that supports classroom learning, self-guided exploration, and conservation storytelling without losing source transparency."
         actions={[
-          { href: "/institutional-use", label: "For museums and educators", variant: "secondary" },
+          { href: "/institutional-use", label: "For educators", variant: "secondary" },
           { href: "/about-data", label: "About the data", variant: "secondary" },
         ]}
         aside={{
@@ -41,11 +41,39 @@ export default function AboutPage() {
         ))}
       </section>
 
+      <section className="mt-8 panel rounded-[1.75rem] p-5 sm:p-6">
+        <SectionIntro
+          kicker="Why these species"
+          title="The collection is curated, not exhaustive"
+          description="Wild Washington focuses on eight species chosen for Washington-specific monitoring depth, longitudinal data availability, habitat diversity, and educational range across marine, forest, wetland, river, and shrub-steppe systems."
+        />
+        <div className="grid gap-4 md:grid-cols-3">
+          <article className="story-card p-5">
+            <h3 className="text-lg font-bold text-ink">Data depth</h3>
+            <p className="mt-3 text-sm leading-6 text-muted">
+              Every featured species needed enough public source material to support a defensible trend story rather than a one-line summary.
+            </p>
+          </article>
+          <article className="story-card p-5">
+            <h3 className="text-lg font-bold text-ink">Washington relevance</h3>
+            <p className="mt-3 text-sm leading-6 text-muted">
+              The set emphasizes species with meaningful Washington monitoring, recovery work, and public stewardship context rather than trying to represent every threatened animal in the region.
+            </p>
+          </article>
+          <article className="story-card p-5">
+            <h3 className="text-lg font-bold text-ink">Teaching variety</h3>
+            <p className="mt-3 text-sm leading-6 text-muted">
+              The species were also chosen to give educators contrasting habitats, metric types, and recovery stories that work well in comparison.
+            </p>
+          </article>
+        </div>
+      </section>
+
       <section className="mt-8">
         <SectionIntro
           kicker="Governance and trust"
-          title="Operational signals that help institutions evaluate handoff readiness"
-          description="These signals are now part of the product shell so the site feels governed, maintained, and adoption-ready."
+          title="Signals that help the project feel maintained, credible, and ready to use"
+          description="These product choices make the experience feel intentional and trustworthy instead of like a rough prototype."
         />
         <div className="grid gap-4 md:grid-cols-2">
           {governanceSignals.map((item) => (

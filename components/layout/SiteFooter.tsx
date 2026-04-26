@@ -46,8 +46,7 @@ const aboutLinks = [
   { href: "/about", label: "Project Overview" },
   { href: "/about-data", label: "About the data" },
   { href: "/accessibility", label: "Accessibility" },
-  { href: "/support", label: "Support" },
-  { href: "/partnerships", label: "Partnerships" },
+  { href: "/institutional-use", label: "For educators" },
 ];
 
 export function SiteFooter() {

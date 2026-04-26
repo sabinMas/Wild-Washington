@@ -14,9 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/conservation-action",
     "/about-data",
     "/institutional-use",
-    "/partnerships",
     "/accessibility",
-    "/support",
   ].map((path) => ({
     url: `${baseUrl}${path}`,
     lastModified: new Date(),

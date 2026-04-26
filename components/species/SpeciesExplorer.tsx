@@ -31,6 +31,7 @@ const trendFilters = [
 
 const sortOptions = [
   { value: "name", label: "Name (A-Z)" },
+  { value: "concern", label: "Most urgent concern" },
   { value: "trend", label: "Trend status" },
   { value: "group", label: "Species group" },
 ] as const;
@@ -39,6 +40,17 @@ const trendPriority: Record<TrendDirection, number> = {
   improving: 0,
   stable: 1,
   declining: 2,
+};
+
+const concernPriority: Record<string, number> = {
+  "columbia-basin-pygmy-rabbit": 0,
+  "southern-resident-orca": 1,
+  "northern-spotted-owl": 2,
+  "marbled-murrelet": 3,
+  "greater-sage-grouse": 4,
+  "pacific-salmon": 5,
+  "northern-leopard-frog": 6,
+  "gray-wolf": 7,
 };
 
 function buildGroupFilters(species: SpeciesRecord[]) {
@@ -89,6 +101,14 @@ export function SpeciesExplorer({ species }: { species: SpeciesRecord[] }) {
         return matchesTrend && matchesGroup && matchesQuery;
       })
       .sort((a, b) => {
+        if (sortBy === "concern") {
+          return (
+            (concernPriority[a.slug] ?? Number.MAX_SAFE_INTEGER) -
+              (concernPriority[b.slug] ?? Number.MAX_SAFE_INTEGER) ||
+            a.commonName.localeCompare(b.commonName)
+          );
+        }
+
         if (sortBy === "trend") {
           return (
             trendPriority[a.trend] - trendPriority[b.trend] ||
@@ -112,6 +132,8 @@ export function SpeciesExplorer({ species }: { species: SpeciesRecord[] }) {
   const helperText =
     query.trim().length > 0
       ? `Searching for "${query.trim()}". Search checks species name, group, and listing status so you can quickly find the animals you want to explore.`
+      : sortBy === "concern"
+        ? "Showing the collection in a curated urgency order so the most fragile Washington recovery stories appear first."
       : trend === "all" && group === "all"
         ? "Start broad, then use the trend and group filters to narrow the set and follow a few animal stories at a time."
         : `Showing a narrower browse lens${group !== "all" ? ` for ${group.toLowerCase()} species` : ""}${trend !== "all" ? ` with a ${trend} trend` : ""}.`;
