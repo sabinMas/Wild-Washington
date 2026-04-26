@@ -56,35 +56,37 @@ export function PopulationTrendChart({ species }: { species: SpeciesRecord }) {
 
   return (
     <div className="panel min-w-0 rounded-[1.75rem] p-4 sm:p-5">
-      <div className="mb-5 grid gap-4 sm:mb-6 xl:grid-cols-[1.1fr_0.9fr]">
-        <div>
+      <div className="mb-5 grid gap-5 sm:mb-6 xl:grid-cols-[minmax(0,1.35fr)_minmax(19rem,0.65fr)]">
+        <div className="min-w-0">
           <span className="section-kicker" aria-hidden="true">
             Trend chart
           </span>
-          <h3 className="section-title mt-3 font-bold text-ocean">
+          <h3 className="section-title mt-3 max-w-[12ch] font-bold text-ocean sm:max-w-[14ch]">
             What the indicator suggests over time
           </h3>
-          <p className="mt-3 text-sm font-semibold text-ocean">{getTrendSummary(species)}</p>
-          <p className="mt-3 text-sm leading-6 text-muted">
+          <p className="mt-4 max-w-[52ch] text-sm font-semibold leading-7 text-ocean">
+            {getTrendSummary(species)}
+          </p>
+          <p className="mt-3 max-w-[56ch] text-sm leading-6 text-muted">
             {species.populationMetric.whatItTracks}
           </p>
         </div>
 
-        <div className="story-grid sm:grid-cols-2">
+        <div className="story-grid xl:grid-cols-1">
           <article className="mini-stat">
             <p className="eyebrow">Metric type</p>
-            <p className="mt-2 text-lg font-bold text-ink">{species.populationMetric.label}</p>
-            <p className="mt-2 text-sm leading-6 text-muted">
+            <p className="mt-2 text-xl font-bold leading-8 text-ink">{species.populationMetric.label}</p>
+            <p className="mt-3 max-w-none text-sm leading-7 text-muted">
               {species.populationMetric.precisionNote}
             </p>
           </article>
 
           <article className="mini-stat">
             <p className="eyebrow">Confidence</p>
-            <p className="mt-2 text-lg font-bold text-ink">
+            <p className="mt-2 text-xl font-bold leading-8 text-ink">
               {getConfidenceLabel(species.currentPopulation.confidence)}
             </p>
-            <p className="mt-2 text-sm leading-6 text-muted">
+            <p className="mt-3 max-w-none text-sm leading-7 text-muted">
               Use the methodology notes and source links when you need to understand what the
               number captures and where it stays approximate.
             </p>
