@@ -36,7 +36,7 @@ export function PageHero({
   centered?: boolean;
 }) {
   return (
-    <section className="grid gap-5 xl:grid-cols-[minmax(0,1.08fr)_minmax(18rem,0.92fr)] xl:items-end">
+    <section className="grid gap-5 xl:grid-cols-[minmax(0,1.16fr)_minmax(18rem,0.84fr)] xl:items-end">
       <div className={cn("max-w-3xl", centered && "xl:max-w-4xl")}>
         <span className="section-kicker" aria-hidden="true">
           {kicker}
@@ -50,7 +50,7 @@ export function PageHero({
             ))}
           </div>
         ) : null}
-        <h1 className="hero-title mt-4 font-semibold text-ocean">{title}</h1>
+        <h1 className="hero-title mt-4 max-w-[13ch] font-semibold text-ocean">{title}</h1>
         <p className="lede mt-5">{description}</p>
         {actions?.length ? (
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
